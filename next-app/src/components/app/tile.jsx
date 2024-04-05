@@ -12,6 +12,13 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '../ui/tabs'
 import { FaArrowRightArrowLeft } from "react-icons/fa6";
 import { FaArrowsUpDownLeftRight } from "react-icons/fa6";
 
+import {
+  HoverCard,
+  HoverCardContent,
+  HoverCardTrigger,
+} from "../ui/hover-card"
+
+
 function Tile({tile, x, y, onChange, amps, maxValue}) {
 
   let rgb = convertScoreToRGB(calculateAmps(), maxValue)
@@ -68,8 +75,12 @@ function Tile({tile, x, y, onChange, amps, maxValue}) {
     return color
   }
 
-  const getTileText = (tile) =>{
+  const getAmpText = (tile) =>{
     return tile?.text?.replace('[value]', ampsScore).replace('[craft]',tile?.craft?.toUpperCase())
+  }
+
+  const getTileText = (tile) =>{
+    return tile?.text?.replace('[value]', tile.value * (1 + ampsScore/100)).replace('[craft]',tile?.craft?.toUpperCase())
   }
 
   const resetTile = () =>{
@@ -81,49 +92,65 @@ function Tile({tile, x, y, onChange, amps, maxValue}) {
   return (
 
     <Dialog className='w-screen' open={openDialog} onOpenChange={() => setOpenDialog(!openDialog)}>
+
+
+
       <DialogTrigger 
-      onClick={() => setOpenDialog(true)}
-      className={`w-full h-full bg-background rounded`}>
+        onClick={() => setOpenDialog(true)}
+        className={`w-full h-full bg-background rounded`}>
+
         <div className={`bg-inherit w-full h-full flex items-center justify-center rounded
           border-2 border-background 
           ${tile.disabled ? 'hover:scale-100 cursor-default' : 'hover:scale-110 cursor-pointer'}
-      `}
-      style={rgb && {background: `rgba(${rgb.red},${rgb.green},${rgb.blue},0.2)`}}
-      
-      >
-        {!tile.disabled &&
-          <div className='w-full h-full bg-inherit bg-opacity-40'
-          style={rgb && {background: `rgba(${rgb.red},${rgb.green},${rgb.blue},0.2)`}}>
-            
-            {tile?.type &&
-              <div className={`w-full h-full bg-inherit
-              ${tile.type === 'normal' && 'bg-indigo-900'}
-              ${tile.type === 'amp' && 'bg-purple-900'}
-              flex items-center justify-center flex-col 
-              `}>
+          `}
+          style={rgb && {background: `rgba(${rgb.red},${rgb.green},${rgb.blue},0.2)`}}
+        >
+          <HoverCard className='w-full h-full bg-background' >
+            {!tile.disabled && 
+            <HoverCardTrigger className='w-full h-full'>
+              { !tile.disabled &&
+              <div className='w-full h-full bg-inherit bg-opacity-40'
+              style={rgb && {background: `rgba(${rgb.red},${rgb.green},${rgb.blue},0.2)`}}>
                 
-                {tile?.ampType === 'col' && <FaArrowRightArrowLeft className='rotate-90 bg-inherit' size={'40%'}/>}
-                {tile?.ampType === 'row' && <FaArrowRightArrowLeft className='bg-inherit ' size={'40%'}/>}
-                {tile?.ampType === 'adj' && <FaArrowsUpDownLeftRight className='bg-inherit' size={'40%'}/>}
-                {tile?.type === 'normal' && <p className='bg-indigo-900 h-full w-full flex items-center justify-center'>{calculateAmps()}%</p>}
-                
+                {tile?.type &&
+                  <div className={`w-full h-full bg-inherit
+                  ${tile.type === 'normal' && 'bg-indigo-900'}
+                  ${tile.type === 'amp' && 'bg-purple-900'}
+                  flex items-center justify-center flex-col 
+                  `}>
+                    
+                    {tile?.ampType === 'col' && <FaArrowRightArrowLeft className='rotate-90 bg-inherit' size={'40%'}/>}
+                    {tile?.ampType === 'row' && <FaArrowRightArrowLeft className='bg-inherit ' size={'40%'}/>}
+                    {tile?.ampType === 'adj' && <FaArrowsUpDownLeftRight className='bg-inherit' size={'40%'}/>}
+                    {tile?.type === 'normal' && <p className='bg-indigo-900 h-full w-full flex items-center justify-center'>{calculateAmps()}%</p>}
+                    
 
-                
-              </div>
-            }
-
-                {(!tile.type && !tile.disabled) && 
-                  <div className='w-full h-full flex items-center justify-center' style={rgb && {background: `rgba(${rgb.red},${rgb.green},${rgb.blue},0.2)`}}>
-                    {calculateAmps()}%
+                    
                   </div>
                 }
 
+                    {(!tile.type && !tile.disabled) && 
+                      <div className='w-full h-full flex items-center justify-center' style={rgb && {background: `rgba(${rgb.red},${rgb.green},${rgb.blue},0.2)`}}>
+                        {calculateAmps()}%
+                      </div>
+                    }
+
+                
+                
+                
+              </div>
             
-            
-            
-          </div>
-        
-        }
+            }
+
+            </HoverCardTrigger>
+}
+              <HoverCardContent className='bg-background'>
+                <div className=''>
+                  
+                  {tile?.text && <p className='text-white'>{getTileText(tile)}</p>}
+                </div>
+              </HoverCardContent>
+            </HoverCard>
       </div>
       
       </DialogTrigger>
