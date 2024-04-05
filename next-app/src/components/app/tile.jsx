@@ -168,7 +168,7 @@ function Tile({tile, x, y, onChange, amps, maxValue}) {
           <div className='w-full h-full mt-4 overflow-scroll'>
             {amps.map((amp, index) =>{
               return (
-                <div className='border-2 border-zinc-500 border-opacity-40 rounded p-1' key={'amp-' + index}>{getTileText(amp)}</div>
+                <div className='border-2 border-zinc-500 border-opacity-40 rounded p-1 ' key={'amp-' + index}>{getAmpText(amp)}</div>
               )
             })}
           </div>
@@ -190,7 +190,7 @@ function Tile({tile, x, y, onChange, amps, maxValue}) {
             <Button className='bg-inherit text-red-900 hover:text-foreground hover:bg-red-950' onClick={() => resetTile()}>Remove</Button>
           </div>
           <div className='flex flex-col gap-2 pt-2 h-full overflow-hidden'>
-            <Tabs className='h-full overflow-hidden flex flex-col'>
+            <Tabs className='h-full overflow-hidden flex flex-col' defaultValue='amps'>
               <TabsList className='w-full bg-background brightness-150 flex justify-items-stretch data-[state=active]:brightness-125 '>
                 <TabsTrigger value='amps' className='w-full '>Amps</TabsTrigger>
                 <TabsTrigger value='normal' className='w-full'>Normal</TabsTrigger>
@@ -228,7 +228,17 @@ function Tile({tile, x, y, onChange, amps, maxValue}) {
                             <Button 
                             key={index}
                             onClick={() => setTile(el)}
-                            className='text-wrap pt-2 hover:bg-accent hover:brightness-125 text-xs'>{el.text.replace('[value]',el.value).replace('[craft]',el?.craft)}</Button>
+                            className='text-wrap pt-2 hover:bg-accent hover:brightness-125 text-lg h-full '>
+                              {el.ampType === 'row' && <FaArrowRightArrowLeft className='h-1/3 w-1/3 bg-inherit'/>}
+                              {el.ampType === 'col' && <FaArrowRightArrowLeft className='h-1/3 w-1/3 bg-inherit rotate-90'/>}
+                              {el.ampType === 'adj' && <FaArrowsUpDownLeftRight className='h-1/3 w-1/3 bg-inherit'/>}
+                              <p className='h-full w-full bg-inherit flex items-center justify-center'>
+                                {el.text.replace('[value]',el.value).replace('[craft]',el?.craft)}
+                              </p>
+                              
+                              
+                              
+                            </Button>
 
                           
                         )

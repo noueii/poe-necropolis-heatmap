@@ -1159,45 +1159,14 @@
     "required": 1
   },
   {
-    "text": "[value]% increased Effect of Beast Corpses adjacent to this Corpse",
+    "text": "[value]% increased Effect of Corpses adjacent to this Corpse",
     "value": 40,
     "maxValue": 0,
     "type": "amp",
     "ampType": "adj",
     "required": 1
   },
-  {
-    "text": "[value]% increased Effect of Undead Corpses adjacent to this Corpse",
-    "value": 40,
-    "maxValue": 0,
-    "type": "amp",
-    "ampType": "adj",
-    "required": 1
-  },
-  {
-    "text": "[value]% increased Effect of Humanoid Corpses adjacent to this Corpse",
-    "value": 40,
-    "maxValue": 0,
-    "type": "amp",
-    "ampType": "adj",
-    "required": 1
-  },
-  {
-    "text": "[value]% increased Effect of Construct Corpses adjacent to this Corpse",
-    "value": 40,
-    "maxValue": 0,
-    "type": "amp",
-    "ampType": "adj",
-    "required": 1
-  },
-  {
-    "text": "[value]% increased Effect of Demon Corpses adjacent to this Corpse",
-    "value": 40,
-    "maxValue": 0,
-    "type": "amp",
-    "ampType": "adj",
-    "required": 1
-  },
+  
   {
     "text": "[value]% chance for Beast Corpses to not be consumed when Exorcising, up to 50%",
     "value": 5,
