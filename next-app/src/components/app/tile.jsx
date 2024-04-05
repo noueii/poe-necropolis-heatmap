@@ -11,16 +11,20 @@ import { IoSearch } from "react-icons/io5";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '../ui/tabs'
 import { FaArrowRightArrowLeft } from "react-icons/fa6";
 import { FaArrowsUpDownLeftRight } from "react-icons/fa6";
+import TileTag from './TileTag'
 
 import {
   HoverCard,
   HoverCardContent,
   HoverCardTrigger,
 } from "../ui/hover-card"
+import TileText from './TileTextDisplay'
+import TileTextDisplay from './TileTextDisplay'
 
 
 function Tile({tile, x, y, onChange, amps, maxValue}) {
 
+  
   let rgb = convertScoreToRGB(calculateAmps(), maxValue)
   if(tile.disabled) rgb = undefined
   const [openDialog, setOpenDialog] = useState(false)
@@ -87,14 +91,21 @@ function Tile({tile, x, y, onChange, amps, maxValue}) {
     onChange({value: 1, disabled: tile.disabled}, x, y)
   }
 
+  const getTileTextColor = () => {
+    let type = tile.tagType
+    switch(type){
+      case 'remove':
+      case 'decrease':
+        return 'text-red-500'
+      case 'add':
+      case 'increase': return 'text-green-500'
+    }
+  }
 
 
   return (
 
     <Dialog className='w-screen' open={openDialog} onOpenChange={() => setOpenDialog(!openDialog)}>
-
-
-
       <DialogTrigger 
         onClick={() => setOpenDialog(true)}
         className={`w-full h-full bg-background rounded`}>
@@ -105,11 +116,9 @@ function Tile({tile, x, y, onChange, amps, maxValue}) {
           `}
           style={rgb && {background: `rgba(${rgb.red},${rgb.green},${rgb.blue},0.2)`}}
         >
-          <HoverCard className='w-full h-full bg-background'  >
-            {!tile.disabled && 
-            <HoverCardTrigger className='w-full h-full'>
+         
               { !tile.disabled &&
-              <div className='w-full h-full bg-inherit bg-opacity-40'
+              <div className='w-full h-full bg-inherit bg-opacity-40 overflow-hidden'
               style={rgb && {background: `rgba(${rgb.red},${rgb.green},${rgb.blue},0.2)`}}>
                 
                 {tile?.type &&
@@ -118,11 +127,30 @@ function Tile({tile, x, y, onChange, amps, maxValue}) {
                   ${tile.type === 'amp' && 'bg-purple-900'}
                   flex items-center justify-center flex-col 
                   `}>
+
+                    {(tile.type === 'normal' || tile.type === 'item') &&
+
+                    <div className='w-full p-1 px-2 flex items-center jus bg-background brightness-200'>
+                      <p className='w-full flex self-start'>T{tile.tier}</p>
+                      <TileTag tile={tile}/>
+                    </div>
+                    }
+                    
+                    
                     
                     {tile?.ampType === 'col' && <FaArrowRightArrowLeft className='rotate-90 bg-inherit' size={'40%'}/>}
                     {tile?.ampType === 'row' && <FaArrowRightArrowLeft className='bg-inherit ' size={'40%'}/>}
                     {tile?.ampType === 'adj' && <FaArrowsUpDownLeftRight className='bg-inherit' size={'40%'}/>}
-                    {tile?.type === 'normal' && <p className='bg-indigo-900 h-full w-full flex items-center justify-center'>{calculateAmps()}%</p>}
+                    {(tile?.type === 'normal' || tile?.type === 'item') && 
+                    
+                    <div className='bg-indigo-900 h-full w-full flex items-center justify-center flex-col text-sm'>
+                      {tile.tag && <p className='bg-inherit'>{tile.tag}</p>}
+                      {/* <TileText tile={tile} value={tile.value * (1 + calculateAmps()/100)}/> */}
+                      {tile.value && 
+                      <div className={`bg-inherit ${getTileTextColor()}`}>{tile.value * (1 + calculateAmps()/100)}%</div>
+                      }
+                      </div>
+                    }
                     
 
                     
@@ -131,7 +159,8 @@ function Tile({tile, x, y, onChange, amps, maxValue}) {
 
                     {(!tile.type && !tile.disabled) && 
                       <div className='w-full h-full flex items-center justify-center' style={rgb && {background: `rgba(${rgb.red},${rgb.green},${rgb.blue},0.2)`}}>
-                        {calculateAmps()}%
+                        
+                        +{calculateAmps()}%
                       </div>
                     }
 
@@ -142,15 +171,7 @@ function Tile({tile, x, y, onChange, amps, maxValue}) {
             
             }
 
-            </HoverCardTrigger>
-}
-              <HoverCardContent className='bg-background' side='bottom' align='center' avoidCollisions={false}>
-                <div className=''>
-                  
-                  {tile?.text && <p className='text-white'>{getTileText(tile)}</p>}
-                </div>
-              </HoverCardContent>
-            </HoverCard>
+
       </div>
       
       </DialogTrigger>
@@ -186,7 +207,7 @@ function Tile({tile, x, y, onChange, amps, maxValue}) {
           </DialogHeader>
 
           <div className='flex w-full justify-between items-center'>
-            <div className=''>{getTileText(tile)}</div>
+            {tile.text && <div className='text-sm'><TileTextDisplay tile={tile} value={tile.value * (1 + ampsScore/100)} size={'sm'}/></div>}
             <Button className='bg-inherit text-red-900 hover:text-foreground hover:bg-red-950' onClick={() => resetTile()}>Remove</Button>
           </div>
           <div className='flex flex-col gap-2 pt-2 h-full overflow-hidden'>
@@ -204,14 +225,14 @@ function Tile({tile, x, y, onChange, amps, maxValue}) {
               
                 <div className=' overflow-scroll flex flex-col gap-2'>
                     {db.map((el,index) =>{
-                      if(el?.type === 'normal' && isSearch(el) )
+                      if((el?.type === 'normal' || el?.type === 'item')&& isSearch(el) )
                       return (
 
 
                           <Button 
                             onClick={() => setTile(el)}
                             key={index}
-                            className='text-wrap pt-2 hover:bg-accent hover:brightness-125 text-xs'>{el.text.replace('[value]',el.value).replace('[craft]',el?.craft?.toUpperCase())}</Button>
+                            className='text-wrap pt-2 hover:bg-accent hover:brightness-125 text-xs'><TileTextDisplay tile={el} value={el.value}/></Button>
 
                         
                       )

@@ -4,28 +4,40 @@
     "value": 1,
     "maxValue": 0,
     "type": "normal",
-    "required": 1
+    "required": 1,
+    "tag": "explicit mod",
+    "tagType": "increase",
+    "tier": 1
   },
   {
     "text": "-[value] Explicit Modifiers",
     "value": 1,
     "maxValue": 0,
     "type": "normal",
-    "required": 1
+    "required": 1,
+    "tag": "explicit mod",
+    "tagType": "decrease",
+    "tier": 1
   },
   {
     "text": "+[value]% to Quality, up to 30%",
     "value": 5,
     "maxValue": 0,
     "type": "normal",
-    "required": 1
+    "required": 1,
+    "tag": "quality",
+    "tagType": "increase",
+    "tier": 1
   },
   {
     "text": "[value]% chance to Fracture an Explicit Modifier",
     "value": 25,
     "maxValue": 0,
     "type": "normal",
-    "required": 1
+    "required": 1,
+    "tag": "fracture",
+    "tagType": "increase",
+    "tier": 1
   },
   {
     "text": "[value]% increased chance of [craft] Modifiers",
@@ -33,7 +45,10 @@
     "maxValue": 0,
     "craft": "Physical",
     "type": "normal",
-    "required": 1
+    "required": 1,
+    "tag": "physical mod",
+    "tagType": "increase",
+    "tier": 2
   },
   {
     "text": "[value]% increased chance of [craft] Modifiers",
@@ -41,7 +56,10 @@
     "maxValue": 0,
     "craft": "Physical",
     "type": "normal",
-    "required": 1
+    "required": 1,
+    "tag": "physical mod",
+    "tagType": "increase",
+    "tier": 1
   },
   {
     "text": "[value]% increased chance of [craft] Modifiers",
@@ -49,7 +67,10 @@
     "maxValue": 0,
     "craft": "Fire",
     "type": "normal",
-    "required": 1
+    "required": 1,
+    "tag": "fire mod",
+    "tagType": "increase",
+    "tier": 2
   },
   {
     "text": "[value]% increased chance of [craft] Modifiers",
@@ -57,7 +78,10 @@
     "maxValue": 0,
     "craft": "Fire",
     "type": "normal",
-    "required": 1
+    "required": 1,
+    "tag": "fire mod",
+    "tagType": "increase",
+    "tier": 1
   },
   {
     "text": "[value]% increased chance of [craft] Modifiers",
@@ -65,7 +89,10 @@
     "maxValue": 0,
     "craft": "Cold",
     "type": "normal",
-    "required": 1
+    "required": 1,
+    "tag": "cold mod",
+    "tagType": "increase",
+    "tier": 2
   },
   {
     "text": "[value]% increased chance of [craft] Modifiers",
@@ -73,7 +100,10 @@
     "maxValue": 0,
     "craft": "Cold",
     "type": "normal",
-    "required": 1
+    "required": 1,
+    "tag": "cold mod",
+    "tagType": "increase",
+    "tier": 1
   },
   {
     "text": "[value]% increased chance of [craft] Modifiers",
@@ -81,7 +111,10 @@
     "maxValue": 0,
     "craft": "Lightning",
     "type": "normal",
-    "required": 1
+    "required": 1,
+    "tag": "lightning mod",
+    "tagType": "increase",
+    "tier": 2
   },
   {
     "text": "[value]% increased chance of [craft] Modifiers",
@@ -89,7 +122,10 @@
     "maxValue": 0,
     "craft": "Lightning",
     "type": "normal",
-    "required": 1
+    "required": 1,
+    "tag": "lightning mod",
+    "tagType": "increase",
+    "tier": 1
   },
   {
     "text": "[value]% increased chance of [craft] Modifiers",
@@ -97,7 +133,10 @@
     "maxValue": 0,
     "craft": "Chaos",
     "type": "normal",
-    "required": 1
+    "required": 1,
+    "tag": "chaos mod",
+    "tagType": "increase",
+    "tier": 2
   },
   {
     "text": "[value]% increased chance of [craft] Modifiers",
@@ -105,7 +144,10 @@
     "maxValue": 0,
     "craft": "Chaos",
     "type": "normal",
-    "required": 1
+    "required": 1,
+    "tag": "chaos mod",
+    "tagType": "increase",
+    "tier": 1
   },
   {
     "text": "[value]% increased chance of [craft] Modifiers",
@@ -113,7 +155,10 @@
     "maxValue": 0,
     "craft": "Life",
     "type": "normal",
-    "required": 1
+    "required": 1,
+    "tag": "life mod",
+    "tagType": "increase",
+    "tier": 2
   },
   {
     "text": "[value]% increased chance of [craft] Modifiers",
@@ -121,7 +166,10 @@
     "maxValue": 0,
     "craft": "Life",
     "type": "normal",
-    "required": 1
+    "required": 1,
+    "tag": "life mod",
+    "tagType": "increase",
+    "tier": 1
   },
   {
     "text": "[value]% increased chance of [craft] Modifiers",
@@ -129,7 +177,10 @@
     "maxValue": 0,
     "craft": "Mana",
     "type": "normal",
-    "required": 1
+    "required": 1,
+    "tag": "mana mod",
+    "tagType": "increase",
+    "tier": 2
   },
   {
     "text": "[value]% increased chance of [craft] Modifiers",
@@ -137,7 +188,10 @@
     "maxValue": 0,
     "craft": "Mana",
     "type": "normal",
-    "required": 1
+    "required": 1,
+    "tag": "mana mod",
+    "tagType": "increase",
+    "tier": 1
   },
   {
     "text": "[value]% increased chance of [craft] Modifiers",
@@ -145,7 +199,10 @@
     "maxValue": 0,
     "craft": "Attack",
     "type": "normal",
-    "required": 1
+    "required": 1,
+    "tag": "attack mod",
+    "tagType": "increase",
+    "tier": 2
   },
   {
     "text": "[value]% increased chance of [craft] Modifiers",
@@ -153,7 +210,10 @@
     "maxValue": 0,
     "craft": "Attack",
     "type": "normal",
-    "required": 1
+    "required": 1,
+    "tag": "attack mod",
+    "tagType": "increase",
+    "tier": 1
   },
   {
     "text": "[value]% increased chance of [craft] Modifiers",
@@ -161,7 +221,10 @@
     "maxValue": 0,
     "craft": "Caster",
     "type": "normal",
-    "required": 1
+    "required": 1,
+    "tag": "caster mod",
+    "tagType": "increase",
+    "tier": 2
   },
   {
     "text": "[value]% increased chance of [craft] Modifiers",
@@ -169,7 +232,10 @@
     "maxValue": 0,
     "craft": "Caster",
     "type": "normal",
-    "required": 1
+    "required": 1,
+    "tag": "caster mod",
+    "tagType": "increase",
+    "tier": 1
   },
   {
     "text": "[value]% increased chance of [craft] Modifiers",
@@ -177,7 +243,10 @@
     "maxValue": 0,
     "craft": "Elemental",
     "type": "normal",
-    "required": 1
+    "required": 1,
+    "tag": "elemental mod",
+    "tagType": "increase",
+    "tier": 2
   },
   {
     "text": "[value]% increased chance of [craft] Modifiers",
@@ -185,7 +254,10 @@
     "maxValue": 0,
     "craft": "Elemental",
     "type": "normal",
-    "required": 1
+    "required": 1,
+    "tag": "elemental mod",
+    "tagType": "increase",
+    "tier": 1
   },
   {
     "text": "[value]% increased chance of [craft] Modifiers",
@@ -193,7 +265,10 @@
     "maxValue": 0,
     "craft": "Defence",
     "type": "normal",
-    "required": 1
+    "required": 1,
+    "tag": "defence mod",
+    "tagType": "increase",
+    "tier": 2
   },
   {
     "text": "[value]% increased chance of [craft] Modifiers",
@@ -201,7 +276,10 @@
     "maxValue": 0,
     "craft": "Defence",
     "type": "normal",
-    "required": 1
+    "required": 1,
+    "tag": "defence mod",
+    "tagType": "increase",
+    "tier": 1
   },
   {
     "text": "[value]% increased chance of [craft] Modifiers",
@@ -209,7 +287,10 @@
     "maxValue": 0,
     "craft": "Critical",
     "type": "normal",
-    "required": 1
+    "required": 1,
+    "tag": "critical mod",
+    "tagType": "increase",
+    "tier": 2
   },
   {
     "text": "[value]% increased chance of [craft] Modifiers",
@@ -217,7 +298,10 @@
     "maxValue": 0,
     "craft": "Critical",
     "type": "normal",
-    "required": 1
+    "required": 1,
+    "tag": "critical mod",
+    "tagType": "increase",
+    "tier": 1
   },
   {
     "text": "[value]% increased chance of [craft] Modifiers",
@@ -225,7 +309,10 @@
     "maxValue": 0,
     "craft": "Speed",
     "type": "normal",
-    "required": 1
+    "required": 1,
+    "tag": "speed mod",
+    "tagType": "increase",
+    "tier": 2
   },
   {
     "text": "[value]% increased chance of [craft] Modifiers",
@@ -233,7 +320,10 @@
     "maxValue": 0,
     "craft": "Speed",
     "type": "normal",
-    "required": 1
+    "required": 1,
+    "tag": "speed mod",
+    "tagType": "increase",
+    "tier": 1
   },
   {
     "text": "[value]% increased chance of [craft] Modifiers",
@@ -241,7 +331,10 @@
     "maxValue": 0,
     "craft": "Attribute",
     "type": "normal",
-    "required": 1
+    "required": 1,
+    "tag": "attribute mod",
+    "tagType": "increase",
+    "tier": 2
   },
   {
     "text": "[value]% increased chance of [craft] Modifiers",
@@ -249,7 +342,10 @@
     "maxValue": 0,
     "craft": "Attribute",
     "type": "normal",
-    "required": 1
+    "required": 1,
+    "tag": "attribute mod",
+    "tagType": "increase",
+    "tier": 1
   },
   {
     "text": "[value]% increased chance of [craft] Modifiers",
@@ -257,7 +353,10 @@
     "maxValue": 0,
     "craft": "Resistance",
     "type": "normal",
-    "required": 1
+    "required": 1,
+    "tag": "ressistance mod",
+    "tagType": "increase",
+    "tier": 2
   },
   {
     "text": "[value]% increased chance of [craft] Modifiers",
@@ -265,7 +364,10 @@
     "maxValue": 0,
     "craft": "Resistance",
     "type": "normal",
-    "required": 1
+    "required": 1,
+    "tag": "ressistance mod",
+    "tagType": "increase",
+    "tier": 1
   },
   {
     "text": "[value]% increased chance of [craft] Modifiers",
@@ -273,7 +375,10 @@
     "maxValue": 0,
     "craft": "Gem",
     "type": "normal",
-    "required": 1
+    "required": 1,
+    "tag": "gem mod",
+    "tagType": "increase",
+    "tier": 2
   },
   {
     "text": "[value]% increased chance of [craft] Modifiers",
@@ -281,7 +386,10 @@
     "maxValue": 0,
     "craft": "Gem",
     "type": "normal",
-    "required": 1
+    "required": 1,
+    "tag": "gem mod",
+    "tagType": "increase",
+    "tier": 1
   },
   {
     "text": "[value]% increased chance of [craft] Modifiers",
@@ -289,7 +397,10 @@
     "maxValue": 0,
     "craft": "Minion",
     "type": "normal",
-    "required": 1
+    "required": 1,
+    "tag": "minion mod",
+    "tagType": "increase",
+    "tier": 2
   },
   {
     "text": "[value]% increased chance of [craft] Modifiers",
@@ -297,7 +408,10 @@
     "maxValue": 0,
     "craft": "Minion",
     "type": "normal",
-    "required": 1
+    "required": 1,
+    "tag": "minion mod",
+    "tagType": "increase",
+    "tier": 1
   },
   {
     "text": "[craft] Modifiers are [value]% scarcer",
@@ -305,7 +419,10 @@
     "maxValue": 0,
     "craft": "Physical",
     "type": "normal",
-    "required": 1
+    "required": 1,
+    "tag": "physical mod",
+    "tagType": "decrease",
+    "tier": 2
   },
   {
     "text": "[craft] Modifiers are [value]% scarcer",
@@ -313,7 +430,10 @@
     "maxValue": 0,
     "craft": "Physical",
     "type": "normal",
-    "required": 1
+    "required": 1,
+    "tag": "physical mod",
+    "tagType": "decrease",
+    "tier": 1
   },
   {
     "text": "[craft] Modifiers are [value]% scarcer",
@@ -321,7 +441,10 @@
     "maxValue": 0,
     "craft": "Fire",
     "type": "normal",
-    "required": 1
+    "required": 1,
+    "tag": "fire mod",
+    "tagType": "decrease",
+    "tier": 2
   },
   {
     "text": "[craft] Modifiers are [value]% scarcer",
@@ -329,7 +452,10 @@
     "maxValue": 0,
     "craft": "Fire",
     "type": "normal",
-    "required": 1
+    "required": 1,
+    "tag": "fire mod",
+    "tagType": "decrease",
+    "tier": 1
   },
   {
     "text": "[craft] Modifiers are [value]% scarcer",
@@ -337,7 +463,10 @@
     "maxValue": 0,
     "craft": "Cold",
     "type": "normal",
-    "required": 1
+    "required": 1,
+    "tag": "cold mod",
+    "tagType": "decrease",
+    "tier": 2
   },
   {
     "text": "[craft] Modifiers are [value]% scarcer",
@@ -345,7 +474,10 @@
     "maxValue": 0,
     "craft": "Cold",
     "type": "normal",
-    "required": 1
+    "required": 1,
+    "tag": "cold mod",
+    "tagType": "decrease",
+    "tier": 1
   },
   {
     "text": "[craft] Modifiers are [value]% scarcer",
@@ -353,7 +485,10 @@
     "maxValue": 0,
     "craft": "Lightning",
     "type": "normal",
-    "required": 1
+    "required": 1,
+    "tag": "lightning mod",
+    "tagType": "decrease",
+    "tier": 2
   },
   {
     "text": "[craft] Modifiers are [value]% scarcer",
@@ -361,7 +496,10 @@
     "maxValue": 0,
     "craft": "Lightning",
     "type": "normal",
-    "required": 1
+    "required": 1,
+    "tag": "lightning mod",
+    "tagType": "decrease",
+    "tier": 1
   },
   {
     "text": "[craft] Modifiers are [value]% scarcer",
@@ -369,7 +507,10 @@
     "maxValue": 0,
     "craft": "Chaos",
     "type": "normal",
-    "required": 1
+    "required": 1,
+    "tag": "chaos mod",
+    "tagType": "decrease",
+    "tier": 2
   },
   {
     "text": "[craft] Modifiers are [value]% scarcer",
@@ -377,7 +518,10 @@
     "maxValue": 0,
     "craft": "Chaos",
     "type": "normal",
-    "required": 1
+    "required": 1,
+    "tag": "chaos mod",
+    "tagType": "decrease",
+    "tier": 1
   },
   {
     "text": "[craft] Modifiers are [value]% scarcer",
@@ -385,7 +529,10 @@
     "maxValue": 0,
     "craft": "Life",
     "type": "normal",
-    "required": 1
+    "required": 1,
+    "tag": "life mod",
+    "tagType": "decrease",
+    "tier": 2
   },
   {
     "text": "[craft] Modifiers are [value]% scarcer",
@@ -393,7 +540,10 @@
     "maxValue": 0,
     "craft": "Life",
     "type": "normal",
-    "required": 1
+    "required": 1,
+    "tag": "life mod",
+    "tagType": "decrease",
+    "tier": 1
   },
   {
     "text": "[craft] Modifiers are [value]% scarcer",
@@ -401,7 +551,10 @@
     "maxValue": 0,
     "craft": "Mana",
     "type": "normal",
-    "required": 1
+    "required": 1,
+    "tag": "mana mod",
+    "tagType": "decrease",
+    "tier": 2
   },
   {
     "text": "[craft] Modifiers are [value]% scarcer",
@@ -409,7 +562,10 @@
     "maxValue": 0,
     "craft": "Mana",
     "type": "normal",
-    "required": 1
+    "required": 1,
+    "tag": "mana mod",
+    "tagType": "decrease",
+    "tier": 1
   },
   {
     "text": "[craft] Modifiers are [value]% scarcer",
@@ -417,7 +573,10 @@
     "maxValue": 0,
     "craft": "Attack",
     "type": "normal",
-    "required": 1
+    "required": 1,
+    "tag": "attack mod",
+    "tagType": "decrease",
+    "tier": 2
   },
   {
     "text": "[craft] Modifiers are [value]% scarcer",
@@ -425,7 +584,10 @@
     "maxValue": 0,
     "craft": "Attack",
     "type": "normal",
-    "required": 1
+    "required": 1,
+    "tag": "attack mod",
+    "tagType": "decrease",
+    "tier": 1
   },
   {
     "text": "[craft] Modifiers are [value]% scarcer",
@@ -433,7 +595,10 @@
     "maxValue": 0,
     "craft": "Caster",
     "type": "normal",
-    "required": 1
+    "required": 1,
+    "tag": "caster mod",
+    "tagType": "decrease",
+    "tier": 2
   },
   {
     "text": "[craft] Modifiers are [value]% scarcer",
@@ -441,7 +606,10 @@
     "maxValue": 0,
     "craft": "Caster",
     "type": "normal",
-    "required": 1
+    "required": 1,
+    "tag": "caster mod",
+    "tagType": "decrease",
+    "tier": 1
   },
   {
     "text": "[craft] Modifiers are [value]% scarcer",
@@ -449,7 +617,10 @@
     "maxValue": 0,
     "craft": "Elemental",
     "type": "normal",
-    "required": 1
+    "required": 1,
+    "tag": "elemental mod",
+    "tagType": "decrease",
+    "tier": 2
   },
   {
     "text": "[craft] Modifiers are [value]% scarcer",
@@ -457,7 +628,10 @@
     "maxValue": 0,
     "craft": "Elemental",
     "type": "normal",
-    "required": 1
+    "required": 1,
+    "tag": "elemental mod",
+    "tagType": "decrease",
+    "tier": 1
   },
   {
     "text": "[craft] Modifiers are [value]% scarcer",
@@ -465,7 +639,10 @@
     "maxValue": 0,
     "craft": "Defence",
     "type": "normal",
-    "required": 1
+    "required": 1,
+    "tag": "defence mod",
+    "tagType": "decrease",
+    "tier": 2
   },
   {
     "text": "[craft] Modifiers are [value]% scarcer",
@@ -473,7 +650,10 @@
     "maxValue": 0,
     "craft": "Defence",
     "type": "normal",
-    "required": 1
+    "required": 1,
+    "tag": "defence mod",
+    "tagType": "decrease",
+    "tier": 1
   },
   {
     "text": "[craft] Modifiers are [value]% scarcer",
@@ -481,7 +661,10 @@
     "maxValue": 0,
     "craft": "Critical",
     "type": "normal",
-    "required": 1
+    "required": 1,
+    "tag": "critical mod",
+    "tagType": "decrease",
+    "tier": 2
   },
   {
     "text": "[craft] Modifiers are [value]% scarcer",
@@ -489,7 +672,10 @@
     "maxValue": 0,
     "craft": "Critical",
     "type": "normal",
-    "required": 1
+    "required": 1,
+    "tag": "critical mod",
+    "tagType": "decrease",
+    "tier": 1
   },
   {
     "text": "[craft] Modifiers are [value]% scarcer",
@@ -497,7 +683,10 @@
     "maxValue": 0,
     "craft": "Speed",
     "type": "normal",
-    "required": 1
+    "required": 1,
+    "tag": "speed mod",
+    "tagType": "decrease",
+    "tier": 2
   },
   {
     "text": "[craft] Modifiers are [value]% scarcer",
@@ -505,7 +694,10 @@
     "maxValue": 0,
     "craft": "Speed",
     "type": "normal",
-    "required": 1
+    "required": 1,
+    "tag": "speed mod",
+    "tagType": "decrease",
+    "tier": 1
   },
   {
     "text": "[craft] Modifiers are [value]% scarcer",
@@ -513,7 +705,10 @@
     "maxValue": 0,
     "craft": "Attribute",
     "type": "normal",
-    "required": 1
+    "required": 1,
+    "tag": "attribute mod",
+    "tagType": "decrease",
+    "tier": 2
   },
   {
     "text": "[craft] Modifiers are [value]% scarcer",
@@ -521,7 +716,10 @@
     "maxValue": 0,
     "craft": "Attribute",
     "type": "normal",
-    "required": 1
+    "required": 1,
+    "tag": "attribute mod",
+    "tagType": "decrease",
+    "tier": 1
   },
   {
     "text": "[craft] Modifiers are [value]% scarcer",
@@ -529,7 +727,10 @@
     "maxValue": 0,
     "craft": "Resistance",
     "type": "normal",
-    "required": 1
+    "required": 1,
+    "tag": "ressistance mod",
+    "tagType": "decrease",
+    "tier": 2
   },
   {
     "text": "[craft] Modifiers are [value]% scarcer",
@@ -537,7 +738,10 @@
     "maxValue": 0,
     "craft": "Resistance",
     "type": "normal",
-    "required": 1
+    "required": 1,
+    "tag": "ressistance mod",
+    "tagType": "decrease",
+    "tier": 1
   },
   {
     "text": "[craft] Modifiers are [value]% scarcer",
@@ -545,7 +749,10 @@
     "maxValue": 0,
     "craft": "Gem",
     "type": "normal",
-    "required": 1
+    "required": 1,
+    "tag": "gem mod",
+    "tagType": "decrease",
+    "tier": 2
   },
   {
     "text": "[craft] Modifiers are [value]% scarcer",
@@ -553,43 +760,64 @@
     "maxValue": 0,
     "craft": "Gem",
     "type": "normal",
-    "required": 1
+    "required": 1,
+    "tag": "gem mod",
+    "tagType": "decrease",
+    "tier": 1
   },
   {
     "text": "Armour Items have a Strength Requirement",
     "maxValue": 0,
     "type": "normal",
-    "required": 1
+    "required": 1,
+    "tag": "strength req",
+    "tagType": "add",
+    "tier": 1
   },
   {
     "text": "Armour Items do not have a Strength Requirement",
     "maxValue": 0,
     "type": "normal",
-    "required": 1
+    "required": 1,
+    "tag": "strength req",
+    "tagType": "remove",
+    "tier": 1
   },
   {
     "text": "Armour Items have a Dexterity Requirement",
     "maxValue": 0,
     "type": "normal",
-    "required": 1
+    "required": 1,
+    "tag": "dexterity req",
+    "tagType": "add",
+    "tier": 1
   },
   {
     "text": "Armour Items do not have a Dexterity Requirement",
     "maxValue": 0,
     "type": "normal",
-    "required": 1
+    "required": 1,
+    "tag": "dexterity req",
+    "tagType": "remove",
+    "tier": 1
   },
   {
     "text": "Armour Items have a Intelligence Requirement",
     "maxValue": 0,
     "type": "normal",
-    "required": 1
+    "required": 1,
+    "tag": "intelligence req",
+    "tagType": "add",
+    "tier": 1
   },
   {
     "text": "Armour Items do not have a Intelligence Requirement",
     "maxValue": 0,
     "type": "normal",
-    "required": 1
+    "required": 1,
+    "tag": "intelligence req",
+    "tagType": "remove",
+    "tier": 1
   },
   {
     "text": "+[value] to [craft] Modifier Tier Rating",
@@ -597,7 +825,10 @@
     "maxValue": 0,
     "craft": "Physical",
     "type": "normal",
-    "required": 1
+    "required": 1,
+    "tag": "physical tier",
+    "tagType": "increase",
+    "tier": 2
   },
   {
     "text": "+[value] to [craft] Modifier Tier Rating",
@@ -605,7 +836,10 @@
     "maxValue": 0,
     "craft": "Physical",
     "type": "normal",
-    "required": 1
+    "required": 1,
+    "tag": "physical tier",
+    "tagType": "increase",
+    "tier": 1
   },
   {
     "text": "+[value] to [craft] Modifier Tier Rating",
@@ -613,7 +847,10 @@
     "maxValue": 0,
     "craft": "Fire",
     "type": "normal",
-    "required": 1
+    "required": 1,
+    "tag": "fire tier",
+    "tagType": "increase",
+    "tier": 2
   },
   {
     "text": "+[value] to [craft] Modifier Tier Rating",
@@ -621,7 +858,10 @@
     "maxValue": 0,
     "craft": "Fire",
     "type": "normal",
-    "required": 1
+    "required": 1,
+    "tag": "fire tier",
+    "tagType": "increase",
+    "tier": 1
   },
   {
     "text": "+[value] to [craft] Modifier Tier Rating",
@@ -629,7 +869,10 @@
     "maxValue": 0,
     "craft": "Cold",
     "type": "normal",
-    "required": 1
+    "required": 1,
+    "tag": "cold tier",
+    "tagType": "increase",
+    "tier": 2
   },
   {
     "text": "+[value] to [craft] Modifier Tier Rating",
@@ -637,7 +880,10 @@
     "maxValue": 0,
     "craft": "Cold",
     "type": "normal",
-    "required": 1
+    "required": 1,
+    "tag": "cold tier",
+    "tagType": "increase",
+    "tier": 1
   },
   {
     "text": "+[value] to [craft] Modifier Tier Rating",
@@ -645,7 +891,10 @@
     "maxValue": 0,
     "craft": "Lightning",
     "type": "normal",
-    "required": 1
+    "required": 1,
+    "tag": "lightning mod",
+    "tagType": "increase",
+    "tier": 2
   },
   {
     "text": "+[value] to [craft] Modifier Tier Rating",
@@ -653,7 +902,10 @@
     "maxValue": 0,
     "craft": "Lightning",
     "type": "normal",
-    "required": 1
+    "required": 1,
+    "tag": "lightning mod",
+    "tagType": "increase",
+    "tier": 1
   },
   {
     "text": "+[value] to [craft] Modifier Tier Rating",
@@ -661,7 +913,10 @@
     "maxValue": 0,
     "craft": "Chaos",
     "type": "normal",
-    "required": 1
+    "required": 1,
+    "tag": "chaos mod",
+    "tagType": "increase",
+    "tier": 2
   },
   {
     "text": "+[value] to [craft] Modifier Tier Rating",
@@ -669,7 +924,10 @@
     "maxValue": 0,
     "craft": "Chaos",
     "type": "normal",
-    "required": 1
+    "required": 1,
+    "tag": "chaos mod",
+    "tagType": "increase",
+    "tier": 1
   },
   {
     "text": "+[value] to [craft] Modifier Tier Rating",
@@ -677,7 +935,10 @@
     "maxValue": 0,
     "craft": "Life",
     "type": "normal",
-    "required": 1
+    "required": 1,
+    "tag": "life tier",
+    "tagType": "increase",
+    "tier": 2
   },
   {
     "text": "+[value] to [craft] Modifier Tier Rating",
@@ -685,7 +946,10 @@
     "maxValue": 0,
     "craft": "Life",
     "type": "normal",
-    "required": 1
+    "required": 1,
+    "tag": "life tier",
+    "tagType": "increase",
+    "tier": 1
   },
   {
     "text": "+[value] to [craft] Modifier Tier Rating",
@@ -693,7 +957,10 @@
     "maxValue": 0,
     "craft": "Mana",
     "type": "normal",
-    "required": 1
+    "required": 1,
+    "tag": "mana tier",
+    "tagType": "increase",
+    "tier": 2
   },
   {
     "text": "+[value] to [craft] Modifier Tier Rating",
@@ -701,7 +968,10 @@
     "maxValue": 0,
     "craft": "Mana",
     "type": "normal",
-    "required": 1
+    "required": 1,
+    "tag": "mana tier",
+    "tagType": "increase",
+    "tier": 1
   },
   {
     "text": "+[value] to [craft] Modifier Tier Rating",
@@ -709,7 +979,10 @@
     "maxValue": 0,
     "craft": "Attack",
     "type": "normal",
-    "required": 1
+    "required": 1,
+    "tag": "attack mod",
+    "tagType": "increase",
+    "tier": 2
   },
   {
     "text": "+[value] to [craft] Modifier Tier Rating",
@@ -717,7 +990,10 @@
     "maxValue": 0,
     "craft": "Attack",
     "type": "normal",
-    "required": 1
+    "required": 1,
+    "tag": "attack mod",
+    "tagType": "increase",
+    "tier": 1
   },
   {
     "text": "+[value] to [craft] Modifier Tier Rating",
@@ -725,7 +1001,10 @@
     "maxValue": 0,
     "craft": "Caster",
     "type": "normal",
-    "required": 1
+    "required": 1,
+    "tag": "caster tier",
+    "tagType": "increase",
+    "tier": 2
   },
   {
     "text": "+[value] to [craft] Modifier Tier Rating",
@@ -733,7 +1012,10 @@
     "maxValue": 0,
     "craft": "Caster",
     "type": "normal",
-    "required": 1
+    "required": 1,
+    "tag": "caster tier",
+    "tagType": "increase",
+    "tier": 1
   },
   {
     "text": "+[value] to [craft] Modifier Tier Rating",
@@ -741,7 +1023,10 @@
     "maxValue": 0,
     "craft": "Elemental",
     "type": "normal",
-    "required": 1
+    "required": 1,
+    "tag": "elemental mod",
+    "tagType": "increase",
+    "tier": 2
   },
   {
     "text": "+[value] to [craft] Modifier Tier Rating",
@@ -749,7 +1034,10 @@
     "maxValue": 0,
     "craft": "Elemental",
     "type": "normal",
-    "required": 1
+    "required": 1,
+    "tag": "elemental mod",
+    "tagType": "increase",
+    "tier": 1
   },
   {
     "text": "+[value] to [craft] Modifier Tier Rating",
@@ -757,7 +1045,10 @@
     "maxValue": 0,
     "craft": "Defence",
     "type": "normal",
-    "required": 1
+    "required": 1,
+    "tag": "defence mod",
+    "tagType": "increase",
+    "tier": 2
   },
   {
     "text": "+[value] to [craft] Modifier Tier Rating",
@@ -765,7 +1056,10 @@
     "maxValue": 0,
     "craft": "Defence",
     "type": "normal",
-    "required": 1
+    "required": 1,
+    "tag": "defence mod",
+    "tagType": "increase",
+    "tier": 1
   },
   {
     "text": "+[value] to [craft] Modifier Tier Rating",
@@ -773,7 +1067,10 @@
     "maxValue": 0,
     "craft": "Critical",
     "type": "normal",
-    "required": 1
+    "required": 1,
+    "tag": "critical mod",
+    "tagType": "increase",
+    "tier": 2
   },
   {
     "text": "+[value] to [craft] Modifier Tier Rating",
@@ -781,7 +1078,10 @@
     "maxValue": 0,
     "craft": "Critical",
     "type": "normal",
-    "required": 1
+    "required": 1,
+    "tag": "critical mod",
+    "tagType": "increase",
+    "tier": 1
   },
   {
     "text": "+[value] to [craft] Modifier Tier Rating",
@@ -789,7 +1089,10 @@
     "maxValue": 0,
     "craft": "Speed",
     "type": "normal",
-    "required": 1
+    "required": 1,
+    "tag": "speed mod",
+    "tagType": "increase",
+    "tier": 2
   },
   {
     "text": "+[value] to [craft] Modifier Tier Rating",
@@ -797,7 +1100,10 @@
     "maxValue": 0,
     "craft": "Speed",
     "type": "normal",
-    "required": 1
+    "required": 1,
+    "tag": "speed mod",
+    "tagType": "increase",
+    "tier": 1
   },
   {
     "text": "+[value] to [craft] Modifier Tier Rating",
@@ -805,7 +1111,10 @@
     "maxValue": 0,
     "craft": "Attribute",
     "type": "normal",
-    "required": 1
+    "required": 1,
+    "tag": "attribute mod",
+    "tagType": "increase",
+    "tier": 2
   },
   {
     "text": "+[value] to [craft] Modifier Tier Rating",
@@ -813,7 +1122,10 @@
     "maxValue": 0,
     "craft": "Attribute",
     "type": "normal",
-    "required": 1
+    "required": 1,
+    "tag": "attribute mod",
+    "tagType": "increase",
+    "tier": 1
   },
   {
     "text": "+[value] to [craft] Modifier Tier Rating",
@@ -821,7 +1133,10 @@
     "maxValue": 0,
     "craft": "Resistance",
     "type": "normal",
-    "required": 1
+    "required": 1,
+    "tag": "ressistance mod",
+    "tagType": "increase",
+    "tier": 2
   },
   {
     "text": "+[value] to [craft] Modifier Tier Rating",
@@ -829,7 +1144,10 @@
     "maxValue": 0,
     "craft": "Resistance",
     "type": "normal",
-    "required": 1
+    "required": 1,
+    "tag": "ressistance mod",
+    "tagType": "increase",
+    "tier": 1
   },
   {
     "text": "+[value] to [craft] Modifier Tier Rating",
@@ -837,7 +1155,10 @@
     "maxValue": 0,
     "craft": "Gem",
     "type": "normal",
-    "required": 1
+    "required": 1,
+    "tag": "gem mod",
+    "tagType": "increase",
+    "tier": 2
   },
   {
     "text": "+[value] to [craft] Modifier Tier Rating",
@@ -845,7 +1166,10 @@
     "maxValue": 0,
     "craft": "Gem",
     "type": "normal",
-    "required": 1
+    "required": 1,
+    "tag": "gem mod",
+    "tagType": "increase",
+    "tier": 1
   },
   {
     "text": "+[value] to [craft] Modifier Tier Rating",
@@ -853,7 +1177,10 @@
     "maxValue": 0,
     "craft": "Minion",
     "type": "normal",
-    "required": 1
+    "required": 1,
+    "tag": "minion mod",
+    "tagType": "increase",
+    "tier": 2
   },
   {
     "text": "+[value] to [craft] Modifier Tier Rating",
@@ -861,58 +1188,85 @@
     "maxValue": 0,
     "craft": "Minion",
     "type": "normal",
-    "required": 1
+    "required": 1,
+    "tag": "minion mod",
+    "tagType": "increase",
+    "tier": 1
   },
   {
-    "text": "Reveals a Random Craft when BuriedRarer Crafts are more common",
+    "text": "Reveals a Random Craft when Buried Rarer Crafts are more common",
     "maxValue": 0,
     "type": "normal",
-    "required": 1
+    "required": 1,
+    "tag": "reveal",
+    "tagType": "reveal",
+    "tier": 1
   },
   {
     "text": "Haunted by Drusia Perandus",
     "maxValue": 0,
     "type": "normal",
-    "required": 1
+    "required": 1,
+    "tag": "Drusia Perandus",
+    "tagType": "haunt",
+    "tier": 1
   },
   {
     "text": "Haunted by Lucilius Perandus",
     "maxValue": 0,
     "type": "normal",
-    "required": 1
+    "required": 1,
+    "tag": "Lucius Perandus",
+    "tagType": "haunt",
+    "tier": 1
   },
   {
     "text": "Haunted by Quintio Perandus",
     "maxValue": 0,
     "type": "normal",
-    "required": 1
+    "required": 1,
+    "tag": "Quintio Perandus",
+    "tagType": "haunt",
+    "tier": 1
   },
   {
     "text": "Haunted by Kostian Perandus",
     "maxValue": 0,
     "type": "normal",
-    "required": 1
+    "required": 1,
+    "tag": "Kostian Perandus",
+    "tagType": "haunt",
+    "tier": 1
   },
   {
     "text": "[value]% chance to craft an additional Item",
     "value": 20,
     "maxValue": 0,
     "type": "normal",
-    "required": 1
+    "required": 1,
+    "tag": "additional item",
+    "tagType": "increase",
+    "tier": 1
   },
   {
     "text": "Reroll Modifier Values of each Explicit Modifier [value] times, keeping the best outcome",
     "value": 3,
     "maxValue": 0,
     "type": "normal",
-    "required": 1
+    "required": 1,
+    "tag": "explicit mod values",
+    "tagType": "reroll",
+    "tier": 2
   },
   {
     "text": "Reroll Modifier Values of each Explicit Modifier [value] times, keeping the best outcome",
     "value": 6,
     "maxValue": 0,
     "type": "normal",
-    "required": 1
+    "required": 1,
+    "tag": "explicit mod values",
+    "tagType": "reroll",
+    "tier": 1
   },
   {
     "text": "[value]% increased Effect of Corpses in this Grave Row",
@@ -934,229 +1288,350 @@
     "text": "Haunted by Hadrius Veruso",
     "maxValue": 0,
     "type": "normal",
-    "required": 1
+    "required": 1,
+    "tag": "Hadrius Veruso",
+    "tagType": "haunt",
+    "tier": 1
   },
   {
     "text": "Haunted by Titiana Veruso",
     "maxValue": 0,
     "type": "normal",
-    "required": 1
+    "required": 1,
+    "tag": "Titiana Veruso",
+    "tagType": "haunt",
+    "tier": 1
   },
   {
     "text": "Haunted by Claudia Veruso",
     "maxValue": 0,
     "type": "normal",
-    "required": 1
+    "required": 1,
+    "tag": "Claudia Veruso",
+    "tagType": "haunt",
+    "tier": 1
   },
   {
     "text": "Haunted by Fausta Veruso",
     "maxValue": 0,
     "type": "normal",
-    "required": 1
+    "required": 1,
+    "tag": "Fausta Veruso",
+    "tagType": "haunt",
+    "tier": 1
   },
   {
     "text": "Haunted by Albanus Phrecia",
     "maxValue": 0,
     "type": "normal",
-    "required": 1
+    "required": 1,
+    "tag": "Albanus Phrecia",
+    "tagType": "haunt",
+    "tier": 1
   },
   {
     "text": "Haunted by Valerius Phrecia",
     "maxValue": 0,
     "type": "normal",
-    "required": 1
+    "required": 1,
+    "tag": "Valerius Phrecia",
+    "tagType": "haunt",
+    "tier": 1
   },
   {
     "text": "Haunted by Fabricia Phrecia",
     "maxValue": 0,
     "type": "normal",
-    "required": 1
+    "required": 1,
+    "tag": "Fabricia Phrecia",
+    "tagType": "haunt",
+    "tier": 1
   },
   {
     "text": "Haunted by Iris Phrecia",
     "maxValue": 0,
     "type": "normal",
-    "required": 1
+    "required": 1,
+    "tag": "Iris Phrecia",
+    "tagType": "haunt",
+    "tier": 1
   },
   {
     "text": "Haunted by Lilius Nevalius",
     "maxValue": 0,
     "type": "normal",
-    "required": 1
+    "required": 1,
+    "tag": "Lilius Nevalius",
+    "tagType": "haunt",
+    "tier": 1
   },
   {
     "text": "Haunted by Octavius Nevalius",
     "maxValue": 0,
     "type": "normal",
-    "required": 1
+    "required": 1,
+    "tag": "Octavius Nevalius",
+    "tagType": "haunt",
+    "tier": 1
   },
   {
     "text": "Haunted by Marius Nevalius",
     "maxValue": 0,
     "type": "normal",
-    "required": 1
+    "required": 1,
+    "tag": "Marius Nevalius",
+    "tagType": "haunt",
+    "tier": 1
   },
   {
     "text": "Haunted by Julianis Nevalius",
     "maxValue": 0,
     "type": "normal",
-    "required": 1
+    "required": 1,
+    "tag": "Julianis Nevalius",
+    "tagType": "haunt",
+    "tier": 1
   },
   {
     "text": "Haunted by Asinia Grattus",
     "maxValue": 0,
     "type": "normal",
-    "required": 1
+    "required": 1,
+    "tag": "Asinia Grattus",
+    "tagType": "haunt",
+    "tier": 1
   },
   {
     "text": "Haunted by Legius Grattus",
     "maxValue": 0,
     "type": "normal",
-    "required": 1
+    "required": 1,
+    "tag": "Legius Grattus",
+    "tagType": "haunt",
+    "tier": 1
   },
   {
     "text": "Haunted by Tyche Grattus",
     "maxValue": 0,
     "type": "normal",
-    "required": 1
+    "required": 1,
+    "tag": "Tyche Grattus",
+    "tagType": "haunt",
+    "tier": 1
   },
   {
     "text": "Haunted by Draven Grattus",
     "maxValue": 0,
     "type": "normal",
-    "required": 1
+    "required": 1,
+    "tag": "Draven Grattus",
+    "tagType": "haunt",
+    "tier": 1
   },
   {
     "text": "[value]% increased chance for Prefix Modifiers",
     "value": 100,
     "maxValue": 0,
     "type": "normal",
-    "required": 1
+    "required": 1,
+    "tag": "prefix mod",
+    "tagType": "increase",
+    "tier": 2
   },
   {
     "text": "[value]% increased chance for Prefix Modifiers",
     "value": 300,
     "maxValue": 0,
     "type": "normal",
-    "required": 1
+    "required": 1,
+    "tag": "prefix mod",
+    "tagType": "increase",
+    "tier": 1
   },
   {
     "text": "[value]% increased chance of Suffix Modifiers",
     "value": 100,
     "maxValue": 0,
     "type": "normal",
-    "required": 1
+    "required": 1,
+    "tag": "suffix mod",
+    "tagType": "increase",
+    "tier": 2
   },
   {
     "text": "[value]% increased chance of Suffix Modifiers",
     "value": 300,
     "maxValue": 0,
     "type": "normal",
-    "required": 1
+    "required": 1,
+    "tag": "suffix mod",
+    "tagType": "increase",
+    "tier": 1
   },
   {
     "text": "+[value] to Item Level",
     "value": 1,
     "maxValue": 0,
     "type": "normal",
-    "required": 1
+    "required": 1,
+    "tag": "item level",
+    "tagType": "increase",
+    "tier": 1
   },
   {
     "text": "Ring is a Breach Ring",
     "maxValue": 0,
     "type": "normal",
-    "required": 1
+    "required": 1,
+    "tag": "breach ring",
+    "tagType": "guaranteed",
+    "tier": 1
   },
   {
     "text": "Belt is a Stygian Vise",
     "maxValue": 0,
     "type": "normal",
-    "required": 1
+    "required": 1,
+    "tag": "stygian vise",
+    "tagType": "guaranteed",
+    "tier": 1
   },
   {
     "text": "Reforge socket numbers [value] times, keeping the greatest number of sockets",
     "value": 30,
     "maxValue": 0,
     "type": "normal",
-    "required": 1
+    "required": 1,
+    "tag": "socket",
+    "tagType": "reroll",
+    "tier": 2
   },
   {
     "text": "Reforge socket numbers [value] times, keeping the greatest number of sockets",
     "value": 200,
     "maxValue": 0,
     "type": "normal",
-    "required": 1
+    "required": 1,
+    "tag": "socket",
+    "tagType": "reroll",
+    "tier": 1
   },
   {
     "text": "Reforge socket links [value] times, keeping the greatest number of links",
     "value": 20,
     "maxValue": 0,
     "type": "normal",
-    "required": 1
+    "required": 1,
+    "tag": "links",
+    "tagType": "reroll",
+    "tier": 2
   },
   {
     "text": "Reforge socket links [value] times, keeping the greatest number of links",
     "value": 200,
     "maxValue": 0,
     "type": "normal",
-    "required": 1
+    "required": 1,
+    "tag": "links",
+    "tagType": "reroll",
+    "tier": 1
   },
   {
     "text": "Randomises the numeric values of base Defences on an Armour [value] times, keeping the best outcome",
     "value": 3,
     "maxValue": 0,
     "type": "normal",
-    "required": 1
+    "required": 1,
+    "tag": "base def",
+    "tagType": "reroll",
+    "tier": 2
   },
   {
     "text": "Randomises the numeric values of base Defences on an Armour [value] times, keeping the best outcome",
     "value": 6,
     "maxValue": 0,
     "type": "normal",
-    "required": 1
+    "required": 1,
+    "tag": "base def",
+    "tagType": "reroll",
+    "tier": 1
   },
   {
     "text": "Reroll Implicit Modifier Values [value] times, keeping the best outcome",
     "value": 3,
     "maxValue": 0,
     "type": "normal",
-    "required": 1
+    "required": 1,
+    "tag": "implicit mod",
+    "tagType": "reroll",
+    "tier": 2
   },
   {
     "text": "Reroll Implicit Modifier Values [value] times, keeping the best outcome",
     "value": 6,
     "maxValue": 0,
     "type": "normal",
-    "required": 1
+    "required": 1,
+    "tag": "implicit mod",
+    "tagType": "reroll",
+    "tier": 1
   },
   {
     "text": "Armour can roll Haunted Modifiers[value]% increased chance of Haunted Modifiers",
     "value": 50,
     "maxValue": 0,
     "type": "normal",
-    "required": 1
+    "required": 1,
+    "tag": "haunted mod",
+    "tagType": "increase",
+    "tier": 2
   },
   {
     "text": "Armour can roll Haunted Modifiers[value]% increased chance of Haunted Modifiers",
     "value": 150,
     "maxValue": 0,
     "type": "normal",
-    "required": 1
+    "required": 1,
+    "tagType": "increase",
+    "tier": 1
   },
-  { "text": "Creates a Ring", "maxValue": 0, "type": "item", "required": 1 },
+  { 
+    "text": "Creates a Ring", 
+    "maxValue": 0, 
+    "type": "item", 
+    "required": 1,
+    "tag": "ring",
+    "tagType": "guaranteed",
+    "tier": 1
+  },
   {
     "text": "Creates an Amulet",
     "maxValue": 0,
     "type": "item",
-    "required": 1
+    "required": 1,
+    "tag": "amulet",
+    "tagType": "guaranteed",
+    "tier": 1
   },
-  { "text": "Creates a Belt", "maxValue": 0, "type": "item", "required": 1 },
+  { 
+    "text": "Creates a Belt", 
+    "maxValue": 0, 
+    "type": "item", 
+    "required": 1 ,
+    "tag": "belt",
+    "tagType": "guaranteed",
+    "tier": 1
+    
+  },
   {
     "text": "Reroll Base Type [value] times, keeping the Base Type with the highest Level Requirement",
     "value": 5,
     "maxValue": 0,
     "type": "normal",
-    "required": 1
+    "required": 1,
+    "tag": "base type",
+    "tagType": "reroll",
+    "tier": 1
   },
   {
     "text": "[value]% increased Effect of Corpses adjacent to this Corpse",
@@ -1172,35 +1647,50 @@
     "value": 5,
     "maxValue": 50,
     "type": "normal",
-    "required": 1
+    "required": 1,
+    "tag": "beast corpse",
+    "tagType": "save",
+    "tier": 1
   },
   {
     "text": "[value]% chance for Undead Corpses to not be consumed when Exorcising, up to 50%",
     "value": 5,
     "maxValue": 50,
     "type": "normal",
-    "required": 1
+    "required": 1,
+    "tag": "undead corpse",
+    "tagType": "save",
+    "tier": 1
   },
   {
     "text": "[value]% chance for Humanoid Corpses to not be consumed when Exorcising, up to 50%",
     "value": 5,
     "maxValue": 50,
     "type": "normal",
-    "required": 1
+    "required": 1,
+    "tag": "humanoid corpse",
+    "tagType": "save",
+    "tier": 1
   },
   {
     "text": "[value]% chance for Construct Corpses to not be consumed when Exorcising, up to 50%",
     "value": 5,
     "maxValue": 50,
     "type": "normal",
-    "required": 1
+    "required": 1,
+    "tag": "construct corpse",
+    "tagType": "save",
+    "tier": 1
   },
   {
     "text": "[value]% chance for Demon Corpses to not be consumed when Exorcising, up to 50%",
     "value": 5,
     "maxValue": 50,
     "type": "normal",
-    "required": 1
+    "required": 1,
+    "tag": "demon corpse",
+    "tagType": "save",
+    "tier": 1
   },
   {
     "text": "Corpses in adjacent Graves and this Corpse have their crafting outcomes randomised when this Corpse is buried",
@@ -1213,136 +1703,202 @@
     "value": 25,
     "maxValue": 0,
     "type": "normal",
-    "required": 1
+    "required": 1,
+    "tag": "split",
+    "tagType": "increase",
+    "tier": 1
   },
   {
     "text": "Item is Corrupted[value]% increased chance for Corruption Implicit Modifiers",
     "value": 50,
     "maxValue": 0,
     "type": "normal",
-    "required": 1
+    "required": 1,
+    "tag": "corrupted",
+    "tagType": "increase",
+    "tier": 1
   },
   {
     "text": "[value]% chance to create a Mirrored Copy",
     "value": 25,
     "maxValue": 0,
     "type": "normal",
-    "required": 1
+    "required": 1,
+    "tag": "mirror copy",
+    "tagType": "increase",
+    "tier": 1
   },
   {
     "text": "Creates a Talisman",
     "maxValue": 0,
     "type": "item",
-    "required": 1
+    "required": 1,
+    "tag": "talisman",
+    "tagType": "guaranteed",
+    "tier": 1
   },
   {
     "text": "Creates a Bone Ring",
     "maxValue": 0,
     "type": "item",
-    "required": 1
+    "required": 1,
+    "tag": "bone ring",
+    "tagType": "guaranteed",
+    "tier": 1
   },
   {
     "text": "Creates a Ritual Helmet, Gloves or Boots",
     "maxValue": 0,
     "type": "item",
-    "required": 1
+    "required": 1,
+    "tag": "ritual helmet,gloves,boots",
+    "tagType": "guaranteed",
+    "tier": 1
   },
   {
     "text": "Creates a Helmet, Gloves or Boots with Ward",
     "maxValue": 0,
     "type": "item",
-    "required": 1
+    "required": 1,
+    "tag": "ward helmet,gloves,boots",
+    "tagType": "guaranteed",
+    "tier": 1
   },
   {
     "text": "Creates an Experimented Weapon",
     "maxValue": 0,
     "type": "item",
-    "required": 1
+    "required": 1,
+    "tag": "experimental weapon",
+    "tagType": "guaranteed",
+    "tier": 1
   },
   {
-    "text": "Has Shaper or Elder Influence[value]% increased chance of Influence Modifiers",
+    "text": "Has Shaper or Elder Influence [value]% increased chance of Influence Modifiers",
     "value": 200,
     "maxValue": 0,
     "type": "normal",
-    "required": 1
+    "required": 1,
+    "tag": "shaper,elder",
+    "tagType": "influence",
+    "tier": 1
   },
   {
     "text": "Has a random Conqueror Influence[value]% increased chance of Influence Modifiers",
     "value": 200,
     "maxValue": 0,
     "type": "normal",
-    "required": 1
+    "required": 1,
+    "tag": "conqueror",
+    "tagType": "influence",
+    "tier": 1
   },
   {
-    "text": "Creates a Vermillion RingRequires at least [value] other Corpse of the same Monster Name",
+    "text": "Creates a Vermillion Ring Requires at least [value] other Corpse of the same Monster Name",
     "value": 1,
     "maxValue": 0,
     "type": "item",
-    "required": 1
+    "required": 1,
+    "tag": "vermillion ring",
+    "tagType": "guaranteed",
+    "tier": 1
   },
   {
-    "text": "Item sells for much more to VendorsRequires at least 2 other Corpses of the same Monster Name",
+    "text": "Item sells for much more to Vendors Requires at least 2 other Corpses of the same Monster Name",
     "type": "normal",
-    "required": 2
+    "required": 2,
+    "tag": "sell",
+    "tagType": "money",
+    "tier": 1
   },
   {
     "text": "+[value] to minimum number of Linked Sockets, up to a maximum of 4",
     "value": 1,
     "maxValue": 4,
     "type": "normal",
-    "required": 1
+    "required": 1,
+    "tag": "link",
+    "tagType": "increase",
+    "tier": 3
   },
   {
     "text": "+[value] to minimum number of Linked Sockets, up to a maximum of 5",
     "value": 1,
     "maxValue": 5,
     "type": "normal",
-    "required": 1
+    "required": 1,
+    "tag": "link",
+    "tagType": "increase",
+    "tier": 2
   },
   {
     "text": "+[value] to minimum number of Linked Sockets, up to a maximum of 6",
     "value": 1,
     "maxValue": 6,
     "type": "normal",
-    "required": 1
+    "required": 1,
+    "tag": "link",
+    "tagType": "increase",
+    "tier": 1
   },
   {
     "text": "Creates a Steel Ring Requires at least 1 other Corpse of the same Monster Name",
     "type": "item",
-    "required": 1
+    "required": 1,
+    "tag": "steel ring",
+    "tagType": "guaranteed",
+    "tier": 1
   },
   {
-    "text": "Creates an Opal RingRequires at least 1 other Corpse of the same Monster Name",
+    "text": "Creates an Opal Ring Requires at least 1 other Corpse of the same Monster Name",
     "type": "item",
-    "required": 1
+    "required": 1,
+    "tag": "opal ring",
+    "tagType": "guaranteed",
+    "tier": 1
   },
   {
-    "text": "Creates an Iolite RingRequires at least 1 other Corpse of the same Monster Name",
+    "text": "Creates an Iolite Ring Requires at least 1 other Corpse of the same Monster Name",
     "type": "item",
-    "required": 1
+    "required": 1,
+    "tag": "iolite ring",
+    "tagType": "guaranteed",
+    "tier": 1
   },
   {
-    "text": "Creates a Cerulean RingRequires at least 1 other Corpse of the same Monster Name",
+    "text": "Creates a Cerulean Ring Requires at least 1 other Corpse of the same Monster Name",
     "type": "item",
-    "required": 1
+    "required": 1,
+    "tag": "cerulean ring",
+    "tagType": "guaranteed",
+    "tier": 1
   },
   {
     "text": "+[value] to Modifier Tier Rating",
     "value": 50,
     "maxValue": 0,
-    "type": "normal",
-    "required": 1
+    "type": "mod",
+    "required": 1,
+    "tag": "mod rating",
+    "tagType": "increase",
+    "tier": 1
   },
   {
     "text": "Creates a Grasping Mail",
     "maxValue": 0,
     "type": "item",
-    "required": 1
+    "required": 1,
+    "tag": "grasping mail",
+    "tagType": "guaranteed",
+    "tier": 1
   },
   {
     "text": "Creates a Sacrificial Garb",
     "maxValue": 0,
     "type": "item",
-    "required": 1
+    "required": 1,
+    "tag": "sacrificial garb",
+    "tagType": "guaranteed",
+    "tier": 1
   }
 ]

@@ -5,6 +5,7 @@ import db from '../../public/moddb.json'
 import { Button } from "@/components/ui/button";
 import Tile from "@/components/app/tile";
 import {useState} from 'react'
+import TileTextDisplay from "@/components/app/TileTextDisplay";
 
 export default function Home() {
   const defaultMatrix = [
@@ -166,8 +167,8 @@ export default function Home() {
         let found = false
         for(let k = 0; k < result.length; k++){
           if(result[k].text === current.text && result[k]?.craft === current.craft){
-            console.log('found')
-            console.log(tiles[i][j])
+            // console.log('found')
+            // console.log(tiles[i][j])
             found = true
             let increase = calculateAmps(getTileAmps(i,j))
 
@@ -280,9 +281,9 @@ export default function Home() {
 
               return (
                 <div
-                key={index}
-                className="bg-background brightness-150 rounded text-lg flex items-center w-full p-1 ">
-                  <p className="flex items-center h-full w-full text-sm p-2">{cText}</p>
+                  key={index}
+                  className="bg-background brightness-150 rounded text-lg flex items-center w-full px-1 py-2 ">
+                  <TileTextDisplay tile={mod} value={mod.value} size={'sm'}/>
                 </div>
               )
             })}
