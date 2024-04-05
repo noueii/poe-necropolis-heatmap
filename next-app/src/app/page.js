@@ -170,6 +170,7 @@ export default function Home() {
             found = true
             let increase = calculateAmps(getTileAmps(i,j))    
             result[k].increase += increase
+            result[k].value += tiles[i][j].value * (1 + increase / 100)
             break
           }
         } 
@@ -179,7 +180,7 @@ export default function Home() {
           
           result.push({
             ...current,
-            increase: increase
+            value: current.value * (1 + increase/100)
           })
         }
       }
@@ -269,9 +270,9 @@ export default function Home() {
             {getAppliedMods()?.map((mod,index) =>{
 
               let newValue = (mod.value *(1+ mod.increase/100)).toFixed(2)
-              let residual = newValue > mod?.maxValue ? mod?.maxValue - newValue : undefined
+              let residual = mod.value > mod?.maxValue ? mod?.maxValue - mod.value : undefined
               
-              let cText = mod?.text?.replace('[value]', newValue).replace('[craft]',mod?.craft)
+              let cText = mod?.text?.replace('[value]', mod.value.toFixed(2)).replace('[craft]',mod?.craft)
 
 
               return (

@@ -105,7 +105,7 @@ function Tile({tile, x, y, onChange, amps, maxValue}) {
                 {tile?.ampType === 'col' && <FaArrowRightArrowLeft className='rotate-90 bg-inherit' size={'40%'}/>}
                 {tile?.ampType === 'row' && <FaArrowRightArrowLeft className='bg-inherit ' size={'40%'}/>}
                 {tile?.ampType === 'adj' && <FaArrowsUpDownLeftRight className='bg-inherit' size={'40%'}/>}
-                {tile?.type === 'normal' && <p className='bg-inherit'>{calculateAmps()}%</p>}
+                {tile?.type === 'normal' && <p className='bg-indigo-900 h-full w-full flex items-center justify-center'>{calculateAmps()}%</p>}
                 
 
                 
