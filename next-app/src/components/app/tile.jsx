@@ -128,7 +128,7 @@ function Tile({tile, x, y, onChange, amps, maxValue}) {
       
       </DialogTrigger>
       {!tile.disabled &&
-      <DialogContent className='text-white text-opacity-70 border-0 max-w-screen w-screen lg:w-1/2 lg:max-w-1/2 flex min-h-1/2 h-1/2'>
+      <DialogContent className='text-white text-opacity-70 border-0 max-w-screen w-screen lg:w-1/2 lg:max-w-1/2 flex min-h-3/4 h-3/4'>
         <div className={'w-full'}>
           <div className={'w-full h-full overflow-hidden flex flex-col'}>
           <DialogHeader  >
