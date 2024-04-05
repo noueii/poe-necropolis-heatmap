@@ -139,9 +139,9 @@ function Tile({tile, x, y, onChange, amps, maxValue}) {
           </DialogHeader>
 
           <div className='w-full h-full mt-4 overflow-scroll'>
-            {amps.map((amp) =>{
+            {amps.map((amp, index) =>{
               return (
-                <div className='border-2 border-zinc-500 border-opacity-40 rounded p-1'>{getTileText(amp)}</div>
+                <div className='border-2 border-zinc-500 border-opacity-40 rounded p-1' key={'amp-' + index}>{getTileText(amp)}</div>
               )
             })}
           </div>

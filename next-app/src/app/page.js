@@ -252,6 +252,7 @@ export default function Home() {
                         onChange={changeTile}
                         amps={getTileAmps(indexRow, indexCol)}
                         maxValue={calculateMaxAmps()}
+                        key={'tile-' + indexRow + '-' + indexCol}
                       />
                     </div>
                   )
