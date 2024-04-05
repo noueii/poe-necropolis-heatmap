@@ -6,6 +6,8 @@ import { Button } from "@/components/ui/button";
 import Tile from "@/components/app/tile";
 import {useState} from 'react'
 import TileTextDisplay from "@/components/app/TileTextDisplay";
+import { Dialog } from '../components/ui/dialog'
+import { DialogTrigger, DialogHeader, DialogTitle, DialogDescription, DialogContent } from '../components/ui/dialog'
 
 export default function Home() {
   const defaultMatrix = [
@@ -18,6 +20,8 @@ export default function Home() {
     [1,1,1,1,0,0,1,1,1,1,1,1,1,0,0,1,1],
     [1,1,1,1,1,1,1,1,0,0,1,1,1,1,1,1,1]
   ]
+
+  const [importText, setImportText] = useState('')
 
   let {valueHeatmap, maxValue} = generateHeatmap()
 
@@ -215,7 +219,7 @@ export default function Home() {
   
 
   const log = () =>{
-    console.log(db)
+    console.log(JSON.stringify(tiles))
   }
 
   const calculateMaxAmps = () =>{
@@ -233,38 +237,66 @@ export default function Home() {
     return maxValue
   }
 
+  const importMatrix = () =>{
+    setTiles(JSON.parse(importText))
+  }
+
 
   return (
     <main className="flex h-screen p-12 bg-background w-full">
       <div className="w-full h-full flex rounded gap-4">
-        <div className="flex flex-col  w-full h-full justify-between">
-          {tiles.map((row, indexRow) =>{
-            return (
-              <div 
-              key={indexRow}
-              className="h-full flex flex-row justify-between w-full items-center justify-items-center ">
-                {row.map((col, indexCol) =>{
-                  
+        
+        <div className="flex flex-col  w-full h-full justify-between gap-4">
+          <div className="w-full bg-zinc-900 justify-end p-2 flex gap-2">
+            <Button variant='ghost' className='hover:bg-zinc-300 hover:text-background'>AMP ROW</Button>
+            <Button className=''>AMP COL</Button>
+            <Button className=''>AMP ADJ</Button>
+            <Button className='bg-red-900' onClick={() => log()}>RESET BOARD</Button>
+            <Dialog>
+              <DialogTrigger>
+                <Button className='bg-red-900'>IMPORT BOARD</Button>
+              </DialogTrigger>
+              <DialogContent>
+                <DialogTitle>HEY</DialogTitle>
+                <DialogDescription>HEY</DialogDescription>
+                <div>
+                  <input onChange={(e) => setImportText(e.target.value)}></input>
+                  <Button onClick={() => importMatrix()}> IMPORT </Button>
+                </div>
+              </DialogContent>
 
-                  return (
-                    <div 
-                    key={indexCol}
-                    className={`w-full h-full flex  justify-center items-center rounded cursor-pointer`}>
-                      <Tile 
-                        tile={col}
-                        x={indexRow}
-                        y={indexCol}
-                        onChange={changeTile}
-                        amps={getTileAmps(indexRow, indexCol)}
-                        maxValue={calculateMaxAmps()}
-                        key={'tile-' + indexRow + '-' + indexCol}
-                      />
-                    </div>
-                  )
-                })}
-              </div>
-            )
-          })}
+            </Dialog>
+            
+          </div>
+          <div className="w-full h-full flex flex-col">
+            {tiles.map((row, indexRow) =>{
+              return (
+                <div 
+                key={indexRow}
+                className="h-full flex flex-row justify-between w-full items-center justify-items-center ">
+                  {row.map((col, indexCol) =>{
+                    
+
+                    return (
+                      <div 
+                      key={indexCol}
+                      className={`w-full h-full flex  justify-center items-center rounded cursor-pointer`}>
+                        <Tile 
+                          tile={col}
+                          x={indexRow}
+                          y={indexCol}
+                          onChange={changeTile}
+                          amps={getTileAmps(indexRow, indexCol)}
+                          maxValue={calculateMaxAmps()}
+                          key={'tile-' + indexRow + '-' + indexCol}
+                        />
+                      </div>
+                    )
+                  })}
+                </div>
+              )
+            })}
+            </div>
         </div>
 
         <div className="w-1/5 h-full overflow-hidden rounded">
