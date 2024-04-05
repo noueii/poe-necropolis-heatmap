@@ -22,7 +22,7 @@ import TileText from './TileTextDisplay'
 import TileTextDisplay from './TileTextDisplay'
 
 
-function Tile({tile, x, y, onChange, amps, maxValue}) {
+function Tile({tile, x, y, onChange, amps, maxValue, clickDisabled, paintTile}) {
 
   
   let rgb = convertScoreToRGB(calculateAmps(), maxValue)
@@ -102,18 +102,31 @@ function Tile({tile, x, y, onChange, amps, maxValue}) {
     }
   }
 
+  const handleTileClick = () =>{
+    console.log('HANDLE TILE CLICK')
+    if(clickDisabled) {
+      console.log('click disabled')
+      setOpenDialog(false)
+      paintTile(x,y)
+      return
+    }
+    setOpenDialog(!openDialog)
+  }
+
 
   return (
-
-    <Dialog className='w-screen' open={openDialog} onOpenChange={() => setOpenDialog(!openDialog)}>
+    <div className='w-full h-full' onClick={() => console.log('first')}>
+    <Dialog className='w-screen' open={openDialog} onOpenChange={() =>  setOpenDialog(!openDialog)} >
       <DialogTrigger 
-        onClick={() => setOpenDialog(true)}
+        disabled={clickDisabled}
+        onClick={() => handleTileClick(true)}
         className={`w-full h-full bg-background rounded`}>
-
+        
         <div className={`bg-inherit w-full h-full flex items-center justify-center rounded
           border-2 border-background 
           ${tile.disabled ? 'hover:scale-100 cursor-default' : 'hover:scale-110 cursor-pointer'}
           `}
+          onClick={() => console.log('hey')}
           style={rgb && {background: `rgba(${rgb.red},${rgb.green},${rgb.blue},0.2)`}}
         >
          
@@ -147,7 +160,7 @@ function Tile({tile, x, y, onChange, amps, maxValue}) {
                       {tile.tag && <p className='bg-inherit'>{tile.tag}</p>}
                       {/* <TileText tile={tile} value={tile.value * (1 + calculateAmps()/100)}/> */}
                       {tile.value && 
-                      <div className={`bg-inherit ${getTileTextColor()}`}>{tile.value * (1 + calculateAmps()/100)}%</div>
+                      <div className={`bg-inherit ${getTileTextColor()}`}>{(tile.value * (1 + calculateAmps()/100)).toFixed()}%</div>
                       }
                       </div>
                     }
@@ -175,7 +188,7 @@ function Tile({tile, x, y, onChange, amps, maxValue}) {
       </div>
       
       </DialogTrigger>
-      {!tile.disabled &&
+      {(!tile.disabled && !clickDisabled)&&
       <DialogContent className='text-white text-opacity-70 border-0 max-w-screen w-screen lg:w-1/2 lg:max-w-1/2 flex min-h-3/4 h-3/4'>
         <div className={'w-full'}>
           <div className={'w-full h-full overflow-hidden flex flex-col'}>
@@ -232,7 +245,9 @@ function Tile({tile, x, y, onChange, amps, maxValue}) {
                           <Button 
                             onClick={() => setTile(el)}
                             key={index}
-                            className='text-wrap pt-2 hover:bg-accent hover:brightness-125 text-xs'><TileTextDisplay tile={el} value={el.value}/></Button>
+                            className='text-wrap pt-2 hover:bg-accent hover:brightness-125 text-xs'>
+                              <TileTextDisplay tile={el} value={el.value}/>
+                            </Button>
 
                         
                       )
@@ -280,7 +295,7 @@ function Tile({tile, x, y, onChange, amps, maxValue}) {
 
     </Dialog>
 
-
+    </div>
     
   )
 }

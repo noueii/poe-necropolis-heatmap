@@ -1877,7 +1877,7 @@
     "text": "+[value] to Modifier Tier Rating",
     "value": 50,
     "maxValue": 0,
-    "type": "mod",
+    "type": "normal",
     "required": 1,
     "tag": "mod rating",
     "tagType": "increase",

@@ -48,16 +48,16 @@ function TileTextDisplay({tile, value, size}) {
   }
 
   return (
-    <div className={`flex bg-inherit text-wrap  font-normal ${textSize}`}>
+    <div className={`flex flex-wrap bg-inherit text-wrap  font-normal ${textSize}`}>
     
-      <p className='bg-inherit'>{displayText[0]}</p>
+      <p className='bg-inherit text-wrap'>{displayText[0]}</p>
       {tile.craft && 
-      <div className={'bg-inherit px-1 flex gap-1'}>
-        <div className={getCraftColor() + ' bg-inherit'}>
+        <>
+        <div className={getCraftColor() + ' bg-inherit px-1'}>
           {tile.craft.toUpperCase()}
         </div>
-        <div className='bg-inherit'>{displayText[1]}</div>
-        </div>
+        <div className='bg-inherit text-wrap'>{displayText[1]}</div>
+        </>
       
       }
     

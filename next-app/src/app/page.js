@@ -8,6 +8,7 @@ import {useState} from 'react'
 import TileTextDisplay from "@/components/app/TileTextDisplay";
 import { Dialog } from '../components/ui/dialog'
 import { DialogTrigger, DialogHeader, DialogTitle, DialogDescription, DialogContent } from '../components/ui/dialog'
+import { Textarea } from "@/components/ui/textarea";
 
 export default function Home() {
   const defaultMatrix = [
@@ -20,6 +21,50 @@ export default function Home() {
     [1,1,1,1,0,0,1,1,1,1,1,1,1,0,0,1,1],
     [1,1,1,1,1,1,1,1,0,0,1,1,1,1,1,1,1]
   ]
+
+  const buttonAmps = [
+    {
+      text: 'ROW', 
+      value: {
+        "text": "[value]% increased Effect of Corpses in this Grave Row",
+        "value": 25,
+        "maxValue": 0,
+        "type": "amp",
+        "ampType": "row",
+        "required": 1
+      }
+    
+    },
+    {
+      text: 'COL', 
+      value: {
+        "text": "[value]% increased Effect of Corpses in this Grave Column",
+        "value": 25,
+        "maxValue": 0,
+        "type": "amp",
+        "ampType": "col",
+        "required": 1
+      },
+    
+    },
+
+    {
+      text: 'ADJ', 
+      value: {
+        "text": "Haunted by Hadrius Veruso",
+        "maxValue": 0,
+        "type": "normal",
+        "required": 1,
+        "tag": "Hadrius Veruso",
+        "tagType": "haunt",
+        "tier": 1
+      },
+    
+    },
+
+  ]
+
+  const [paintTile, setPaintTile] = useState(undefined)
 
   const [importText, setImportText] = useState('')
 
@@ -241,26 +286,56 @@ export default function Home() {
     setTiles(JSON.parse(importText))
   }
 
+  const changePaintTile = (btn) =>{
+    if(paintTile?.text === btn.text) {
+      setPaintTile(undefined)
+      return
+    }
+
+    setPaintTile(btn)
+  }
+
+  const paintSelectedTile = (x,y) =>{
+    let copy = tiles
+    copy[x][y] = paintTile.value
+    setTiles(copy)
+  }
+
 
   return (
     <main className="flex h-screen p-12 bg-background w-full">
       <div className="w-full h-full flex rounded gap-4">
         
         <div className="flex flex-col  w-full h-full justify-between gap-4">
-          <div className="w-full bg-zinc-900 justify-end p-2 flex gap-2">
-            <Button variant='ghost' className='hover:bg-zinc-300 hover:text-background'>AMP ROW</Button>
-            <Button className=''>AMP COL</Button>
-            <Button className=''>AMP ADJ</Button>
+          <div className="w-full bg-zinc-900 rounded justify-end p-2 flex gap-2">
+            {buttonAmps.map((b) =>{
+              let isSelected = paintTile?.text === b.text
+              return (
+                <Button variant='ghost' 
+                className={`bg-inherit border-0 hover:bg-purple-600 text-purple-600 hover:text-background ${isSelected && 'bg-purple-600 text-background'} `}
+                onClick={() => changePaintTile(b)}
+                
+                >AMP {b.text}</Button>
+              )
+            })}
+
+
+            
             <Button className='bg-red-900' onClick={() => log()}>RESET BOARD</Button>
             <Dialog>
               <DialogTrigger>
                 <Button className='bg-red-900'>IMPORT BOARD</Button>
               </DialogTrigger>
-              <DialogContent>
-                <DialogTitle>HEY</DialogTitle>
+              <DialogContent className='border-0'>
+                <DialogTitle>Import/Export board</DialogTitle>
                 <DialogDescription>HEY</DialogDescription>
-                <div>
-                  <input onChange={(e) => setImportText(e.target.value)}></input>
+                <div className="w-full flex flex-col gap-2">
+                  <Textarea className='border-2 border-white ring-0 border-opacity-20' 
+                  placeholder='Paste your code here'
+                  onChange={(e) => setImportText(e.target.value)}>
+                  
+                  </Textarea>
+                  <Button onClick={() => importMatrix()}> EXPORT </Button>
                   <Button onClick={() => importMatrix()}> IMPORT </Button>
                 </div>
               </DialogContent>
@@ -280,7 +355,9 @@ export default function Home() {
                     return (
                       <div 
                       key={indexCol}
-                      className={`w-full h-full flex  justify-center items-center rounded cursor-pointer`}>
+                      className={`w-full h-full flex  justify-center items-center rounded cursor-pointer`}
+                      
+                      >
                         <Tile 
                           tile={col}
                           x={indexRow}
@@ -289,6 +366,9 @@ export default function Home() {
                           amps={getTileAmps(indexRow, indexCol)}
                           maxValue={calculateMaxAmps()}
                           key={'tile-' + indexRow + '-' + indexCol}
+                          clickDisabled={paintTile !== undefined}
+                          paintTile={paintSelectedTile}
+                          
                         />
                       </div>
                     )
