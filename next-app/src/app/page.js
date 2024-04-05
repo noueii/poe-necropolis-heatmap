@@ -165,7 +165,7 @@ export default function Home() {
         if(tiles[i][j].disabled || tiles[i][j]?.type === 'amp' || !tiles[i][j].text) continue
         let found = false
         for(let k = 0; k < result.length; k++){
-          if(result[k].text === current.text){
+          if(result[k].text === current.text && result[k]?.craft === current.craft){
             console.log('found')
             console.log(tiles[i][j])
             found = true
@@ -266,9 +266,9 @@ export default function Home() {
           })}
         </div>
 
-        <div className="w-1/5 h-full  rounded">
+        <div className="w-1/5 h-full overflow-hidden rounded">
           <div className="text-2xl">Applied modifiers</div>
-          <div className="text-2xl flex w-full flex-col">
+          <div className="text-2xl flex w-full h-full flex-col overflow-scroll gap-2">
             {getAppliedMods()?.map((mod,index) =>{
 
               let newValue = (mod.value *(1+ mod.increase/100)).toFixed(2)

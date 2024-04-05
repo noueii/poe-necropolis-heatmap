@@ -105,7 +105,7 @@ function Tile({tile, x, y, onChange, amps, maxValue}) {
           `}
           style={rgb && {background: `rgba(${rgb.red},${rgb.green},${rgb.blue},0.2)`}}
         >
-          <HoverCard className='w-full h-full bg-background' >
+          <HoverCard className='w-full h-full bg-background'  >
             {!tile.disabled && 
             <HoverCardTrigger className='w-full h-full'>
               { !tile.disabled &&
@@ -144,7 +144,7 @@ function Tile({tile, x, y, onChange, amps, maxValue}) {
 
             </HoverCardTrigger>
 }
-              <HoverCardContent className='bg-background'>
+              <HoverCardContent className='bg-background' side='bottom' align='center' avoidCollisions={false}>
                 <div className=''>
                   
                   {tile?.text && <p className='text-white'>{getTileText(tile)}</p>}
