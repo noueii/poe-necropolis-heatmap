@@ -236,14 +236,15 @@ export default function Home() {
         <div className="flex flex-col  w-full h-full justify-between">
           {tiles.map((row, indexRow) =>{
             return (
-              <div className="h-full flex flex-row justify-between w-full items-center justify-items-center ">
+              <div 
+              key={indexRow}
+              className="h-full flex flex-row justify-between w-full items-center justify-items-center ">
                 {row.map((col, indexCol) =>{
                   
-                 
-                  console.log(col)
+
                   return (
                     <div 
-                      
+                    key={indexCol}
                     className={`w-full h-full flex  justify-center items-center rounded cursor-pointer`}>
                       <Tile 
                         tile={col}
@@ -265,7 +266,7 @@ export default function Home() {
         <div className="w-1/5 h-full  rounded">
           <div className="text-2xl">Applied modifiers</div>
           <div className="text-2xl flex w-full flex-col">
-            {getAppliedMods()?.map(mod =>{
+            {getAppliedMods()?.map((mod,index) =>{
 
               let newValue = (mod.value *(1+ mod.increase/100)).toFixed(2)
               let residual = newValue > mod?.maxValue ? mod?.maxValue - newValue : undefined
@@ -274,7 +275,9 @@ export default function Home() {
 
 
               return (
-                <div className="bg-background brightness-150 rounded text-lg flex items-center w-full p-1 ">
+                <div
+                key={index}
+                className="bg-background brightness-150 rounded text-lg flex items-center w-full p-1 ">
                   <p className="flex items-center h-full w-full text-sm p-2">{cText}</p>
                 </div>
               )

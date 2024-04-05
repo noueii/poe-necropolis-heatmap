@@ -176,13 +176,14 @@ function Tile({tile, x, y, onChange, amps, maxValue}) {
                 </div>
               
                 <div className=' overflow-scroll flex flex-col gap-2'>
-                    {db.map((el) =>{
+                    {db.map((el,index) =>{
                       if(el?.type === 'normal' && isSearch(el) )
                       return (
 
 
                           <Button 
                             onClick={() => setTile(el)}
+                            key={index}
                             className='text-wrap pt-2 hover:bg-accent hover:brightness-125 text-xs'>{el.text.replace('[value]',el.value).replace('[craft]',el?.craft?.toUpperCase())}</Button>
 
                         
@@ -192,12 +193,13 @@ function Tile({tile, x, y, onChange, amps, maxValue}) {
               </TabsContent>
 
               <TabsContent value='amps' className='h-full flex flex-col gap-2 data-[state=inactive]:h-auto overflow-scroll'>
-                {db.map((el) =>{
+                {db.map((el,index) =>{
                         if(el?.type === 'amp')
                         return (
 
 
                             <Button 
+                            key={index}
                             onClick={() => setTile(el)}
                             className='text-wrap pt-2 hover:bg-accent hover:brightness-125 text-xs'>{el.text.replace('[value]',el.value).replace('[craft]',el?.craft)}</Button>
 
