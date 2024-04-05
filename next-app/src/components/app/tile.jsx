@@ -115,11 +115,10 @@ function Tile({tile, x, y, onChange, amps, maxValue, clickDisabled, paintTile}) 
 
 
   return (
-    <div className='w-full h-full' onClick={() => console.log('first')}>
-    <Dialog className='w-screen' open={openDialog} onOpenChange={() =>  setOpenDialog(!openDialog)} >
+    <div className='w-full h-full flex' onClick={() => console.log('first')}>
+    <Dialog className='' open={openDialog} onOpenChange={() => handleTileClick()} >
       <DialogTrigger 
-        disabled={clickDisabled}
-        onClick={() => handleTileClick(true)}
+
         className={`w-full h-full bg-background rounded`}>
         
         <div className={`bg-inherit w-full h-full flex items-center justify-center rounded
@@ -298,6 +297,7 @@ function Tile({tile, x, y, onChange, amps, maxValue, clickDisabled, paintTile}) 
     </div>
     
   )
+  
 }
 
 export default Tile

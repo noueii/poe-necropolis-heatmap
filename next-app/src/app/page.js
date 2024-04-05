@@ -22,6 +22,8 @@ export default function Home() {
     [1,1,1,1,1,1,1,1,0,0,1,1,1,1,1,1,1]
   ]
 
+  const [exported, setExported] = useState(false)
+
   const buttonAmps = [
     {
       text: 'ROW', 
@@ -51,13 +53,12 @@ export default function Home() {
     {
       text: 'ADJ', 
       value: {
-        "text": "Haunted by Hadrius Veruso",
+        "text": "[value]% increased Effect of Corpses adjacent to this Corpse",
+        "value": 40,
         "maxValue": 0,
-        "type": "normal",
-        "required": 1,
-        "tag": "Hadrius Veruso",
-        "tagType": "haunt",
-        "tier": 1
+        "type": "amp",
+        "ampType": "adj",
+        "required": 1
       },
     
     },
@@ -198,6 +199,11 @@ export default function Home() {
 
   }
 
+  async function exportBoard (){
+    navigator.clipboard.writeText(JSON.stringify(tiles))
+    setExported(true)
+  }
+
   function calculateAmps (amps) {
     let sum = 0
     for(let i = 0; i < amps.length; i++){
@@ -296,10 +302,20 @@ export default function Home() {
   }
 
   const paintSelectedTile = (x,y) =>{
-    let copy = tiles
+    let copy = JSON.parse(JSON.stringify(tiles))
     copy[x][y] = paintTile.value
     setTiles(copy)
   }
+
+  const resetExportImport = () =>{
+    setExported(false)
+    setImportText('')
+  }
+
+  const resetBoard = () =>{
+    setTiles(generateTileMatrix(defaultMatrix))
+  }
+  
 
 
   return (
@@ -310,6 +326,7 @@ export default function Home() {
           <div className="w-full bg-zinc-900 rounded justify-end p-2 flex gap-2">
             {buttonAmps.map((b) =>{
               let isSelected = paintTile?.text === b.text
+              let clicked = false
               return (
                 <Button variant='ghost' 
                 className={`bg-inherit border-0 hover:bg-purple-600 text-purple-600 hover:text-background ${isSelected && 'bg-purple-600 text-background'} `}
@@ -321,8 +338,8 @@ export default function Home() {
 
 
             
-            <Button className='bg-red-900' onClick={() => log()}>RESET BOARD</Button>
-            <Dialog>
+            <Button className='bg-red-900' onClick={() => resetBoard()}>RESET BOARD</Button>
+            <Dialog onOpenChange={() => resetExportImport()}>
               <DialogTrigger>
                 <Button className='bg-red-900'>IMPORT BOARD</Button>
               </DialogTrigger>
@@ -335,7 +352,7 @@ export default function Home() {
                   onChange={(e) => setImportText(e.target.value)}>
                   
                   </Textarea>
-                  <Button onClick={() => importMatrix()}> EXPORT </Button>
+                  <Button onClick={() => exportBoard()}> {!exported ? 'EXPORT' : 'Copied to clipboard !'} </Button>
                   <Button onClick={() => importMatrix()}> IMPORT </Button>
                 </div>
               </DialogContent>
@@ -356,7 +373,7 @@ export default function Home() {
                       <div 
                       key={indexCol}
                       className={`w-full h-full flex  justify-center items-center rounded cursor-pointer`}
-                      
+                      onClick={() => console.log('HEY')}
                       >
                         <Tile 
                           tile={col}
