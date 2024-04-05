@@ -27,7 +27,7 @@ function Tile({tile, x, y, onChange, amps, maxValue}) {
   const [search, setSearch] = useState('')
 
   const ampsScore = calculateAmps(tile)
-  console.log(amps)
+
 
   const isSearch = (el) =>{
       if(search === '') return true

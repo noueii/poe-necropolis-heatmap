@@ -19,7 +19,6 @@ export default function Home() {
   ]
 
   let {valueHeatmap, maxValue} = generateHeatmap()
-  console.log(valueHeatmap)
 
   const [tiles, setTiles] = useState(generateTileMatrix(defaultMatrix))
 
@@ -163,12 +162,15 @@ export default function Home() {
     for(let i = 0; i < tiles.length; i++){
       for(let j  =0; j < tiles[i].length; j++){
         let current = tiles[i][j]
-        if(tiles[i][j].disabled || tiles[i][j]?.type === 'amp') continue
+        if(tiles[i][j].disabled || tiles[i][j]?.type === 'amp' || !tiles[i][j].text) continue
         let found = false
         for(let k = 0; k < result.length; k++){
           if(result[k].text === current.text){
+            console.log('found')
+            console.log(tiles[i][j])
             found = true
-            let increase = calculateAmps(getTileAmps(i,j))    
+            let increase = calculateAmps(getTileAmps(i,j))
+
             result[k].increase += increase
             result[k].value += tiles[i][j].value * (1 + increase / 100)
             break
@@ -273,7 +275,8 @@ export default function Home() {
               let residual = mod.value > mod?.maxValue ? mod?.maxValue - mod.value : undefined
               
               let cText = mod?.text?.replace('[value]', mod.value.toFixed(2)).replace('[craft]',mod?.craft)
-
+              
+              console.log(mod)
 
               return (
                 <div
