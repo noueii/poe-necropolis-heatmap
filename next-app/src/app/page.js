@@ -314,7 +314,7 @@ export default function Home() {
                 <Button variant='ghost' 
                 className={`bg-inherit border-0 hover:bg-purple-600 text-purple-600 hover:text-background ${isSelected && 'bg-purple-600 text-background'} `}
                 onClick={() => changePaintTile(b)}
-                
+                key={b.text}
                 >AMP {b.text}</Button>
               )
             })}
