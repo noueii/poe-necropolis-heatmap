@@ -1,0 +1,202 @@
++1 Explicit Modifier
+-1 Explicit Modifiers
++5% to Quality, up to 30%
+25% chance to Fracture an Explicit Modifier
+200% increased chance of Physical Modifiers
+500% increased chance of Physical Modifiers
+200% increased chance of Fire Modifiers
+500% increased chance of Fire Modifiers
+200% increased chance of Cold Modifiers
+500% increased chance of Cold Modifiers
+200% increased chance of Lightning Modifiers
+500% increased chance of Lightning Modifiers
+200% increased chance of Chaos Modifiers
+500% increased chance of Chaos Modifiers
+200% increased chance of Life Modifiers
+500% increased chance of Life Modifiers
+200% increased chance of Mana Modifiers
+500% increased chance of Mana Modifiers
+100% increased chance of Attack Modifiers
+300% increased chance of Attack Modifiers
+100% increased chance of Caster Modifiers
+300% increased chance of Caster Modifiers
+100% increased chance of Elemental Modifiers
+300% increased chance of Elemental Modifiers
+200% increased chance of Defence Modifiers
+500% increased chance of Defence Modifiers
+200% increased chance of Critical Modifiers
+500% increased chance of Critical Modifiers
+200% increased chance of Speed Modifiers
+500% increased chance of Speed Modifiers
+200% increased chance of Attribute Modifiers
+500% increased chance of Attribute Modifiers
+200% increased chance of Resistance Modifiers
+500% increased chance of Resistance Modifiers
+200% increased chance of Gem Modifiers
+500% increased chance of Gem Modifiers
+200% increased chance of Minion Modifiers
+500% increased chance of Minion Modifiers
+Physical Modifiers are 100% scarcer
+Physical Modifiers are 300% scarcer
+Fire Modifiers are 100% scarcer
+Fire Modifiers are 300% scarcer
+Cold Modifiers are 100% scarcer
+Cold Modifiers are 300% scarcer
+Lightning Modifiers are 100% scarcer
+Lightning Modifiers are 300% scarcer
+Chaos Modifiers are 100% scarcer
+Chaos Modifiers are 300% scarcer
+Life Modifiers are 100% scarcer
+Life Modifiers are 300% scarcer
+Mana Modifiers are 100% scarcer
+Mana Modifiers are 300% scarcer
+Attack Modifiers are 50% scarcer
+Attack Modifiers are 150% scarcer
+Caster Modifiers are 50% scarcer
+Caster Modifiers are 150% scarcer
+Elemental Modifiers are 50% scarcer
+Elemental Modifiers are 150% scarcer
+Defence Modifiers are 100% scarcer
+Defence Modifiers are 300% scarcer
+Critical Modifiers are 100% scarcer
+Critical Modifiers are 300% scarcer
+Speed Modifiers are 100% scarcer
+Speed Modifiers are 300% scarcer
+Attribute Modifiers are 100% scarcer
+Attribute Modifiers are 300% scarcer
+Resistance Modifiers are 100% scarcer
+Resistance Modifiers are 300% scarcer
+Gem Modifiers are 100% scarcer
+Gem Modifiers are 300% scarcer
+Armour Items have a Strength Requirement
+Armour Items do not have a Strength Requirement
+Armour Items have a Dexterity Requirement
+Armour Items do not have a Dexterity Requirement
+Armour Items have a Intelligence Requirement
+Armour Items do not have a Intelligence Requirement
++50 to Physical Modifier Tier Rating
++100 to Physical Modifier Tier Rating
++50 to Fire Modifier Tier Rating
++100 to Fire Modifier Tier Rating
++50 to Cold Modifier Tier Rating
++100 to Cold Modifier Tier Rating
++50 to Lightning Modifier Tier Rating
++100 to Lightning Modifier Tier Rating
++50 to Chaos Modifier Tier Rating
++100 to Chaos Modifier Tier Rating
++50 to Life Modifier Tier Rating
++100 to Life Modifier Tier Rating
++50 to Mana Modifier Tier Rating
++100 to Mana Modifier Tier Rating
++25 to Attack Modifier Tier Rating
++50 to Attack Modifier Tier Rating
++25 to Caster Modifier Tier Rating
++50 to Caster Modifier Tier Rating
++25 to Elemental Modifier Tier Rating
++50 to Elemental Modifier Tier Rating
++50 to Defence Modifier Tier Rating
++100 to Defence Modifier Tier Rating
++50 to Critical Modifier Tier Rating
++100 to Critical Modifier Tier Rating
++50 to Speed Modifier Tier Rating
++100 to Speed Modifier Tier Rating
++50 to Attribute Modifier Tier Rating
++100 to Attribute Modifier Tier Rating
++50 to Resistance Modifier Tier Rating
++100 to Resistance Modifier Tier Rating
++50 to Gem Modifier Tier Rating
++100 to Gem Modifier Tier Rating
++50 to Minion Modifier Tier Rating
++100 to Minion Modifier Tier Rating
+Reveals a Random Craft when Buried
+Rarer Crafts are more common
+Haunted by Drusia Perandus
+Haunted by Lucilius Perandus
+Haunted by Quintio Perandus
+Haunted by Kostian Perandus
+20% chance to craft an additional Item
+Reroll Modifier Values of each Explicit Modifier 3 times, keeping the best outcome
+Reroll Modifier Values of each Explicit Modifier 6 times, keeping the best outcome
+25% increased Effect of Corpses in this Grave Row
+25% increased Effect of Corpses in this Grave Column
+Haunted by Hadrius Veruso
+Haunted by Titiana Veruso
+Haunted by Claudia Veruso
+Haunted by Fausta Veruso
+Haunted by Albanus Phrecia
+Haunted by Valerius Phrecia
+Haunted by Fabricia Phrecia
+Haunted by Iris Phrecia
+Haunted by Lilius Nevalius
+Haunted by Octavius Nevalius
+Haunted by Marius Nevalius
+Haunted by Julianis Nevalius
+Haunted by Asinia Grattus
+Haunted by Legius Grattus
+Haunted by Tyche Grattus
+Haunted by Draven Grattus
+100% increased chance for Prefix Modifiers
+300% increased chance for Prefix Modifiers
+100% increased chance of Suffix Modifiers
+300% increased chance of Suffix Modifiers
++1 to Item Level
+Ring is a Breach Ring
+Belt is a Stygian Vise
+Reforge socket numbers 30 times, keeping the greatest number of sockets
+Reforge socket numbers 200 times, keeping the greatest number of sockets
+Reforge socket links 20 times, keeping the greatest number of links
+Reforge socket links 200 times, keeping the greatest number of links
+Randomises the numeric values of base Defences on an Armour 3 times, keeping the best outcome
+Randomises the numeric values of base Defences on an Armour 6 times, keeping the best outcome
+Reroll Implicit Modifier Values 3 times, keeping the best outcome
+Reroll Implicit Modifier Values 6 times, keeping the best outcome
+Armour can roll Haunted Modifiers
+50% increased chance of Haunted Modifiers
+Armour can roll Haunted Modifiers
+150% increased chance of Haunted Modifiers
+Creates a Ring
+Creates an Amulet
+Creates a Belt
+Reroll Base Type 5 times, keeping the Base Type with the highest Level Requirement
+40% increased Effect of Beast Corpses adjacent to this Corpse
+40% increased Effect of Undead Corpses adjacent to this Corpse
+40% increased Effect of Humanoid Corpses adjacent to this Corpse
+40% increased Effect of Construct Corpses adjacent to this Corpse
+40% increased Effect of Demon Corpses adjacent to this Corpse
+5% chance for Beast Corpses to not be consumed when Exorcising, up to 50%
+5% chance for Undead Corpses to not be consumed when Exorcising, up to 50%
+5% chance for Humanoid Corpses to not be consumed when Exorcising, up to 50%
+5% chance for Construct Corpses to not be consumed when Exorcising, up to 50%
+5% chance for Demon Corpses to not be consumed when Exorcising, up to 50%
+Corpses in adjacent Graves and this Corpse have their crafting outcomes randomised when this Corpse is buried
+25% chance to create a Split Copy
+Item is Corrupted
+50% increased chance for Corruption Implicit Modifiers
+25% chance to create a Mirrored Copy
+Creates a Talisman
+Creates a Bone Ring
+Creates a Ritual Helmet, Gloves or Boots
+Creates a Helmet, Gloves or Boots with Ward
+Creates an Experimented Weapon
+Has Shaper or Elder Influence
+200% increased chance of Influence Modifiers
+Has a random Conqueror Influence
+200% increased chance of Influence Modifiers
+Creates a Vermillion Ring
+Requires at least 1 other Corpse of the same Monster Name
+Item sells for much more to Vendors
+Requires at least 2 other Corpses of the same Monster Name
++1 to minimum number of Linked Sockets, up to a maximum of 4
++1 to minimum number of Linked Sockets, up to a maximum of 5
++1 to minimum number of Linked Sockets, up to a maximum of 6
+Creates a Steel Ring
+Requires at least 1 other Corpse of the same Monster Name
+Creates an Opal Ring
+Requires at least 1 other Corpse of the same Monster Name
+Creates an Iolite Ring
+Requires at least 1 other Corpse of the same Monster Name
+Creates a Cerulean Ring
+Requires at least 1 other Corpse of the same Monster Name
++50 to Modifier Tier Rating
+Creates a Grasping Mail
+Creates a Sacrificial Garb

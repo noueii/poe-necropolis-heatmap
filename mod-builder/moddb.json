@@ -1,0 +1,1372 @@
+[
+  {
+    "text": "+[value] Explicit Modifier",
+    "value": 1,
+    "maxValue": 0,
+    "type": "normal",
+    "required": 1
+  },
+  {
+    "text": "-[value] Explicit Modifiers",
+    "value": 1,
+    "maxValue": 0,
+    "type": "normal",
+    "required": 1
+  },
+  {
+    "text": "+[value]% to Quality, up to 30%",
+    "value": 5,
+    "maxValue": 0,
+    "type": "normal",
+    "required": 1
+  },
+  {
+    "text": "[value]% chance to Fracture an Explicit Modifier",
+    "value": 25,
+    "maxValue": 0,
+    "type": "normal",
+    "required": 1
+  },
+  {
+    "text": "[value]% increased chance of [craft] Modifiers",
+    "value": 200,
+    "maxValue": 0,
+    "craft": "Physical",
+    "type": "normal",
+    "required": 1
+  },
+  {
+    "text": "[value]% increased chance of [craft] Modifiers",
+    "value": 500,
+    "maxValue": 0,
+    "craft": "Physical",
+    "type": "normal",
+    "required": 1
+  },
+  {
+    "text": "[value]% increased chance of [craft] Modifiers",
+    "value": 200,
+    "maxValue": 0,
+    "craft": "Fire",
+    "type": "normal",
+    "required": 1
+  },
+  {
+    "text": "[value]% increased chance of [craft] Modifiers",
+    "value": 500,
+    "maxValue": 0,
+    "craft": "Fire",
+    "type": "normal",
+    "required": 1
+  },
+  {
+    "text": "[value]% increased chance of [craft] Modifiers",
+    "value": 200,
+    "maxValue": 0,
+    "craft": "Cold",
+    "type": "normal",
+    "required": 1
+  },
+  {
+    "text": "[value]% increased chance of [craft] Modifiers",
+    "value": 500,
+    "maxValue": 0,
+    "craft": "Cold",
+    "type": "normal",
+    "required": 1
+  },
+  {
+    "text": "[value]% increased chance of [craft] Modifiers",
+    "value": 200,
+    "maxValue": 0,
+    "craft": "Lightning",
+    "type": "normal",
+    "required": 1
+  },
+  {
+    "text": "[value]% increased chance of [craft] Modifiers",
+    "value": 500,
+    "maxValue": 0,
+    "craft": "Lightning",
+    "type": "normal",
+    "required": 1
+  },
+  {
+    "text": "[value]% increased chance of [craft] Modifiers",
+    "value": 200,
+    "maxValue": 0,
+    "craft": "Chaos",
+    "type": "normal",
+    "required": 1
+  },
+  {
+    "text": "[value]% increased chance of [craft] Modifiers",
+    "value": 500,
+    "maxValue": 0,
+    "craft": "Chaos",
+    "type": "normal",
+    "required": 1
+  },
+  {
+    "text": "[value]% increased chance of [craft] Modifiers",
+    "value": 200,
+    "maxValue": 0,
+    "craft": "Life",
+    "type": "normal",
+    "required": 1
+  },
+  {
+    "text": "[value]% increased chance of [craft] Modifiers",
+    "value": 500,
+    "maxValue": 0,
+    "craft": "Life",
+    "type": "normal",
+    "required": 1
+  },
+  {
+    "text": "[value]% increased chance of [craft] Modifiers",
+    "value": 200,
+    "maxValue": 0,
+    "craft": "Mana",
+    "type": "normal",
+    "required": 1
+  },
+  {
+    "text": "[value]% increased chance of [craft] Modifiers",
+    "value": 500,
+    "maxValue": 0,
+    "craft": "Mana",
+    "type": "normal",
+    "required": 1
+  },
+  {
+    "text": "[value]% increased chance of [craft] Modifiers",
+    "value": 100,
+    "maxValue": 0,
+    "craft": "Attack",
+    "type": "normal",
+    "required": 1
+  },
+  {
+    "text": "[value]% increased chance of [craft] Modifiers",
+    "value": 300,
+    "maxValue": 0,
+    "craft": "Attack",
+    "type": "normal",
+    "required": 1
+  },
+  {
+    "text": "[value]% increased chance of [craft] Modifiers",
+    "value": 100,
+    "maxValue": 0,
+    "craft": "Caster",
+    "type": "normal",
+    "required": 1
+  },
+  {
+    "text": "[value]% increased chance of [craft] Modifiers",
+    "value": 300,
+    "maxValue": 0,
+    "craft": "Caster",
+    "type": "normal",
+    "required": 1
+  },
+  {
+    "text": "[value]% increased chance of [craft] Modifiers",
+    "value": 100,
+    "maxValue": 0,
+    "craft": "Elemental",
+    "type": "normal",
+    "required": 1
+  },
+  {
+    "text": "[value]% increased chance of [craft] Modifiers",
+    "value": 300,
+    "maxValue": 0,
+    "craft": "Elemental",
+    "type": "normal",
+    "required": 1
+  },
+  {
+    "text": "[value]% increased chance of [craft] Modifiers",
+    "value": 200,
+    "maxValue": 0,
+    "craft": "Defence",
+    "type": "normal",
+    "required": 1
+  },
+  {
+    "text": "[value]% increased chance of [craft] Modifiers",
+    "value": 500,
+    "maxValue": 0,
+    "craft": "Defence",
+    "type": "normal",
+    "required": 1
+  },
+  {
+    "text": "[value]% increased chance of [craft] Modifiers",
+    "value": 200,
+    "maxValue": 0,
+    "craft": "Critical",
+    "type": "normal",
+    "required": 1
+  },
+  {
+    "text": "[value]% increased chance of [craft] Modifiers",
+    "value": 500,
+    "maxValue": 0,
+    "craft": "Critical",
+    "type": "normal",
+    "required": 1
+  },
+  {
+    "text": "[value]% increased chance of [craft] Modifiers",
+    "value": 200,
+    "maxValue": 0,
+    "craft": "Speed",
+    "type": "normal",
+    "required": 1
+  },
+  {
+    "text": "[value]% increased chance of [craft] Modifiers",
+    "value": 500,
+    "maxValue": 0,
+    "craft": "Speed",
+    "type": "normal",
+    "required": 1
+  },
+  {
+    "text": "[value]% increased chance of [craft] Modifiers",
+    "value": 200,
+    "maxValue": 0,
+    "craft": "Attribute",
+    "type": "normal",
+    "required": 1
+  },
+  {
+    "text": "[value]% increased chance of [craft] Modifiers",
+    "value": 500,
+    "maxValue": 0,
+    "craft": "Attribute",
+    "type": "normal",
+    "required": 1
+  },
+  {
+    "text": "[value]% increased chance of [craft] Modifiers",
+    "value": 200,
+    "maxValue": 0,
+    "craft": "Resistance",
+    "type": "normal",
+    "required": 1
+  },
+  {
+    "text": "[value]% increased chance of [craft] Modifiers",
+    "value": 500,
+    "maxValue": 0,
+    "craft": "Resistance",
+    "type": "normal",
+    "required": 1
+  },
+  {
+    "text": "[value]% increased chance of [craft] Modifiers",
+    "value": 200,
+    "maxValue": 0,
+    "craft": "Gem",
+    "type": "normal",
+    "required": 1
+  },
+  {
+    "text": "[value]% increased chance of [craft] Modifiers",
+    "value": 500,
+    "maxValue": 0,
+    "craft": "Gem",
+    "type": "normal",
+    "required": 1
+  },
+  {
+    "text": "[value]% increased chance of [craft] Modifiers",
+    "value": 200,
+    "maxValue": 0,
+    "craft": "Minion",
+    "type": "normal",
+    "required": 1
+  },
+  {
+    "text": "[value]% increased chance of [craft] Modifiers",
+    "value": 500,
+    "maxValue": 0,
+    "craft": "Minion",
+    "type": "normal",
+    "required": 1
+  },
+  {
+    "text": "[craft] Modifiers are [value]% scarcer",
+    "value": 100,
+    "maxValue": 0,
+    "craft": "Physical",
+    "type": "normal",
+    "required": 1
+  },
+  {
+    "text": "[craft] Modifiers are [value]% scarcer",
+    "value": 300,
+    "maxValue": 0,
+    "craft": "Physical",
+    "type": "normal",
+    "required": 1
+  },
+  {
+    "text": "[craft] Modifiers are [value]% scarcer",
+    "value": 100,
+    "maxValue": 0,
+    "craft": "Fire",
+    "type": "normal",
+    "required": 1
+  },
+  {
+    "text": "[craft] Modifiers are [value]% scarcer",
+    "value": 300,
+    "maxValue": 0,
+    "craft": "Fire",
+    "type": "normal",
+    "required": 1
+  },
+  {
+    "text": "[craft] Modifiers are [value]% scarcer",
+    "value": 100,
+    "maxValue": 0,
+    "craft": "Cold",
+    "type": "normal",
+    "required": 1
+  },
+  {
+    "text": "[craft] Modifiers are [value]% scarcer",
+    "value": 300,
+    "maxValue": 0,
+    "craft": "Cold",
+    "type": "normal",
+    "required": 1
+  },
+  {
+    "text": "[craft] Modifiers are [value]% scarcer",
+    "value": 100,
+    "maxValue": 0,
+    "craft": "Lightning",
+    "type": "normal",
+    "required": 1
+  },
+  {
+    "text": "[craft] Modifiers are [value]% scarcer",
+    "value": 300,
+    "maxValue": 0,
+    "craft": "Lightning",
+    "type": "normal",
+    "required": 1
+  },
+  {
+    "text": "[craft] Modifiers are [value]% scarcer",
+    "value": 100,
+    "maxValue": 0,
+    "craft": "Chaos",
+    "type": "normal",
+    "required": 1
+  },
+  {
+    "text": "[craft] Modifiers are [value]% scarcer",
+    "value": 300,
+    "maxValue": 0,
+    "craft": "Chaos",
+    "type": "normal",
+    "required": 1
+  },
+  {
+    "text": "[craft] Modifiers are [value]% scarcer",
+    "value": 100,
+    "maxValue": 0,
+    "craft": "Life",
+    "type": "normal",
+    "required": 1
+  },
+  {
+    "text": "[craft] Modifiers are [value]% scarcer",
+    "value": 300,
+    "maxValue": 0,
+    "craft": "Life",
+    "type": "normal",
+    "required": 1
+  },
+  {
+    "text": "[craft] Modifiers are [value]% scarcer",
+    "value": 100,
+    "maxValue": 0,
+    "craft": "Mana",
+    "type": "normal",
+    "required": 1
+  },
+  {
+    "text": "[craft] Modifiers are [value]% scarcer",
+    "value": 300,
+    "maxValue": 0,
+    "craft": "Mana",
+    "type": "normal",
+    "required": 1
+  },
+  {
+    "text": "[craft] Modifiers are [value]% scarcer",
+    "value": 50,
+    "maxValue": 0,
+    "craft": "Attack",
+    "type": "normal",
+    "required": 1
+  },
+  {
+    "text": "[craft] Modifiers are [value]% scarcer",
+    "value": 150,
+    "maxValue": 0,
+    "craft": "Attack",
+    "type": "normal",
+    "required": 1
+  },
+  {
+    "text": "[craft] Modifiers are [value]% scarcer",
+    "value": 50,
+    "maxValue": 0,
+    "craft": "Caster",
+    "type": "normal",
+    "required": 1
+  },
+  {
+    "text": "[craft] Modifiers are [value]% scarcer",
+    "value": 150,
+    "maxValue": 0,
+    "craft": "Caster",
+    "type": "normal",
+    "required": 1
+  },
+  {
+    "text": "[craft] Modifiers are [value]% scarcer",
+    "value": 50,
+    "maxValue": 0,
+    "craft": "Elemental",
+    "type": "normal",
+    "required": 1
+  },
+  {
+    "text": "[craft] Modifiers are [value]% scarcer",
+    "value": 150,
+    "maxValue": 0,
+    "craft": "Elemental",
+    "type": "normal",
+    "required": 1
+  },
+  {
+    "text": "[craft] Modifiers are [value]% scarcer",
+    "value": 100,
+    "maxValue": 0,
+    "craft": "Defence",
+    "type": "normal",
+    "required": 1
+  },
+  {
+    "text": "[craft] Modifiers are [value]% scarcer",
+    "value": 300,
+    "maxValue": 0,
+    "craft": "Defence",
+    "type": "normal",
+    "required": 1
+  },
+  {
+    "text": "[craft] Modifiers are [value]% scarcer",
+    "value": 100,
+    "maxValue": 0,
+    "craft": "Critical",
+    "type": "normal",
+    "required": 1
+  },
+  {
+    "text": "[craft] Modifiers are [value]% scarcer",
+    "value": 300,
+    "maxValue": 0,
+    "craft": "Critical",
+    "type": "normal",
+    "required": 1
+  },
+  {
+    "text": "[craft] Modifiers are [value]% scarcer",
+    "value": 100,
+    "maxValue": 0,
+    "craft": "Speed",
+    "type": "normal",
+    "required": 1
+  },
+  {
+    "text": "[craft] Modifiers are [value]% scarcer",
+    "value": 300,
+    "maxValue": 0,
+    "craft": "Speed",
+    "type": "normal",
+    "required": 1
+  },
+  {
+    "text": "[craft] Modifiers are [value]% scarcer",
+    "value": 100,
+    "maxValue": 0,
+    "craft": "Attribute",
+    "type": "normal",
+    "required": 1
+  },
+  {
+    "text": "[craft] Modifiers are [value]% scarcer",
+    "value": 300,
+    "maxValue": 0,
+    "craft": "Attribute",
+    "type": "normal",
+    "required": 1
+  },
+  {
+    "text": "[craft] Modifiers are [value]% scarcer",
+    "value": 100,
+    "maxValue": 0,
+    "craft": "Resistance",
+    "type": "normal",
+    "required": 1
+  },
+  {
+    "text": "[craft] Modifiers are [value]% scarcer",
+    "value": 300,
+    "maxValue": 0,
+    "craft": "Resistance",
+    "type": "normal",
+    "required": 1
+  },
+  {
+    "text": "[craft] Modifiers are [value]% scarcer",
+    "value": 100,
+    "maxValue": 0,
+    "craft": "Gem",
+    "type": "normal",
+    "required": 1
+  },
+  {
+    "text": "[craft] Modifiers are [value]% scarcer",
+    "value": 300,
+    "maxValue": 0,
+    "craft": "Gem",
+    "type": "normal",
+    "required": 1
+  },
+  {
+    "text": "Armour Items have a Strength Requirement",
+    "maxValue": 0,
+    "type": "normal",
+    "required": 1
+  },
+  {
+    "text": "Armour Items do not have a Strength Requirement",
+    "maxValue": 0,
+    "type": "normal",
+    "required": 1
+  },
+  {
+    "text": "Armour Items have a Dexterity Requirement",
+    "maxValue": 0,
+    "type": "normal",
+    "required": 1
+  },
+  {
+    "text": "Armour Items do not have a Dexterity Requirement",
+    "maxValue": 0,
+    "type": "normal",
+    "required": 1
+  },
+  {
+    "text": "Armour Items have a Intelligence Requirement",
+    "maxValue": 0,
+    "type": "normal",
+    "required": 1
+  },
+  {
+    "text": "Armour Items do not have a Intelligence Requirement",
+    "maxValue": 0,
+    "type": "normal",
+    "required": 1
+  },
+  {
+    "text": "+[value] to [craft] Modifier Tier Rating",
+    "value": 50,
+    "maxValue": 0,
+    "craft": "Physical",
+    "type": "normal",
+    "required": 1
+  },
+  {
+    "text": "+[value] to [craft] Modifier Tier Rating",
+    "value": 100,
+    "maxValue": 0,
+    "craft": "Physical",
+    "type": "normal",
+    "required": 1
+  },
+  {
+    "text": "+[value] to [craft] Modifier Tier Rating",
+    "value": 50,
+    "maxValue": 0,
+    "craft": "Fire",
+    "type": "normal",
+    "required": 1
+  },
+  {
+    "text": "+[value] to [craft] Modifier Tier Rating",
+    "value": 100,
+    "maxValue": 0,
+    "craft": "Fire",
+    "type": "normal",
+    "required": 1
+  },
+  {
+    "text": "+[value] to [craft] Modifier Tier Rating",
+    "value": 50,
+    "maxValue": 0,
+    "craft": "Cold",
+    "type": "normal",
+    "required": 1
+  },
+  {
+    "text": "+[value] to [craft] Modifier Tier Rating",
+    "value": 100,
+    "maxValue": 0,
+    "craft": "Cold",
+    "type": "normal",
+    "required": 1
+  },
+  {
+    "text": "+[value] to [craft] Modifier Tier Rating",
+    "value": 50,
+    "maxValue": 0,
+    "craft": "Lightning",
+    "type": "normal",
+    "required": 1
+  },
+  {
+    "text": "+[value] to [craft] Modifier Tier Rating",
+    "value": 100,
+    "maxValue": 0,
+    "craft": "Lightning",
+    "type": "normal",
+    "required": 1
+  },
+  {
+    "text": "+[value] to [craft] Modifier Tier Rating",
+    "value": 50,
+    "maxValue": 0,
+    "craft": "Chaos",
+    "type": "normal",
+    "required": 1
+  },
+  {
+    "text": "+[value] to [craft] Modifier Tier Rating",
+    "value": 100,
+    "maxValue": 0,
+    "craft": "Chaos",
+    "type": "normal",
+    "required": 1
+  },
+  {
+    "text": "+[value] to [craft] Modifier Tier Rating",
+    "value": 50,
+    "maxValue": 0,
+    "craft": "Life",
+    "type": "normal",
+    "required": 1
+  },
+  {
+    "text": "+[value] to [craft] Modifier Tier Rating",
+    "value": 100,
+    "maxValue": 0,
+    "craft": "Life",
+    "type": "normal",
+    "required": 1
+  },
+  {
+    "text": "+[value] to [craft] Modifier Tier Rating",
+    "value": 50,
+    "maxValue": 0,
+    "craft": "Mana",
+    "type": "normal",
+    "required": 1
+  },
+  {
+    "text": "+[value] to [craft] Modifier Tier Rating",
+    "value": 100,
+    "maxValue": 0,
+    "craft": "Mana",
+    "type": "normal",
+    "required": 1
+  },
+  {
+    "text": "+[value] to [craft] Modifier Tier Rating",
+    "value": 25,
+    "maxValue": 0,
+    "craft": "Attack",
+    "type": "normal",
+    "required": 1
+  },
+  {
+    "text": "+[value] to [craft] Modifier Tier Rating",
+    "value": 50,
+    "maxValue": 0,
+    "craft": "Attack",
+    "type": "normal",
+    "required": 1
+  },
+  {
+    "text": "+[value] to [craft] Modifier Tier Rating",
+    "value": 25,
+    "maxValue": 0,
+    "craft": "Caster",
+    "type": "normal",
+    "required": 1
+  },
+  {
+    "text": "+[value] to [craft] Modifier Tier Rating",
+    "value": 50,
+    "maxValue": 0,
+    "craft": "Caster",
+    "type": "normal",
+    "required": 1
+  },
+  {
+    "text": "+[value] to [craft] Modifier Tier Rating",
+    "value": 25,
+    "maxValue": 0,
+    "craft": "Elemental",
+    "type": "normal",
+    "required": 1
+  },
+  {
+    "text": "+[value] to [craft] Modifier Tier Rating",
+    "value": 50,
+    "maxValue": 0,
+    "craft": "Elemental",
+    "type": "normal",
+    "required": 1
+  },
+  {
+    "text": "+[value] to [craft] Modifier Tier Rating",
+    "value": 50,
+    "maxValue": 0,
+    "craft": "Defence",
+    "type": "normal",
+    "required": 1
+  },
+  {
+    "text": "+[value] to [craft] Modifier Tier Rating",
+    "value": 100,
+    "maxValue": 0,
+    "craft": "Defence",
+    "type": "normal",
+    "required": 1
+  },
+  {
+    "text": "+[value] to [craft] Modifier Tier Rating",
+    "value": 50,
+    "maxValue": 0,
+    "craft": "Critical",
+    "type": "normal",
+    "required": 1
+  },
+  {
+    "text": "+[value] to [craft] Modifier Tier Rating",
+    "value": 100,
+    "maxValue": 0,
+    "craft": "Critical",
+    "type": "normal",
+    "required": 1
+  },
+  {
+    "text": "+[value] to [craft] Modifier Tier Rating",
+    "value": 50,
+    "maxValue": 0,
+    "craft": "Speed",
+    "type": "normal",
+    "required": 1
+  },
+  {
+    "text": "+[value] to [craft] Modifier Tier Rating",
+    "value": 100,
+    "maxValue": 0,
+    "craft": "Speed",
+    "type": "normal",
+    "required": 1
+  },
+  {
+    "text": "+[value] to [craft] Modifier Tier Rating",
+    "value": 50,
+    "maxValue": 0,
+    "craft": "Attribute",
+    "type": "normal",
+    "required": 1
+  },
+  {
+    "text": "+[value] to [craft] Modifier Tier Rating",
+    "value": 100,
+    "maxValue": 0,
+    "craft": "Attribute",
+    "type": "normal",
+    "required": 1
+  },
+  {
+    "text": "+[value] to [craft] Modifier Tier Rating",
+    "value": 50,
+    "maxValue": 0,
+    "craft": "Resistance",
+    "type": "normal",
+    "required": 1
+  },
+  {
+    "text": "+[value] to [craft] Modifier Tier Rating",
+    "value": 100,
+    "maxValue": 0,
+    "craft": "Resistance",
+    "type": "normal",
+    "required": 1
+  },
+  {
+    "text": "+[value] to [craft] Modifier Tier Rating",
+    "value": 50,
+    "maxValue": 0,
+    "craft": "Gem",
+    "type": "normal",
+    "required": 1
+  },
+  {
+    "text": "+[value] to [craft] Modifier Tier Rating",
+    "value": 100,
+    "maxValue": 0,
+    "craft": "Gem",
+    "type": "normal",
+    "required": 1
+  },
+  {
+    "text": "+[value] to [craft] Modifier Tier Rating",
+    "value": 50,
+    "maxValue": 0,
+    "craft": "Minion",
+    "type": "normal",
+    "required": 1
+  },
+  {
+    "text": "+[value] to [craft] Modifier Tier Rating",
+    "value": 100,
+    "maxValue": 0,
+    "craft": "Minion",
+    "type": "normal",
+    "required": 1
+  },
+  {
+    "text": "Reveals a Random Craft when BuriedRarer Crafts are more common",
+    "maxValue": 0,
+    "type": "normal",
+    "required": 1
+  },
+  {
+    "text": "Haunted by Drusia Perandus",
+    "maxValue": 0,
+    "type": "normal",
+    "required": 1
+  },
+  {
+    "text": "Haunted by Lucilius Perandus",
+    "maxValue": 0,
+    "type": "normal",
+    "required": 1
+  },
+  {
+    "text": "Haunted by Quintio Perandus",
+    "maxValue": 0,
+    "type": "normal",
+    "required": 1
+  },
+  {
+    "text": "Haunted by Kostian Perandus",
+    "maxValue": 0,
+    "type": "normal",
+    "required": 1
+  },
+  {
+    "text": "[value]% chance to craft an additional Item",
+    "value": 20,
+    "maxValue": 0,
+    "type": "normal",
+    "required": 1
+  },
+  {
+    "text": "Reroll Modifier Values of each Explicit Modifier [value] times, keeping the best outcome",
+    "value": 3,
+    "maxValue": 0,
+    "type": "normal",
+    "required": 1
+  },
+  {
+    "text": "Reroll Modifier Values of each Explicit Modifier [value] times, keeping the best outcome",
+    "value": 6,
+    "maxValue": 0,
+    "type": "normal",
+    "required": 1
+  },
+  {
+    "text": "[value]% increased Effect of Corpses in this Grave Row",
+    "value": 25,
+    "maxValue": 0,
+    "type": "normal",
+    "required": 1
+  },
+  {
+    "text": "[value]% increased Effect of Corpses in this Grave Column",
+    "value": 25,
+    "maxValue": 0,
+    "type": "normal",
+    "required": 1
+  },
+  {
+    "text": "Haunted by Hadrius Veruso",
+    "maxValue": 0,
+    "type": "normal",
+    "required": 1
+  },
+  {
+    "text": "Haunted by Titiana Veruso",
+    "maxValue": 0,
+    "type": "normal",
+    "required": 1
+  },
+  {
+    "text": "Haunted by Claudia Veruso",
+    "maxValue": 0,
+    "type": "normal",
+    "required": 1
+  },
+  {
+    "text": "Haunted by Fausta Veruso",
+    "maxValue": 0,
+    "type": "normal",
+    "required": 1
+  },
+  {
+    "text": "Haunted by Albanus Phrecia",
+    "maxValue": 0,
+    "type": "normal",
+    "required": 1
+  },
+  {
+    "text": "Haunted by Valerius Phrecia",
+    "maxValue": 0,
+    "type": "normal",
+    "required": 1
+  },
+  {
+    "text": "Haunted by Fabricia Phrecia",
+    "maxValue": 0,
+    "type": "normal",
+    "required": 1
+  },
+  {
+    "text": "Haunted by Iris Phrecia",
+    "maxValue": 0,
+    "type": "normal",
+    "required": 1
+  },
+  {
+    "text": "Haunted by Lilius Nevalius",
+    "maxValue": 0,
+    "type": "normal",
+    "required": 1
+  },
+  {
+    "text": "Haunted by Octavius Nevalius",
+    "maxValue": 0,
+    "type": "normal",
+    "required": 1
+  },
+  {
+    "text": "Haunted by Marius Nevalius",
+    "maxValue": 0,
+    "type": "normal",
+    "required": 1
+  },
+  {
+    "text": "Haunted by Julianis Nevalius",
+    "maxValue": 0,
+    "type": "normal",
+    "required": 1
+  },
+  {
+    "text": "Haunted by Asinia Grattus",
+    "maxValue": 0,
+    "type": "normal",
+    "required": 1
+  },
+  {
+    "text": "Haunted by Legius Grattus",
+    "maxValue": 0,
+    "type": "normal",
+    "required": 1
+  },
+  {
+    "text": "Haunted by Tyche Grattus",
+    "maxValue": 0,
+    "type": "normal",
+    "required": 1
+  },
+  {
+    "text": "Haunted by Draven Grattus",
+    "maxValue": 0,
+    "type": "normal",
+    "required": 1
+  },
+  {
+    "text": "[value]% increased chance for Prefix Modifiers",
+    "value": 100,
+    "maxValue": 0,
+    "type": "normal",
+    "required": 1
+  },
+  {
+    "text": "[value]% increased chance for Prefix Modifiers",
+    "value": 300,
+    "maxValue": 0,
+    "type": "normal",
+    "required": 1
+  },
+  {
+    "text": "[value]% increased chance of Suffix Modifiers",
+    "value": 100,
+    "maxValue": 0,
+    "type": "normal",
+    "required": 1
+  },
+  {
+    "text": "[value]% increased chance of Suffix Modifiers",
+    "value": 300,
+    "maxValue": 0,
+    "type": "normal",
+    "required": 1
+  },
+  {
+    "text": "+[value] to Item Level",
+    "value": 1,
+    "maxValue": 0,
+    "type": "normal",
+    "required": 1
+  },
+  {
+    "text": "Ring is a Breach Ring",
+    "maxValue": 0,
+    "type": "normal",
+    "required": 1
+  },
+  {
+    "text": "Belt is a Stygian Vise",
+    "maxValue": 0,
+    "type": "normal",
+    "required": 1
+  },
+  {
+    "text": "Reforge socket numbers [value] times, keeping the greatest number of sockets",
+    "value": 30,
+    "maxValue": 0,
+    "type": "normal",
+    "required": 1
+  },
+  {
+    "text": "Reforge socket numbers [value] times, keeping the greatest number of sockets",
+    "value": 200,
+    "maxValue": 0,
+    "type": "normal",
+    "required": 1
+  },
+  {
+    "text": "Reforge socket links [value] times, keeping the greatest number of links",
+    "value": 20,
+    "maxValue": 0,
+    "type": "normal",
+    "required": 1
+  },
+  {
+    "text": "Reforge socket links [value] times, keeping the greatest number of links",
+    "value": 200,
+    "maxValue": 0,
+    "type": "normal",
+    "required": 1
+  },
+  {
+    "text": "Randomises the numeric values of base Defences on an Armour [value] times, keeping the best outcome",
+    "value": 3,
+    "maxValue": 0,
+    "type": "normal",
+    "required": 1
+  },
+  {
+    "text": "Randomises the numeric values of base Defences on an Armour [value] times, keeping the best outcome",
+    "value": 6,
+    "maxValue": 0,
+    "type": "normal",
+    "required": 1
+  },
+  {
+    "text": "Reroll Implicit Modifier Values [value] times, keeping the best outcome",
+    "value": 3,
+    "maxValue": 0,
+    "type": "normal",
+    "required": 1
+  },
+  {
+    "text": "Reroll Implicit Modifier Values [value] times, keeping the best outcome",
+    "value": 6,
+    "maxValue": 0,
+    "type": "normal",
+    "required": 1
+  },
+  {
+    "text": "Armour can roll Haunted Modifiers[value]% increased chance of Haunted Modifiers",
+    "value": 50,
+    "maxValue": 0,
+    "type": "normal",
+    "required": 1
+  },
+  {
+    "text": "Armour can roll Haunted Modifiers[value]% increased chance of Haunted Modifiers",
+    "value": 150,
+    "maxValue": 0,
+    "type": "normal",
+    "required": 1
+  },
+  { "text": "Creates a Ring", "maxValue": 0, "type": "item", "required": 1 },
+  {
+    "text": "Creates an Amulet",
+    "maxValue": 0,
+    "type": "item",
+    "required": 1
+  },
+  { "text": "Creates a Belt", "maxValue": 0, "type": "item", "required": 1 },
+  {
+    "text": "Reroll Base Type [value] times, keeping the Base Type with the highest Level Requirement",
+    "value": 5,
+    "maxValue": 0,
+    "type": "normal",
+    "required": 1
+  },
+  {
+    "text": "[value]% increased Effect of Beast Corpses adjacent to this Corpse",
+    "value": 40,
+    "maxValue": 0,
+    "type": "amp",
+    "required": 1
+  },
+  {
+    "text": "[value]% increased Effect of Undead Corpses adjacent to this Corpse",
+    "value": 40,
+    "maxValue": 0,
+    "type": "amp",
+    "required": 1
+  },
+  {
+    "text": "[value]% increased Effect of Humanoid Corpses adjacent to this Corpse",
+    "value": 40,
+    "maxValue": 0,
+    "type": "amp",
+    "required": 1
+  },
+  {
+    "text": "[value]% increased Effect of Construct Corpses adjacent to this Corpse",
+    "value": 40,
+    "maxValue": 0,
+    "type": "amp",
+    "required": 1
+  },
+  {
+    "text": "[value]% increased Effect of Demon Corpses adjacent to this Corpse",
+    "value": 40,
+    "maxValue": 0,
+    "type": "amp",
+    "required": 1
+  },
+  {
+    "text": "[value]% chance for Beast Corpses to not be consumed when Exorcising, up to 50%",
+    "value": 5,
+    "maxValue": 50,
+    "type": "normal",
+    "required": 1
+  },
+  {
+    "text": "[value]% chance for Undead Corpses to not be consumed when Exorcising, up to 50%",
+    "value": 5,
+    "maxValue": 50,
+    "type": "normal",
+    "required": 1
+  },
+  {
+    "text": "[value]% chance for Humanoid Corpses to not be consumed when Exorcising, up to 50%",
+    "value": 5,
+    "maxValue": 50,
+    "type": "normal",
+    "required": 1
+  },
+  {
+    "text": "[value]% chance for Construct Corpses to not be consumed when Exorcising, up to 50%",
+    "value": 5,
+    "maxValue": 50,
+    "type": "normal",
+    "required": 1
+  },
+  {
+    "text": "[value]% chance for Demon Corpses to not be consumed when Exorcising, up to 50%",
+    "value": 5,
+    "maxValue": 50,
+    "type": "normal",
+    "required": 1
+  },
+  {
+    "text": "Corpses in adjacent Graves and this Corpse have their crafting outcomes randomised when this Corpse is buried",
+    "maxValue": 0,
+    "type": "normal",
+    "required": 1
+  },
+  {
+    "text": "[value]% chance to create a Split Copy",
+    "value": 25,
+    "maxValue": 0,
+    "type": "normal",
+    "required": 1
+  },
+  {
+    "text": "Item is Corrupted[value]% increased chance for Corruption Implicit Modifiers",
+    "value": 50,
+    "maxValue": 0,
+    "type": "normal",
+    "required": 1
+  },
+  {
+    "text": "[value]% chance to create a Mirrored Copy",
+    "value": 25,
+    "maxValue": 0,
+    "type": "normal",
+    "required": 1
+  },
+  {
+    "text": "Creates a Talisman",
+    "maxValue": 0,
+    "type": "item",
+    "required": 1
+  },
+  {
+    "text": "Creates a Bone Ring",
+    "maxValue": 0,
+    "type": "item",
+    "required": 1
+  },
+  {
+    "text": "Creates a Ritual Helmet, Gloves or Boots",
+    "maxValue": 0,
+    "type": "item",
+    "required": 1
+  },
+  {
+    "text": "Creates a Helmet, Gloves or Boots with Ward",
+    "maxValue": 0,
+    "type": "item",
+    "required": 1
+  },
+  {
+    "text": "Creates an Experimented Weapon",
+    "maxValue": 0,
+    "type": "item",
+    "required": 1
+  },
+  {
+    "text": "Has Shaper or Elder Influence[value]% increased chance of Influence Modifiers",
+    "value": 200,
+    "maxValue": 0,
+    "type": "normal",
+    "required": 1
+  },
+  {
+    "text": "Has a random Conqueror Influence[value]% increased chance of Influence Modifiers",
+    "value": 200,
+    "maxValue": 0,
+    "type": "normal",
+    "required": 1
+  },
+  {
+    "text": "Creates a Vermillion RingRequires at least [value] other Corpse of the same Monster Name",
+    "value": 1,
+    "maxValue": 0,
+    "type": "item",
+    "required": 1
+  },
+  {
+    "text": "Item sells for much more to VendorsRequires at least 2 other Corpses of the same Monster Name",
+    "type": "normal",
+    "required": 2
+  },
+  {
+    "text": "+[value] to minimum number of Linked Sockets, up to a maximum of 4",
+    "value": 1,
+    "maxValue": 4,
+    "type": "normal",
+    "required": 1
+  },
+  {
+    "text": "+[value] to minimum number of Linked Sockets, up to a maximum of 5",
+    "value": 1,
+    "maxValue": 5,
+    "type": "normal",
+    "required": 1
+  },
+  {
+    "text": "+[value] to minimum number of Linked Sockets, up to a maximum of 6",
+    "value": 1,
+    "maxValue": 6,
+    "type": "normal",
+    "required": 1
+  },
+  {
+    "text": "Creates a Steel Ring Requires at least 1 other Corpse of the same Monster Name",
+    "type": "item",
+    "required": 1
+  },
+  {
+    "text": "Creates an Opal RingRequires at least 1 other Corpse of the same Monster Name",
+    "type": "item",
+    "required": 1
+  },
+  {
+    "text": "Creates an Iolite RingRequires at least 1 other Corpse of the same Monster Name",
+    "type": "item",
+    "required": 1
+  },
+  {
+    "text": "Creates a Cerulean RingRequires at least 1 other Corpse of the same Monster Name",
+    "type": "item",
+    "required": 1
+  },
+  {
+    "text": "+[value] to Modifier Tier Rating",
+    "value": 50,
+    "maxValue": 0,
+    "type": "normal",
+    "required": 1
+  },
+  {
+    "text": "Creates a Grasping Mail",
+    "maxValue": 0,
+    "type": "item",
+    "required": 1
+  },
+  {
+    "text": "Creates a Sacrificial Garb",
+    "maxValue": 0,
+    "type": "item",
+    "required": 1
+  }
+]
