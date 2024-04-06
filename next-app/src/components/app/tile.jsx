@@ -337,7 +337,7 @@ function Tile({tile, x, y, onChange, amps, maxValue, clickDisabled, paintTile}) 
             {corpseTypes.map((type) =>{
               let isSelected = tile?.corpse === type
               return (
-                <Button variant='ghost' className={`h-full text-2xl flex gap-2 ${isSelected && 'bg-cyan-950'}`} onClick={() => handleAmpSelect(type)}>
+                <Button key={type} variant='ghost' className={`h-full text-2xl flex gap-2 ${isSelected && 'bg-cyan-950'}`} onClick={() => handleAmpSelect(type)}>
                   <div className='text-cyan-500 bg-inherit'>{getAMPicon(type)}</div>
                   {type.toUpperCase()}
                 </Button>

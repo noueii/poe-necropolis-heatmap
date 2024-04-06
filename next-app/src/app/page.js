@@ -492,7 +492,9 @@ export default function Home() {
               )
             })}
           </div>
-          <Button className='flex gap-1 items-center'><GiCoffin className="bg-transparent rotate-90"/>Coffin shop</Button>
+          <Button className='flex gap-1 items-center'>
+            <GiCoffin className="bg-transparent rotate-90"/>Coffin shop
+          </Button>
         </div>
       </div>
       <div className="w-full flex justify-center flex-col gap-2 items-center">
