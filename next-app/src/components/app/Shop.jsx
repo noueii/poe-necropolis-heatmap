@@ -123,7 +123,7 @@ function Shop({shop}) {
 
 
               
-                <ShopTile item={item} onClick={handleClickTile}/>
+                <ShopTile item={item} onClick={handleClickTile} key={item}/>
             )
             
           })}
