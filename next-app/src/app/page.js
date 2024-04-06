@@ -13,6 +13,7 @@ import { FaArrowRightArrowLeft, FaUpDownLeftRight } from "react-icons/fa6";
 import { FaArrowsUpDownLeftRight } from "react-icons/fa6";
 import { BiSolidEraser } from "react-icons/bi";
 import { GiCoffin } from "react-icons/gi";
+import Shop from "@/components/app/Shop";
 
 export default function Home() {
   const defaultMatrix = [
@@ -324,7 +325,7 @@ export default function Home() {
   
 
   const log = () =>{
-    console.log(JSON.stringify(tiles))
+    console.log(getShop())
   }
 
   const calculateMaxAmps = () =>{
@@ -370,142 +371,218 @@ export default function Home() {
     setTiles(generateTileMatrix(defaultMatrix))
   }
 
+  const getShop = () =>{
+    let result = []
+    for(let i = 0; i < tiles.length; i++){
+      for(let j = 0; j < tiles[i].length; j++){
+        let currentTile = tiles[i][j]
+        if(!currentTile?.text) continue
+        currentTile.shop = 'any'
+        if(currentTile.type === 'amp') {
+          if(currentTile.ampType === 'adj'){
+            currentTile.shop = currentTile.corpse
+          }
+        }
+        else {
+          if(currentTile.tagType === 'increase' || currentTile.tagType === 'decrease'){
+            let adjAmps = getAdjAmps(i, j)
+            let corpseTypes = []
+            for(let k = 0; k < adjAmps.length; k++){
+              let foundAdj = false
+              for(let m = 0; m < corpseTypes.length; m++){
+                if(corpseTypes[m].corpse === adjAmps[k].corpse) {
+                  corpseTypes[m].value ++
+                  foundAdj = true
+                  break
+                }
+                
+              }
+              if(!foundAdj) corpseTypes.push({corpse: adjAmps[k].corpse, value: 1})
+            }
+            if(currentTile.craft === 'Physical') console.log(corpseTypes)
+            let definiteCorpse = 'any'
+            let maxCorpse = {corpse: 'any', value: 0}
+            for(let m = 0; m < corpseTypes.length; m++){
+              if(corpseTypes[m].value > maxCorpse.value){
+                maxCorpse = corpseTypes[m]
+              }
+            }
+            currentTile.shop = maxCorpse.corpse
+          }
+        }
+        let resultFound = false
+        for(let k = 0; k < result.length; k++){
+          if(isSameTileType(result[k], currentTile)){
+            resultFound = true
+            result[k].amount++
+            let found = false
+            for(let m = 0; m < result[k].shoplist.length; m++){
+              if(result[k].shoplist[m].corpse === currentTile.shop){
+                result[k].shoplist[m].value ++
+                found = true
+                break
+              }
+            }
+            if(!found){
+              result[k].shoplist.push({corpse: currentTile.shop, value: 1})
+            }
+          }
+        }
+        if(!resultFound){
+          result.push({
+            ...tiles[i][j],
+            amount: 1,
+            shoplist: [{corpse: currentTile.shop, value: 1}]
+          })
+        }       
+
+      }
+    }
+    return result
+  }
+
+  const isSameTileType = (a,b) =>{
+    if(a.text !== b.text) return false
+    if(a.value !== b.value) return false
+    if(a.craft !== b.craft) return false
+    if(a.tier !== b.tier) return false
+    return true
+  }
+
  
   
 
 
   return (
-    <main className="flex h-screen p-12 bg-background w-full">
-      <div className="w-full h-full flex flex-col rounded gap-4">
-        <div className="w-full h-full flex rounded gap-4">
-        <div className="flex flex-col  w-full h-full justify-between gap-4">
-          <div>
-            <p className="text-2xl">PoE Graveyard Simulator</p>
-          </div>
-          <div className="w-full bg-zinc-900 rounded justify-end p-2 flex gap-2">
-            
-            <Button onClick={() => changePaintTile(eraseTile)} 
-              className={`bg-inherit border-0 hover:bg-purple-600 text-purple-600 hover:text-background flex gap-2 items-center 
-              ${paintTile?.text === 'erase' && 'bg-purple-600 text-background'}`}
-            >
-              <BiSolidEraser className="bg-transparent text-xl"/>  
-            </Button>
-
-            {buttonAmps.map((b) =>{
-              let isSelected = paintTile?.text === b.text
-              let clicked = false
-              return (
-
-                <Button variant='ghost' 
-                className={`bg-inherit border-0 hover:bg-purple-600 text-purple-600 hover:text-background flex gap-2 items-center 
-                ${isSelected && 'bg-purple-600 text-background'} `}
-                onClick={() => changePaintTile(b)}
-                key={b.text}
-                >
-                  {b.text === 'ROW' && <FaArrowRightArrowLeft className="bg-inherit"/>}
-                  {b.text === 'COL' && <FaArrowRightArrowLeft className="rotate-90 bg-inherit"/>}
-                  {b.text === 'ADJ' && <FaUpDownLeftRight className="bg-inherit"/>}
-                  <p className="bg-inherit"> AMP {b.text}</p>
-                </Button>
-              )
-            })}
-
-
-            
-            <Button className='bg-red-900' onClick={() => resetBoard()}>RESET BOARD</Button>
-            <Dialog onOpenChange={() => resetExportImport()}>
-              <DialogTrigger>
-                <Button className='bg-red-900'>IMPORT BOARD</Button>
-              </DialogTrigger>
-              <DialogContent className='border-0'>
-                <DialogTitle>Import/Export board</DialogTitle>
-                <DialogDescription>HEY</DialogDescription>
-                <div className="w-full flex flex-col gap-2">
-                  <Textarea className='border-2 border-white ring-0 border-opacity-20' 
-                  placeholder='Paste your code here'
-                  onChange={(e) => setImportText(e.target.value)}>
-                  
-                  </Textarea>
-                  <Button onClick={() => exportBoard()}> {!exported ? 'EXPORT' : 'Copied to clipboard !'} </Button>
-                  <Button onClick={() => importMatrix()}> IMPORT </Button>
-                </div>
-              </DialogContent>
-
-            </Dialog>
-            
-          </div>
-          <div className="w-full h-full flex flex-col">
-            {tiles.map((row, indexRow) =>{
-              return (
-                <div 
-                key={indexRow}
-                className="h-full flex flex-row justify-between w-full items-center justify-items-center overflow-hidden ">
-                  {row.map((col, indexCol) =>{
-                    
-
-                    return (
-                      <div 
-                      key={indexCol}
-                      className={`w-full h-full flex  justify-center items-center rounded cursor-pointer `}
-                      onClick={() => console.log('HEY')}
-                      >
-                        <Tile 
-                          tile={col}
-                          x={indexRow}
-                          y={indexCol}
-                          onChange={changeTile}
-                          amps={getTileAmps(indexRow, indexCol)}
-                          maxValue={calculateMaxAmps()}
-                          key={'tile-' + indexRow + '-' + indexCol}
-                          clickDisabled={paintTile !== undefined}
-                          paintTile={paintSelectedTile}
-                          
-                        />
-                      </div>
-                    )
-                  })}
-                </div>
-              )
-            })}
+    <main className="flex h-[100dvh]  bg-background w-full p-2 ">
+      <div className="w-full h-full  flex flex-col rounded gap-4 ">
+        <div className="w-full  flex rounded gap-4 overflow-hidden h-full p-12 pb-0">
+          <div className="flex flex-col  w-full h-full justify-between gap-4">
+            <div>
+              <p className="text-2xl">PoE Graveyard Simulator</p>
             </div>
-        </div>
-
-        <div className="w-1/5 h-full overflow-hidden rounded gap-4 flex flex-col">
-          <div className="text-2xl">Applied modifiers</div>
-          <div className="text-2xl flex w-full h-full flex-col overflow-scroll gap-2">
-            {sortAppliedMods()?.map((mod,index) =>{
-
-              let newValue = (mod.value *(1+ mod.increase/100)).toFixed(2)
-              let residual = mod.value > mod?.maxValue ? mod?.maxValue - mod.value : undefined
+            <div className="w-full bg-zinc-900 rounded justify-end p-2 flex gap-2">
               
-              let cText = mod?.text?.replace('[value]', mod.value.toFixed(2)).replace('[craft]',mod?.craft)
-              
-              
-              console.log(mod)
+              <Button onClick={() => changePaintTile(eraseTile)} 
+                className={`bg-inherit border-0 hover:bg-purple-600 text-purple-600 hover:text-background flex gap-2 items-center 
+                ${paintTile?.text === 'erase' && 'bg-purple-600 text-background'}`}
+              >
+                <BiSolidEraser className="bg-transparent text-xl"/>  
+              </Button>
 
-              return (
-                <div
-                  key={index}
-                  className="bg-background brightness-150 rounded text-lg flex items-center w-full px-1 py-2  ">
-                  <TileTextDisplay tile={mod} value={mod.value} size={'sm'} type={'short'}/>
-                </div>
-              )
-            })}
+              {buttonAmps.map((b) =>{
+                let isSelected = paintTile?.text === b.text
+                let clicked = false
+                return (
+
+                  <Button variant='ghost' 
+                  className={`bg-inherit border-0 hover:bg-purple-600 text-purple-600 hover:text-background flex gap-2 items-center 
+                  ${isSelected && 'bg-purple-600 text-background'} `}
+                  onClick={() => changePaintTile(b)}
+                  key={b.text}
+                  >
+                    {b.text === 'ROW' && <FaArrowRightArrowLeft className="bg-inherit"/>}
+                    {b.text === 'COL' && <FaArrowRightArrowLeft className="rotate-90 bg-inherit"/>}
+                    {b.text === 'ADJ' && <FaUpDownLeftRight className="bg-inherit"/>}
+                    <p className="bg-inherit"> AMP {b.text}</p>
+                  </Button>
+                )
+              })}
+
+
+              <Button onClick={() => log()}>Log</Button>
+              <Button className='bg-red-900' onClick={() => resetBoard()}>RESET BOARD</Button>
+              <Dialog onOpenChange={() => resetExportImport()}>
+                <DialogTrigger>
+                  <Button className='bg-red-900'>IMPORT BOARD</Button>
+                </DialogTrigger>
+                <DialogContent className='border-0'>
+                  <DialogTitle>Import/Export board</DialogTitle>
+                  <DialogDescription>HEY</DialogDescription>
+                  <div className="w-full flex flex-col gap-2">
+                    <Textarea className='border-2 border-white ring-0 border-opacity-20' 
+                    placeholder='Paste your code here'
+                    onChange={(e) => setImportText(e.target.value)}>
+                    
+                    </Textarea>
+                    <Button onClick={() => exportBoard()}> {!exported ? 'EXPORT' : 'Copied to clipboard !'} </Button>
+                    <Button onClick={() => importMatrix()}> IMPORT </Button>
+                  </div>
+                </DialogContent>
+
+              </Dialog>
+              
+            </div>
+            <div className="w-full h-full flex flex-col">
+              {tiles.map((row, indexRow) =>{
+                return (
+                  <div 
+                  key={indexRow}
+                  className="h-full flex flex-row justify-between w-full items-center justify-items-center overflow-hidden ">
+                    {row.map((col, indexCol) =>{
+                      
+
+                      return (
+                        <div 
+                        key={indexCol}
+                        className={`w-full h-full flex  justify-center items-center rounded cursor-pointer `}
+                        onClick={() => console.log('HEY')}
+                        >
+                          <Tile 
+                            tile={col}
+                            x={indexRow}
+                            y={indexCol}
+                            onChange={changeTile}
+                            amps={getTileAmps(indexRow, indexCol)}
+                            maxValue={calculateMaxAmps()}
+                            key={'tile-' + indexRow + '-' + indexCol}
+                            clickDisabled={paintTile !== undefined}
+                            paintTile={paintSelectedTile}
+                            
+                          />
+                        </div>
+                      )
+                    })}
+                  </div>
+                )
+              })}
+              </div>
           </div>
-          <Button className='flex gap-1 items-center'>
-            <GiCoffin className="bg-transparent rotate-90"/>Coffin shop
-          </Button>
+
+          <div className="w-1/5 h-full overflow-hidden rounded gap-4 flex flex-col">
+            <div className="text-2xl">Applied modifiers</div>
+            <div className="text-2xl flex w-full h-full flex-col overflow-scroll gap-2">
+              {sortAppliedMods()?.map((mod,index) =>{
+
+                let newValue = (mod.value *(1+ mod.increase/100)).toFixed(2)
+                let residual = mod.value > mod?.maxValue ? mod?.maxValue - mod.value : undefined
+                
+                let cText = mod?.text?.replace('[value]', mod.value.toFixed(2)).replace('[craft]',mod?.craft)
+                
+                
+                console.log(mod)
+
+                return (
+                  <div
+                    key={index}
+                    className="bg-background brightness-150 rounded text-lg flex items-center w-full px-1 py-2  ">
+                    <TileTextDisplay tile={mod} value={mod.value} size={'sm'} type={'short'}/>
+                  </div>
+                )
+              })}
+            </div>
+            <Shop shop={getShop()}/>
+          </div>
         </div>
-      </div>
-      <div className="w-full flex justify-center flex-col gap-2 items-center">
-        <div className="flex gap-2">
-          <p className="opacity-40">Made by</p>
-          <p className="text-orange-600 opacity-100 ">@noueii</p>
+        <div className="w-full flex p-2 justify-center flex-col gap-2 items-center ">
+          <div className="flex gap-2">
+            <p className="opacity-40">Made by</p>
+            <p className="text-orange-600 opacity-100 ">@noueii</p>
+          </div>
+          <div className="text-sm opacity-40">
+            This product is not affiliated with or endorsed by Grinding Gear Games in any way.
+          </div>
         </div>
-        <div className="text-sm opacity-40">
-          This product is not affiliated with or endorsed by Grinding Gear Games in any way.
-        </div>
-      </div>
       </div>
     </main>
   );

@@ -4,7 +4,7 @@ import { FaAnglesUp, FaAnglesDown, FaAngleUp, FaAngleDown, FaLock, FaDice, FaPlu
 import { GiHaunting } from "react-icons/gi";
 import { TbPigMoney } from "react-icons/tb";
 
-function TileTextDisplay({tile, value, size, type}) {
+function TileTextDisplay({tile, value, size, type, className}) {
 
   if(!tile) return
 
@@ -80,7 +80,7 @@ function TileTextDisplay({tile, value, size, type}) {
 
   if(type === 'short' && tile?.craft)
     return (
-      <div className={`flex flex-wrap bg-inherit text-wrap  font-normal ${textSize}`}>
+      <div className={`flex flex-wrap bg-inherit text-wrap  font-normal ${textSize} ${className}`}>
         <p className={`${isIncrease && 'text-green-500'} ${isDecrease && 'text-red-500'} flex items-center gap-1`}>
           {getIcon()}
           {isIncrease && '+'}

@@ -2,7 +2,7 @@ import React from 'react'
 import { FaAnglesUp, FaAnglesDown, FaAngleUp, FaAngleDown, FaLock, FaDice, FaPlus, FaMinus } from "react-icons/fa6";
 import { GiHaunting } from "react-icons/gi";
 import { TbPigMoney } from "react-icons/tb";
-
+import { RiGhostLine } from "react-icons/ri";
 
 
 function TileTag({tile}) {
@@ -29,6 +29,7 @@ if(tile.type === 'amp') return
     if(type === 'save') return <TbPigMoney/>
     if(type === 'add') return <FaPlus className='text-green-500'/>
     if(type === 'minus') return <FaMinus className='text-red-500'/>
+    if(type === 'haunt') return <RiGhostLine/>
     return ''
   }
 
