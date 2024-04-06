@@ -503,7 +503,7 @@ export default function Home() {
           <p className="text-orange-600 opacity-100 ">@noueii</p>
         </div>
         <div className="text-sm opacity-40">
-          This product isn't affiliated with or endorsed by Grinding Gear Games in any way.
+          This product isn&apost affiliated with or endorsed by Grinding Gear Games in any way.
         </div>
       </div>
       </div>
