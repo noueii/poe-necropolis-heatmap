@@ -12,6 +12,12 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '../ui/tabs'
 import { FaArrowRightArrowLeft } from "react-icons/fa6";
 import { FaArrowsUpDownLeftRight } from "react-icons/fa6";
 import TileTag from './TileTag'
+import { IoPaw } from "react-icons/io5";
+import { IoSkullOutline } from "react-icons/io5";
+import { GiHornedSkull } from "react-icons/gi";
+import { GiStoneBust } from "react-icons/gi";
+import { PiPersonLight } from "react-icons/pi";
+
 
 import {
   HoverCard,
@@ -31,6 +37,10 @@ function Tile({tile, x, y, onChange, amps, maxValue, clickDisabled, paintTile}) 
   const [search, setSearch] = useState('')
 
   const ampsScore = calculateAmps(tile)
+
+  const corpseTypes = [
+    'beast','undead','humanoid','construct','demon'
+  ]
 
 
   const isSearch = (el) =>{
@@ -80,7 +90,7 @@ function Tile({tile, x, y, onChange, amps, maxValue, clickDisabled, paintTile}) 
   }
 
   const getAmpText = (tile) =>{
-    return tile?.text?.replace('[value]', ampsScore).replace('[craft]',tile?.craft?.toUpperCase())
+    return tile?.text?.replace('[value]', tile.value).replace('[craft]',tile?.craft?.toUpperCase())
   }
 
   const getTileText = (tile) =>{
@@ -110,34 +120,59 @@ function Tile({tile, x, y, onChange, amps, maxValue, clickDisabled, paintTile}) 
       paintTile(x,y)
       return
     }
-    setOpenDialog(!openDialog)
+    if(tile.type !== 'amp'){
+      setOpenDialog(!openDialog)
+      return
+    }
+    if(tile.type === 'amp' && tile.ampType ==='adj') setOpenDialog(!openDialog)
+   
+  }
+
+  const getAMPicon = (type) =>{
+    switch(type){
+      case 'beast': return <IoPaw className='bg-inherit text-inherit'/>
+      case 'undead': return <IoSkullOutline className='bg-inherit text-inherit'/>
+      case 'demon': return <GiHornedSkull className='bg-inherit text-inherit'/>
+      case 'construct': return <GiStoneBust className='bg-inherit text-inherit'/>
+      case 'humanoid': return <PiPersonLight className='bg-inherit text-inherit'/>
+    }
+  }
+
+  const handleAmpSelect = (type) =>{
+    let newTile = tile
+    newTile.corpse = type
+    onChange(newTile, x, y)
+
+    console.log(newTile)
+    setOpenDialog(false)
   }
 
 
   return (
-    <div className='w-full h-full flex' onClick={() => console.log('first')}>
+    <div className='w-full h-full flex overflow-hidden'>
     <Dialog className='' open={openDialog} onOpenChange={() => handleTileClick()} >
       <DialogTrigger 
 
         className={`w-full h-full bg-background rounded`}>
         
         <div className={`bg-inherit w-full h-full flex items-center justify-center rounded
-          border-2 border-background 
-          ${tile.disabled ? 'hover:scale-100 cursor-default' : 'hover:scale-110 cursor-pointer'}
+          border-2 border-background  overflow-hidden
+          ${tile.disabled ? 'hover:scale-100 cursor-default' : 'hover:scale-110  cursor-pointer'}
           `}
           onClick={() => console.log('hey')}
           style={rgb && {background: `rgba(${rgb.red},${rgb.green},${rgb.blue},0.2)`}}
         >
          
               { !tile.disabled &&
-              <div className='w-full h-full bg-inherit bg-opacity-40 overflow-hidden'
+              <div className='w-full h-full bg-inherit bg-opacity-40 overflow-hidden flex'
               style={rgb && {background: `rgba(${rgb.red},${rgb.green},${rgb.blue},0.2)`}}>
                 
                 {tile?.type &&
                   <div className={`w-full h-full bg-inherit
+                  text-sm
                   ${tile.type === 'normal' && 'bg-indigo-900'}
                   ${tile.type === 'amp' && 'bg-purple-900'}
-                  flex items-center justify-center flex-col 
+                  flex items-center justify-start flex-col 
                   `}>
 
                     {(tile.type === 'normal' || tile.type === 'item') &&
@@ -148,14 +183,14 @@ function Tile({tile, x, y, onChange, amps, maxValue, clickDisabled, paintTile}) 
                     </div>
                     }
                     
+                    {tile?.corpse && <div className='absolute justify-start pt-1 bg-transparent text-xl self-start p-1'>{getAMPicon(tile.corpse)}</div>}
                     
-                    
-                    {tile?.ampType === 'col' && <FaArrowRightArrowLeft className='rotate-90 bg-inherit' size={'40%'}/>}
-                    {tile?.ampType === 'row' && <FaArrowRightArrowLeft className='bg-inherit ' size={'40%'}/>}
-                    {tile?.ampType === 'adj' && <FaArrowsUpDownLeftRight className='bg-inherit' size={'40%'}/>}
+                    {tile?.ampType === 'col' && <FaArrowRightArrowLeft className='rotate-90 bg-inherit h-full' size={'40%'}/>}
+                    {tile?.ampType === 'row' && <FaArrowRightArrowLeft className='bg-inherit h-full' size={'40%'}/>}
+                    {tile?.ampType === 'adj' && <FaArrowsUpDownLeftRight className='bg-inherit h-full' size={'40%'}/>}
                     {(tile?.type === 'normal' || tile?.type === 'item') && 
                     
-                    <div className='bg-indigo-900 h-full w-full flex items-center justify-center flex-col text-sm'>
+                    <div className='bg-indigo-900 h-full w-full flex items-center justify-center flex-col text-xs overflow-hidden'>
                       {tile.tag && <p className='bg-inherit'>{tile.tag}</p>}
                       {/* <TileText tile={tile} value={tile.value * (1 + calculateAmps()/100)}/> */}
                       {tile.value && 
@@ -189,106 +224,129 @@ function Tile({tile, x, y, onChange, amps, maxValue, clickDisabled, paintTile}) 
       </DialogTrigger>
       {(!tile.disabled && !clickDisabled)&&
       <DialogContent className='text-white text-opacity-70 border-0 max-w-screen w-screen lg:w-1/2 lg:max-w-1/2 flex min-h-3/4 h-3/4'>
-        <div className={'w-full'}>
+        
+        {tile.type !== 'amp' &&
+        <>
+          <div className={'w-full'}>
+            <div className={'w-full h-full overflow-hidden flex flex-col'}>
+
+              <DialogHeader  >
+                <DialogTitle>Applied Amplifiers</DialogTitle>
+                <DialogDescription>
+                  A list of modifiers applied to this tile from other sources
+                </DialogDescription>
+              </DialogHeader>
+
+              <div className='w-full h-full mt-4 overflow-scroll'>
+                {amps.map((amp, index) =>{
+                  return (
+                    <div className='border-2 border-zinc-500 border-opacity-40 rounded p-1 ' key={'amp-' + index}>{getAmpText(amp)}</div>
+                  )
+                })}
+              </div>
+            </div>
+          </div>
+          <Separator orientation='vertical' className='h-full w-px bg-white' />
           <div className={'w-full h-full overflow-hidden flex flex-col'}>
-          <DialogHeader  >
-            <DialogTitle>Applied Amplifiers</DialogTitle>
-            <DialogDescription>
-              A list of modifiers applied to this tile from other sources
-            </DialogDescription>
-          </DialogHeader>
-
-          <div className='w-full h-full mt-4 overflow-scroll'>
-            {amps.map((amp, index) =>{
-              return (
-                <div className='border-2 border-zinc-500 border-opacity-40 rounded p-1 ' key={'amp-' + index}>{getAmpText(amp)}</div>
-              )
-            })}
-          </div>
-        </div>
-
-        </div>
-        <Separator orientation='vertical' className='h-full w-px bg-white' />
-        <div className={'w-full h-full overflow-hidden flex flex-col'}>
-          <DialogHeader >
-            <DialogTitle>Tile Modifier</DialogTitle>
-            <DialogDescription>
-              Your current tile modifier
-            </DialogDescription>
-            
-          </DialogHeader>
-
-          <div className='flex w-full justify-between items-center'>
-            {tile.text && <div className='text-sm'><TileTextDisplay tile={tile} value={tile.value * (1 + ampsScore/100)} size={'sm'}/></div>}
-            <Button className='bg-inherit text-red-900 hover:text-foreground hover:bg-red-950' onClick={() => resetTile()}>Remove</Button>
-          </div>
-          <div className='flex flex-col gap-2 pt-2 h-full overflow-hidden'>
-            <Tabs className='h-full overflow-hidden flex flex-col' defaultValue='amps'>
-              <TabsList className='w-full bg-background brightness-150 flex justify-items-stretch data-[state=active]:brightness-125 '>
-                <TabsTrigger value='amps' className='w-full '>Amps</TabsTrigger>
-                <TabsTrigger value='normal' className='w-full'>Normal</TabsTrigger>
-              </TabsList>
-
-              <TabsContent value='normal' className='h-full overflow-hidden flex flex-col gap-2 data-[state=inactive]:h-auto'>
-                <div className='flex items-center gap-4 justify-center '> 
-                  <IoSearch className='h-6 w-6'/>
-                  <Input className='border-0 bg-inherit brightness-150' onChange={(e) => setSearch(e.target.value.toLowerCase())}></Input>
-                </div>
+            <DialogHeader >
+              <DialogTitle>Tile Modifier</DialogTitle>
+              <DialogDescription>
+                Your current tile modifier
+              </DialogDescription>
               
-                <div className=' overflow-scroll flex flex-col gap-2'>
-                    {db.map((el,index) =>{
-                      if((el?.type === 'normal' || el?.type === 'item')&& isSearch(el) )
-                      return (
+            </DialogHeader>
 
-
-                          <Button 
-                            onClick={() => setTile(el)}
-                            key={index}
-                            className='text-wrap pt-2 hover:bg-accent hover:brightness-125 text-xs'>
-                              <TileTextDisplay tile={el} value={el.value}/>
-                            </Button>
-
-                        
-                      )
-                    })}
+            <div className='flex w-full justify-between items-center'>
+              {tile.text && <div className='text-sm'><TileTextDisplay tile={tile} value={(tile.value * (1 + ampsScore/100)).toFixed(0)} size={'sm'}/></div>}
+              <Button className='bg-inherit text-red-900 hover:text-foreground hover:bg-red-950' onClick={() => resetTile()}>Remove</Button>
+            </div>
+            <div className='flex flex-col gap-2 pt-2 h-full overflow-hidden'>
+              
+                  <div className='flex items-center gap-4 justify-center '> 
+                    <IoSearch className='h-6 w-6'/>
+                    <Input className='border-0 bg-inherit brightness-150' onChange={(e) => setSearch(e.target.value.toLowerCase())}></Input>
                   </div>
-              </TabsContent>
-
-              <TabsContent value='amps' className='h-full flex flex-col gap-2 data-[state=inactive]:h-auto overflow-scroll'>
-                {db.map((el,index) =>{
-                        if(el?.type === 'amp')
+                
+                  <div className=' overflow-scroll flex flex-col gap-2'>
+                      {db.map((el,index) =>{
+                        if((el?.type === 'normal' || el?.type === 'item')&& isSearch(el) )
                         return (
 
 
                             <Button 
-                            key={index}
-                            onClick={() => setTile(el)}
-                            className='text-wrap pt-2 hover:bg-accent hover:brightness-125 text-lg h-full '>
-                              {el.ampType === 'row' && <FaArrowRightArrowLeft className='h-1/3 w-1/3 bg-inherit'/>}
-                              {el.ampType === 'col' && <FaArrowRightArrowLeft className='h-1/3 w-1/3 bg-inherit rotate-90'/>}
-                              {el.ampType === 'adj' && <FaArrowsUpDownLeftRight className='h-1/3 w-1/3 bg-inherit'/>}
-                              <p className='h-full w-full bg-inherit flex items-center justify-center'>
-                                {el.text.replace('[value]',el.value).replace('[craft]',el?.craft)}
-                              </p>
-                              
-                              
-                              
-                            </Button>
+                              onClick={() => setTile(el)}
+                              key={index}
+                              className='text-wrap pt-2 hover:bg-accent hover:brightness-125 text-xs'>
+                                <TileTextDisplay tile={el} value={el.value}/>
+                              </Button>
 
                           
                         )
-                    })}
-              </TabsContent>
-            </Tabs>
-            
-          </div>
+                      })}
+                    </div>
+                
+
+                {/* <TabsContent value='amps' className='h-full flex flex-col gap-2 data-[state=inactive]:h-auto overflow-scroll'>
+                  {db.map((el,index) =>{
+                          if(el?.type === 'amp')
+                          return (
+
+
+                              <Button 
+                                key={index}
+                                onClick={() => setTile(el)}
+                                className='text-wrap pt-2 hover:bg-accent hover:brightness-125 text-lg h-full '>
+                                  {el.ampType === 'row' && <FaArrowRightArrowLeft className='h-1/3 w-1/3 bg-inherit'/>}
+                                  {el.ampType === 'col' && <FaArrowRightArrowLeft className='h-1/3 w-1/3 bg-inherit rotate-90'/>}
+                                  {el.ampType === 'adj' && <FaArrowsUpDownLeftRight className='h-1/3 w-1/3 bg-inherit'/>}
+                                  <p className='h-full w-full bg-inherit flex items-center justify-center'>
+                                    {el.text.replace('[value]',el.value).replace('[craft]',el?.craft)}
+                                  </p>
+                                
+                                
+                                
+                              </Button>
+
+                            
+                          )
+                      })}
+                </TabsContent>
+              </Tabs> */}
+              
+            </div>
           
+
+          <div>
         
-
-        <div>
-
         </div>
+        
+       
         </div>
+        </>
+        }
+
+
+        {tile.type === 'amp' &&
+        <div className='w-full flex flex-col gap-4'>
+          <DialogHeader>
+            <DialogTitle>Select corpse type</DialogTitle>
+            <DialogDescription>This will help you see the precise requirements for each corpse</DialogDescription>
+          </DialogHeader>
+
+          <div className='w-full h-full flex flex-col gap-4'>
+            {corpseTypes.map((type) =>{
+              let isSelected = tile?.corpse === type
+              return (
+                <Button variant='ghost' className={`h-full text-2xl flex gap-2 ${isSelected && 'bg-cyan-950'}`} onClick={() => handleAmpSelect(type)}>
+                  <div className='text-cyan-500 bg-inherit'>{getAMPicon(type)}</div>
+                  {type.toUpperCase()}
+                </Button>
+              )
+            })}
+          </div>
+        </div>
+        
+        }
         </DialogContent>
 }
 

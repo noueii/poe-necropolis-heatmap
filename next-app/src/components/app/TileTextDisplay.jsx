@@ -1,9 +1,15 @@
 import React from 'react'
+import TileTag from './TileTag'
+import { FaAnglesUp, FaAnglesDown, FaAngleUp, FaAngleDown, FaLock, FaDice, FaPlus, FaMinus } from "react-icons/fa6";
+import { GiHaunting } from "react-icons/gi";
+import { TbPigMoney } from "react-icons/tb";
 
-function TileTextDisplay({tile, value, size}) {
+function TileTextDisplay({tile, value, size, type}) {
 
   if(!tile) return
 
+  const isIncrease = tile?.tagType === 'increase'
+  const isDecrease = tile?.tagType === 'decrease'
   let displayText = tile.text.replace('[value]',value)
   displayText = displayText.split('[craft]')
 
@@ -46,6 +52,59 @@ function TileTextDisplay({tile, value, size}) {
     }
     return ''
   }
+
+
+
+  const getIcon = () =>{
+    let type = tile.tagType
+    if(type === 'increase') return <FaAnglesUp className='text-green-500'/>
+
+    
+
+    if(type === 'decrease')  return <FaAnglesDown className='text-red-500'/>
+    
+
+    if(type === 'guaranteed') return <FaLock/>
+
+    if(type === 'reroll') return <FaDice/>
+
+    if(type === 'haunted') return <GiHaunting/>
+
+    if(type === 'save') return <TbPigMoney/>
+    if(type === 'add') return <FaPlus className='text-green-500'/>
+    if(type === 'minus') return <FaMinus className='text-red-500'/>
+    return ''
+  }
+  
+
+
+  if(type === 'short' && tile?.craft)
+    return (
+      <div className={`flex flex-wrap bg-inherit text-wrap  font-normal ${textSize}`}>
+        <p className={`${isIncrease && 'text-green-500'} ${isDecrease && 'text-red-500'} flex items-center gap-1`}>
+          {getIcon()}
+          {isIncrease && '+'}
+          {isDecrease === 'decrease' && '-'}
+          {tile.value}
+          {tile.text.toLowerCase().includes('chance') && '%'}
+          {tile.text.toLowerCase().includes('scarcer') && '%'}
+        </p>
+
+
+        <div className={getCraftColor() + ' bg-inherit px-1'}>
+          {tile.craft.toUpperCase()}
+        </div>
+
+        <p>{tile.text.toLowerCase().includes('rating') && 'TIER RATING'}</p>
+
+      
+      
+    
+    
+    </div>
+    )
+
+
 
   return (
     <div className={`flex flex-wrap bg-inherit text-wrap  font-normal ${textSize}`}>

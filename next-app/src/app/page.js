@@ -9,6 +9,10 @@ import TileTextDisplay from "@/components/app/TileTextDisplay";
 import { Dialog } from '../components/ui/dialog'
 import { DialogTrigger, DialogHeader, DialogTitle, DialogDescription, DialogContent } from '../components/ui/dialog'
 import { Textarea } from "@/components/ui/textarea";
+import { FaArrowRightArrowLeft, FaUpDownLeftRight } from "react-icons/fa6";
+import { FaArrowsUpDownLeftRight } from "react-icons/fa6";
+import { BiSolidEraser } from "react-icons/bi";
+import { GiCoffin } from "react-icons/gi";
 
 export default function Home() {
   const defaultMatrix = [
@@ -60,10 +64,17 @@ export default function Home() {
         "ampType": "adj",
         "required": 1
       },
+      
     
     },
-
   ]
+  const eraseTile = {
+    text: "erase",
+    value: {
+      value: 1,
+      disabled: false
+    }
+  }
 
   const [paintTile, setPaintTile] = useState(undefined)
 
@@ -92,6 +103,7 @@ export default function Home() {
 
   const changeTile = (newTile, x, y) =>{
     let copy = JSON.parse(JSON.stringify(tiles))
+    console.log(newTile)
     copy[x][y] = newTile
     setTiles(copy)
   }
@@ -212,11 +224,51 @@ export default function Home() {
     return sum
   }
 
+  const sortAppliedMods = () =>{
+    let array = getAppliedMods()
+
+    let result = array.sort((a,b) =>{
+      if(a.tagType === 'increase'){
+        if(a.craft){
+          if(b.tagType === 'increase' && b.craft) return 0
+          return -1
+        }
+        if(b.craft) return 1
+        if(b.tagType === 'increase' ) return 0
+        if(b.tagType === 'decrease') return -1
+        return 1
+      }
+
+      if(a.tagType === 'decrease'){
+        if(a.craft){
+          if(b.craft){
+            if(b.tagType === 'decrease') return 0
+            return 1
+          }
+          return -1
+        }
+          if(b.craft || b.tagType === 'increase') return 1
+          if(b.tagType === 'decrease') return 0
+          return 1
+        
+      }
+
+      // if(a.tagType === 'decrease'){
+      //   if(b.tagType === 'increase') return 1
+      //   if(b.tagType === 'decrease') return 0
+      //   return -1
+      // }
+
+      return 1
+    })
+    return result
+  }
+
   const getAppliedMods = () =>{
     let result = []
 
     for(let i = 0; i < tiles.length; i++){
-      for(let j  =0; j < tiles[i].length; j++){
+      for(let j  = 0; j < tiles[i].length; j++){
         let current = tiles[i][j]
         if(tiles[i][j].disabled || tiles[i][j]?.type === 'amp' || !tiles[i][j].text) continue
         let found = false
@@ -245,6 +297,8 @@ export default function Home() {
     }
     return result
   }
+
+  
 
   const getAdjAmps = (x,y) =>{
     let result = []
@@ -315,24 +369,44 @@ export default function Home() {
   const resetBoard = () =>{
     setTiles(generateTileMatrix(defaultMatrix))
   }
+
+ 
   
 
 
   return (
     <main className="flex h-screen p-12 bg-background w-full">
-      <div className="w-full h-full flex rounded gap-4">
-        
+      <div className="w-full h-full flex flex-col rounded gap-4">
+        <div className="w-full h-full flex rounded gap-4">
         <div className="flex flex-col  w-full h-full justify-between gap-4">
+          <div>
+            <p className="text-2xl">PoE Graveyard Simulator</p>
+          </div>
           <div className="w-full bg-zinc-900 rounded justify-end p-2 flex gap-2">
+            
+            <Button onClick={() => changePaintTile(eraseTile)} 
+              className={`bg-inherit border-0 hover:bg-purple-600 text-purple-600 hover:text-background flex gap-2 items-center 
+              ${paintTile?.text === 'erase' && 'bg-purple-600 text-background'}`}
+            >
+              <BiSolidEraser className="bg-transparent text-xl"/>  
+            </Button>
+
             {buttonAmps.map((b) =>{
               let isSelected = paintTile?.text === b.text
               let clicked = false
               return (
+
                 <Button variant='ghost' 
-                className={`bg-inherit border-0 hover:bg-purple-600 text-purple-600 hover:text-background ${isSelected && 'bg-purple-600 text-background'} `}
+                className={`bg-inherit border-0 hover:bg-purple-600 text-purple-600 hover:text-background flex gap-2 items-center 
+                ${isSelected && 'bg-purple-600 text-background'} `}
                 onClick={() => changePaintTile(b)}
                 key={b.text}
-                >AMP {b.text}</Button>
+                >
+                  {b.text === 'ROW' && <FaArrowRightArrowLeft className="bg-inherit"/>}
+                  {b.text === 'COL' && <FaArrowRightArrowLeft className="rotate-90 bg-inherit"/>}
+                  {b.text === 'ADJ' && <FaUpDownLeftRight className="bg-inherit"/>}
+                  <p className="bg-inherit"> AMP {b.text}</p>
+                </Button>
               )
             })}
 
@@ -365,14 +439,14 @@ export default function Home() {
               return (
                 <div 
                 key={indexRow}
-                className="h-full flex flex-row justify-between w-full items-center justify-items-center ">
+                className="h-full flex flex-row justify-between w-full items-center justify-items-center overflow-hidden ">
                   {row.map((col, indexCol) =>{
                     
 
                     return (
                       <div 
                       key={indexCol}
-                      className={`w-full h-full flex  justify-center items-center rounded cursor-pointer`}
+                      className={`w-full h-full flex  justify-center items-center rounded cursor-pointer `}
                       onClick={() => console.log('HEY')}
                       >
                         <Tile 
@@ -396,28 +470,40 @@ export default function Home() {
             </div>
         </div>
 
-        <div className="w-1/5 h-full overflow-hidden rounded">
+        <div className="w-1/5 h-full overflow-hidden rounded gap-4 flex flex-col">
           <div className="text-2xl">Applied modifiers</div>
           <div className="text-2xl flex w-full h-full flex-col overflow-scroll gap-2">
-            {getAppliedMods()?.map((mod,index) =>{
+            {sortAppliedMods()?.map((mod,index) =>{
 
               let newValue = (mod.value *(1+ mod.increase/100)).toFixed(2)
               let residual = mod.value > mod?.maxValue ? mod?.maxValue - mod.value : undefined
               
               let cText = mod?.text?.replace('[value]', mod.value.toFixed(2)).replace('[craft]',mod?.craft)
               
+              
               console.log(mod)
 
               return (
                 <div
                   key={index}
-                  className="bg-background brightness-150 rounded text-lg flex items-center w-full px-1 py-2 ">
-                  <TileTextDisplay tile={mod} value={mod.value} size={'sm'}/>
+                  className="bg-background brightness-150 rounded text-lg flex items-center w-full px-1 py-2  ">
+                  <TileTextDisplay tile={mod} value={mod.value} size={'sm'} type={'short'}/>
                 </div>
               )
             })}
           </div>
+          <Button className='flex gap-1 items-center'><GiCoffin className="bg-transparent rotate-90"/>Coffin shop</Button>
         </div>
+      </div>
+      <div className="w-full flex justify-center flex-col gap-2 items-center">
+        <div className="flex gap-2">
+          <p className="opacity-40">Made by</p>
+          <p className="text-orange-600 opacity-100 ">@noueii</p>
+        </div>
+        <div className="text-sm opacity-40">
+          This product isn't affiliated with or endorsed by Grinding Gear Games in any way.
+        </div>
+      </div>
       </div>
     </main>
   );
