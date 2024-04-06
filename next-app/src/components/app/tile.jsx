@@ -114,6 +114,7 @@ function Tile({tile, x, y, onChange, amps, maxValue, clickDisabled, paintTile}) 
 
   const handleTileClick = () =>{
     console.log('HANDLE TILE CLICK')
+    setSearch('')
     if(clickDisabled) {
       console.log('click disabled')
       setOpenDialog(false)

@@ -1696,7 +1696,10 @@
     "text": "Corpses in adjacent Graves and this Corpse have their crafting outcomes randomised when this Corpse is buried",
     "maxValue": 0,
     "type": "normal",
-    "required": 1
+    "required": 1,
+    "tag": "random adj",
+    "tagType": "reroll",
+    "tier": 1
   },
   {
     "text": "[value]% chance to create a Split Copy",

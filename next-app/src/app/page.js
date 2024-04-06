@@ -13,7 +13,11 @@ import { FaArrowRightArrowLeft, FaUpDownLeftRight } from "react-icons/fa6";
 import { FaArrowsUpDownLeftRight } from "react-icons/fa6";
 import { BiSolidEraser } from "react-icons/bi";
 import { GiCoffin } from "react-icons/gi";
+import { encodeBase64 } from "bcryptjs";
+import bcrypt from 'bcryptjs-react'
 import Shop from "@/components/app/Shop";
+
+import CryptoJS, { AES } from 'crypto-js';
 
 export default function Home() {
   const defaultMatrix = [
@@ -213,10 +217,7 @@ export default function Home() {
 
   }
 
-  async function exportBoard (){
-    navigator.clipboard.writeText(JSON.stringify(tiles))
-    setExported(true)
-  }
+ 
 
   function calculateAmps (amps) {
     let sum = 0
@@ -325,9 +326,32 @@ export default function Home() {
 
   
 
-  const log = () =>{
-    console.log(getShop())
+  const log = async() =>{
+    
+    
+
   }
+
+  async function exportBoard (){
+    let key = 'nbTFpYn'
+    navigator.clipboard.writeText(encryptData(tiles, key))
+    setExported(true)
+  }
+
+  const importMatrix = () =>{
+    let key = 'nIua22rVsLYcU9GvtNNavUdJCxbTFpYn'
+    setTiles(decryptData(importText,key ))
+  }
+
+  const encryptData = (data, secretKey) => {
+    const encryptedData = AES.encrypt(JSON.stringify(data), secretKey).toString();
+    return encryptedData;
+  };
+
+  const decryptData = (encryptedData, secretKey) => {
+    const decryptedData = AES.decrypt(encryptedData, secretKey).toString(CryptoJS.enc.Utf8);
+    return JSON.parse(decryptedData);
+  };
 
   const calculateMaxAmps = () =>{
     let maxValue = 40
@@ -344,9 +368,7 @@ export default function Home() {
     return maxValue
   }
 
-  const importMatrix = () =>{
-    setTiles(JSON.parse(importText))
-  }
+  
 
   const changePaintTile = (btn) =>{
     if(paintTile?.text === btn.text) {
