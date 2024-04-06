@@ -80,7 +80,7 @@ function TileTextDisplay({tile, value, size, type, className}) {
 
   if(type === 'short' && tile?.craft)
     return (
-      <div className={`flex flex-wrap bg-inherit text-wrap  font-normal ${textSize} ${className}`}>
+      <div className={`flex flex-wrap bg-transparent text-wrap  font-normal ${textSize} ${className}`}>
         <p className={`${isIncrease && 'text-green-500'} ${isDecrease && 'text-red-500'} flex items-center gap-1`}>
           {getIcon()}
           {isIncrease && '+'}
@@ -107,15 +107,15 @@ function TileTextDisplay({tile, value, size, type, className}) {
 
 
   return (
-    <div className={`flex flex-wrap bg-inherit text-wrap  font-normal ${textSize}`}>
+    <div className={`flex flex-wrap bg-transparent text-wrap  font-normal ${textSize} ${className}`}>
     
-      <p className='bg-inherit text-wrap'>{displayText[0]}</p>
+      <p className='bg-transparent text-wrap'>{displayText[0]}</p>
       {tile.craft && 
         <>
         <div className={getCraftColor() + ' bg-inherit px-1'}>
           {tile.craft.toUpperCase()}
         </div>
-        <div className='bg-inherit text-wrap'>{displayText[1]}</div>
+        <div className='bg-transparent text-wrap'>{displayText[1]}</div>
         </>
       
       }

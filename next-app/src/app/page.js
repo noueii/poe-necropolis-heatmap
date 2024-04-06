@@ -63,7 +63,8 @@ export default function Home() {
         "maxValue": 0,
         "type": "amp",
         "ampType": "adj",
-        "required": 1
+        "required": 1,
+        "corpse": "any"
       },
       
     
@@ -490,7 +491,7 @@ export default function Home() {
               })}
 
 
-              <Button onClick={() => log()}>Log</Button>
+              {/* <Button onClick={() => log()}>Log</Button> */}
               <Button className='bg-red-900' onClick={() => resetBoard()}>RESET BOARD</Button>
               <Dialog onOpenChange={() => resetExportImport()}>
                 <DialogTrigger>
