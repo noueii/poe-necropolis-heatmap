@@ -341,7 +341,7 @@ export default function Home() {
   }
 
   const importMatrix = () =>{
-    let key = 'nIua22rVsLYcU9GvtNNavUdJCxbTFpYn'
+    let key = 'nbTFpYn'
     setTiles(decryptData(importText,key ))
   }
 
