@@ -4,6 +4,7 @@ import { FaAnglesUp, FaAnglesDown, FaAngleUp, FaAngleDown, FaLock, FaDice, FaPlu
 import { GiHaunting } from "react-icons/gi";
 import { TbPigMoney } from "react-icons/tb";
 
+
 function TileTextDisplay({tile, value, size, type, className}) {
 
   if(!tile) return
@@ -16,6 +17,7 @@ function TileTextDisplay({tile, value, size, type, className}) {
   // if(tile.text === 'Armour Items have a Strength Requirement') console.log(displayText)
 
   let textSize = getTextSize()
+
 
   function getTextSize(){
     switch(size){

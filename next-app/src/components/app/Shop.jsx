@@ -54,7 +54,7 @@ function Shop({shop}) {
   const handleClickTile = (tile) =>{
  
     let newShop = customShop.filter((el) => !ld.isMatch(el, tile))
-    console.log(newShop)
+    // console.log(newShop)
     setCustomShop(newShop)
 
     
@@ -131,7 +131,7 @@ function Shop({shop}) {
         </div>
 
         <div className='w-full'>
-          <Button className='w-full'>Generate string</Button>
+          <Button disabled className='w-full'>Generate string (WIP)</Button>
         </div>
 
         <div className='w-[200%] absolute left-[-50%] h-10 top-[-10%] rounded flex overflow-hidden '>

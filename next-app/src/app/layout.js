@@ -14,12 +14,14 @@ export default function RootLayout({ children }) {
   const cookieStore = cookies()
   let ccu = cookieStore.get('ccu')
   
+  let parsedCCU = ccu?.value ? JSON.parse(ccu?.value) : undefined
+  console.log(parsedCCU)
   
   return (
     <html lang="en">
       <body className={inter.className}>
         {children}
-        <Analytics />
+        {parsedCCU?.measure && <Analytics />}
         {!ccu && <CookieConsent/>}
       </body>
     </html>
