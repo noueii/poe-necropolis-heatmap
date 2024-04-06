@@ -13,7 +13,7 @@ function TileTextDisplay({tile, value, size, type, className}) {
   let displayText = tile.text.replace('[value]',value)
   displayText = displayText.split('[craft]')
 
-  if(tile.text === 'Armour Items have a Strength Requirement') console.log(displayText)
+  // if(tile.text === 'Armour Items have a Strength Requirement') console.log(displayText)
 
   let textSize = getTextSize()
 

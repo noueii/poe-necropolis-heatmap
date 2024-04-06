@@ -113,10 +113,10 @@ function Tile({tile, x, y, onChange, amps, maxValue, clickDisabled, paintTile}) 
   }
 
   const handleTileClick = () =>{
-    console.log('HANDLE TILE CLICK')
+    // console.log('HANDLE TILE CLICK')
     setSearch('')
     if(clickDisabled) {
-      console.log('click disabled')
+      // console.log('click disabled')
       setOpenDialog(false)
       paintTile(x,y)
       return
@@ -144,7 +144,7 @@ function Tile({tile, x, y, onChange, amps, maxValue, clickDisabled, paintTile}) 
     newTile.corpse = type
     onChange(newTile, x, y)
 
-    console.log(newTile)
+    // console.log(newTile)
     setOpenDialog(false)
   }
 
@@ -160,7 +160,7 @@ function Tile({tile, x, y, onChange, amps, maxValue, clickDisabled, paintTile}) 
           border-2 border-background  overflow-hidden
           ${tile.disabled ? 'hover:scale-100 cursor-default' : 'hover:scale-110  cursor-pointer'}
           `}
-          onClick={() => console.log('hey')}
+          
           style={rgb && {background: `rgba(${rgb.red},${rgb.green},${rgb.blue},0.2)`}}
         >
          

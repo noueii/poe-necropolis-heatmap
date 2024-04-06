@@ -17,6 +17,7 @@ import { encodeBase64 } from "bcryptjs";
 import bcrypt from 'bcryptjs-react'
 import Shop from "@/components/app/Shop";
 
+
 import CryptoJS, { AES } from 'crypto-js';
 
 export default function Home() {
@@ -30,6 +31,7 @@ export default function Home() {
     [1,1,1,1,0,0,1,1,1,1,1,1,1,0,0,1,1],
     [1,1,1,1,1,1,1,1,0,0,1,1,1,1,1,1,1]
   ]
+ 
 
   const [exported, setExported] = useState(false)
 
@@ -109,7 +111,7 @@ export default function Home() {
 
   const changeTile = (newTile, x, y) =>{
     let copy = JSON.parse(JSON.stringify(tiles))
-    console.log(newTile)
+    // console.log(newTile)
     copy[x][y] = newTile
     setTiles(copy)
   }
@@ -422,7 +424,7 @@ export default function Home() {
               }
               if(!foundAdj) corpseTypes.push({corpse: adjAmps[k].corpse, value: 1})
             }
-            if(currentTile.craft === 'Physical') console.log(corpseTypes)
+            // if(currentTile.craft === 'Physical') console.log(corpseTypes)
             let definiteCorpse = 'any'
             let maxCorpse = {corpse: 'any', value: 0}
             for(let m = 0; m < corpseTypes.length; m++){
@@ -549,7 +551,7 @@ export default function Home() {
                         <div 
                         key={indexCol}
                         className={`w-full h-full flex  justify-center items-center rounded cursor-pointer `}
-                        onClick={() => console.log('HEY')}
+                        
                         >
                           <Tile 
                             tile={col}
@@ -583,7 +585,7 @@ export default function Home() {
                 let cText = mod?.text?.replace('[value]', mod.value.toFixed(2)).replace('[craft]',mod?.craft)
                 
                 
-                console.log(mod)
+                // console.log(mod)
 
                 return (
                   <div
