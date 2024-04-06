@@ -1592,6 +1592,7 @@
     "maxValue": 0,
     "type": "normal",
     "required": 1,
+    "tag": "haunted mod",
     "tagType": "increase",
     "tier": 1
   },
