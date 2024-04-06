@@ -374,6 +374,7 @@ export default function Home() {
 
   const changePaintTile = (btn) =>{
     if(paintTile?.text === btn.text) {
+  
       setPaintTile(undefined)
       return
     }
@@ -382,8 +383,11 @@ export default function Home() {
   }
 
   const paintSelectedTile = (x,y) =>{
+    
     let copy = JSON.parse(JSON.stringify(tiles))
+    if(copy[x][y]?.disabled ) return
     copy[x][y] = paintTile.value
+
     setTiles(copy)
   }
 
