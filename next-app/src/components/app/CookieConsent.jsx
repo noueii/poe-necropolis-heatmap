@@ -106,6 +106,7 @@ function CookieConsent({store}) {
 
           <div className='bg-transparent w-full justify-stretch flex gap-2'>
             <Button className='w-full' onClick={() => handleAccept()}>Accept</Button>
+            <Button className='w-full' onClick={() => handleReject()}>Reject</Button>
             <Button className='w-full' onClick={() => setIsOpen(!isOpen)}>Customize</Button>
           </div>
         </>
