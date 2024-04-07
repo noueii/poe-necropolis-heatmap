@@ -28,7 +28,7 @@ import TileText from './TileTextDisplay'
 import TileTextDisplay from './TileTextDisplay'
 
 
-function Tile({tile, x, y, onChange, amps, maxValue, clickDisabled, paintTile}) {
+function Tile({tile, x, y, onChange, amps, maxValue, clickDisabled, paintTile, highlight}) {
 
   
   let rgb = convertScoreToRGB(calculateAmps(), maxValue)
@@ -42,6 +42,15 @@ function Tile({tile, x, y, onChange, amps, maxValue, clickDisabled, paintTile}) 
     'beast','undead','humanoid','construct','demon'
   ]
 
+  const isSameTileType = (a,b) =>{
+    if(!a || !b) return false
+    if(a.text !== b.text) return false
+
+    if((a?.craft || b?.craft) && a?.craft !== b?.craft) return false
+   
+    if(a.tier !== b.tier) return false
+    return true
+  }
 
   const isSearch = (el) =>{
       if(search === '') return true
@@ -150,7 +159,7 @@ function Tile({tile, x, y, onChange, amps, maxValue, clickDisabled, paintTile}) 
 
 
   return (
-    <div className='w-full h-full flex overflow-hidden'>
+    <div className={`w-full h-full flex overflow-hidden  ${isSameTileType(highlight, tile) && 'border-2 border-cyan-500 rounded'}` }>
     <Dialog className='' open={openDialog} onOpenChange={() => handleTileClick()} >
       <DialogTrigger 
 

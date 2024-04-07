@@ -59,22 +59,22 @@ function TileTextDisplay({tile, value, size, type, className}) {
 
   const getIcon = () =>{
     let type = tile.tagType
-    if(type === 'increase') return <FaAnglesUp className='text-green-500'/>
+    if(type === 'increase') return <FaAnglesUp className='text-green-500 bg-transparent'/>
 
     
 
-    if(type === 'decrease')  return <FaAnglesDown className='text-red-500'/>
+    if(type === 'decrease')  return <FaAnglesDown className='text-red-500 bg-transparent'/>
     
 
-    if(type === 'guaranteed') return <FaLock/>
+    if(type === 'guaranteed') return <FaLock className=' bg-transparent'/>
 
-    if(type === 'reroll') return <FaDice/>
+    if(type === 'reroll') return <FaDice className=' bg-transparent'/>
 
-    if(type === 'haunted') return <GiHaunting/>
+    if(type === 'haunted') return <GiHaunting className=' bg-transparent'/>
 
-    if(type === 'save') return <TbPigMoney/>
-    if(type === 'add') return <FaPlus className='text-green-500'/>
-    if(type === 'minus') return <FaMinus className='text-red-500'/>
+    if(type === 'save') return <TbPigMoney className=' bg-transparent'/>
+    if(type === 'add') return <FaPlus className='text-green-500 bg-transparent'/>
+    if(type === 'minus') return <FaMinus className='text-red-500 bg-transparent'/>
     return ''
   }
   
@@ -83,7 +83,7 @@ function TileTextDisplay({tile, value, size, type, className}) {
   if(type === 'short' && tile?.craft)
     return (
       <div className={`flex flex-wrap bg-transparent text-wrap  font-normal ${textSize} ${className}`}>
-        <p className={`${isIncrease && 'text-green-500'} ${isDecrease && 'text-red-500'} flex items-center gap-1`}>
+        <p className={`${isIncrease && 'text-green-500'} ${isDecrease && 'text-red-500'} flex items-center gap-1 bg-transparent`}>
           {getIcon()}
           {isIncrease && '+'}
           {isDecrease === 'decrease' && '-'}
@@ -93,7 +93,7 @@ function TileTextDisplay({tile, value, size, type, className}) {
         </p>
 
 
-        <div className={getCraftColor() + ' bg-inherit px-1'}>
+        <div className={getCraftColor() + ' bg-transparent px-1'}>
           {tile.craft.toUpperCase()}
         </div>
 

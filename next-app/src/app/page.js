@@ -31,6 +31,8 @@ export default function Home() {
     [1,1,1,1,0,0,1,1,1,1,1,1,1,0,0,1,1],
     [1,1,1,1,1,1,1,1,0,0,1,1,1,1,1,1,1]
   ]
+
+  const [highlight, setHighlight] = useState(undefined)
  
 
   const [exported, setExported] = useState(false)
@@ -471,10 +473,12 @@ export default function Home() {
   }
 
   const isSameTileType = (a,b) =>{
+    if(!a || !b) return false
     if(a.text !== b.text) return false
-    if(a.value !== b.value) return false
-    if(a.craft !== b.craft) return false
-    if(a.tier !== b.tier) return false
+ 
+    if((a?.craft || b?.craft) && a?.craft !== b?.craft) return false
+   
+    
     return true
   }
 
@@ -567,6 +571,7 @@ export default function Home() {
                             key={'tile-' + indexRow + '-' + indexCol}
                             clickDisabled={paintTile !== undefined}
                             paintTile={paintSelectedTile}
+                            highlight={highlight}
                             
                           />
                         </div>
@@ -588,13 +593,21 @@ export default function Home() {
                 
                 let cText = mod?.text?.replace('[value]', mod.value.toFixed(2)).replace('[craft]',mod?.craft)
                 
+                let isHighlight = isSameTileType(mod, highlight)
                 
                 // console.log(mod)
 
                 return (
                   <div
                     key={index}
-                    className="bg-background brightness-150 rounded text-lg flex items-center w-full px-1 py-2  ">
+                    className={
+                      `bg-background brightness-150 rounded text-lg flex items-center w-full px-1 py-2 cursor-pointer  hover:bg-cyan-500 hover:bg-opacity-20
+                        ${isHighlight && 'bg-cyan-500 bg-opacity-50'}
+                      `
+                      
+                    }
+                    onClick={() => setHighlight(mod)}
+                    >
                     <TileTextDisplay tile={mod} value={mod.value} size={'sm'} type={'short'}/>
                   </div>
                 )
