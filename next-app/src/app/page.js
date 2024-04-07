@@ -602,7 +602,7 @@ export default function Home() {
                     key={index}
                     className={
                       `bg-background brightness-150 rounded text-lg flex items-center w-full px-1 py-2 cursor-pointer  hover:bg-cyan-500 hover:bg-opacity-20
-                        ${isHighlight && 'bg-cyan-500 bg-opacity-50'}
+                        ${isHighlight && 'border-2 border-cyan-500'}
                       `
                       
                     }
