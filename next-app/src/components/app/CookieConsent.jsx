@@ -6,8 +6,11 @@ import { Button } from '../ui/button'
 import { Separator } from '@radix-ui/react-separator'
 import { Checkbox } from '../ui/checkbox'
 import { setCCUCookies } from '@/lib/cookie'
+import { useRouter } from 'next/navigation'
 function CookieConsent({store}) {
   const [isOpen, setIsOpen] = useState(false)
+  const [changed, setChanged] = useState(false)
+  const router = useRouter()
 
   const consents = [
     {
@@ -66,6 +69,8 @@ function CookieConsent({store}) {
       market: true
     }
     setCCUCookies(values)
+    setChanged(true)
+    
   }
 
   const handleReject = () =>{
@@ -77,13 +82,15 @@ function CookieConsent({store}) {
       market: false
     }
     setCCUCookies(values)
+    setChanged(true)
   }
 
   const confirmCookies = () =>{
     setCCUCookies(cookieSettings)
+    setChanged(true)
   }
 
-
+  if(!changed)
   return (
     
 
