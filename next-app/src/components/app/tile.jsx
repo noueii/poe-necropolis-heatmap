@@ -31,6 +31,7 @@ import { FiTrash } from 'react-icons/fi'
 
 function Tile({tile, x, y, onChange, amps, maxValue, clickDisabled, paintTile, highlight, selectedBatch, isActiveSelectMultiple, onSelectMultiple}) {
 
+  const[otherDisables, setOtherDisables] = useState(false) 
   
   let rgb = convertScoreToRGB(calculateAmps(), maxValue)
   if(tile.disabled) rgb = undefined
@@ -114,6 +115,8 @@ function Tile({tile, x, y, onChange, amps, maxValue, clickDisabled, paintTile, h
   const resetTile = () =>{
     console.log('reset')
     onChange({value: 1, disabled: tile.disabled}, x, y)
+    setOtherDisables(false)
+    setOpenDialog(false)
   }
 
   const getTileTextColor = () => {
@@ -130,6 +133,10 @@ function Tile({tile, x, y, onChange, amps, maxValue, clickDisabled, paintTile, h
   const handleTileClick = () =>{
     // console.log('HANDLE TILE CLICK')
     setSearch('')
+
+    if(otherDisables){
+      return
+    }  
     if(isActiveSelectMultiple){
       
       console.log('ENTER SELECTION')
@@ -140,7 +147,7 @@ function Tile({tile, x, y, onChange, amps, maxValue, clickDisabled, paintTile, h
       return
     }
 
-    if(clickDisabled) {
+    if(clickDisabled ) {
       // console.log('click disabled')
       setOpenDialog(false)
       paintTile(x,y)
@@ -181,13 +188,21 @@ function Tile({tile, x, y, onChange, amps, maxValue, clickDisabled, paintTile, h
       ${isSameTileType(highlight, tile) && 'border-2 border-cyan-500 rounded'} 
       ${isSelectedBatch() && 'border-2  border-opacity-60 border-spacing-4'}
       
-      ` }>
+      
+      ` 
+      
+      }
+     
+      
+      >
     <Dialog className='' open={openDialog} onOpenChange={() => handleTileClick()} >
       <DialogTrigger 
         
         className={`w-full h-full bg-background rounded relative`}>
         {!tile.disabled && tile?.text && 
-        <div className='absolute right-1 bg-transparent z-20 top-1 hover:text-red-500' onClick={() => resetTile()}>
+        <div className='absolute right-1 bg-transparent z-20 top-1 hover:text-red-500' onClick={() => resetTile()} 
+        onMouseEnter={() => setOtherDisables(true)} 
+        onMouseLeave={() => setOtherDisables(false)}>
 
           <FiTrash className='bg-transparent text-sm'/>
         </div>}
@@ -265,7 +280,7 @@ function Tile({tile, x, y, onChange, amps, maxValue, clickDisabled, paintTile, h
       </div>
       
       </DialogTrigger>
-      {(!tile.disabled && !clickDisabled && !isActiveSelectMultiple)&&
+      {(!tile.disabled && !clickDisabled && !isActiveSelectMultiple || !otherDisables)&&
       <DialogContent className='text-white text-opacity-70 border-0 max-w-screen w-screen lg:w-1/2 lg:max-w-1/2 flex min-h-3/4 h-3/4'>
         
         {tile.type !== 'amp' &&

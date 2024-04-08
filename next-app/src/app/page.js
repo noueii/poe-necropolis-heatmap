@@ -19,6 +19,7 @@ import bcrypt from 'bcryptjs-react'
 import { FiTrash } from "react-icons/fi";
 import Shop from "@/components/app/Shop";
 import axios from "axios";
+import * as ld from 'lodash'
 
 
 import CryptoJS, { AES } from 'crypto-js';
@@ -161,12 +162,12 @@ export default function Home() {
 
   function addHistory(matrix){
     let copy = historyMatrix.slice(0,historyIndex + 1)
-    console.log(copy)
+    if(ld.isEqual(copy[copy.length - 1], matrix)) return
     copy.push(matrix)
     
     setHistoryMatrix(copy)
     setHistoryIndex(copy.length - 1)
-    console.log(copy.length - 1)
+
   }
 
   function undoHistory(){
@@ -425,7 +426,8 @@ export default function Home() {
     let key = 'nbTFpYn'
     let newMatrix = decryptData(importText,key )
     setTiles(newMatrix)
-    addHistory(newMatrix)
+    setHistoryMatrix([newMatrix])
+    setHistoryIndex(0)
   }
 
   const encryptData = (data, secretKey) => {
