@@ -5,7 +5,7 @@ import { TbPigMoney } from "react-icons/tb";
 import { RiGhostLine } from "react-icons/ri";
 
 
-function TileTag({tile}) {
+function TileTag({tile, className}) {
 if(tile.type === 'amp') return
   const getIcon = () =>{
     let type = tile.tagType
@@ -34,7 +34,7 @@ if(tile.type === 'amp') return
   }
 
   return (
-    <div className='flex items-center'>
+    <div className={`flex items-center ${className}`}>
       {getIcon()}
     </div>
   )

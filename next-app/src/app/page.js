@@ -141,9 +141,6 @@ export default function Home() {
   const [selectedTilesForBatch, setSelectedTilesForBatch] = useState([])
 
 
-  console.log('INITIAL MATRIX')
-  console.log(historyMatrix)
-
   function generateTileMatrix(defaultMatrix){
     let copy = JSON.parse(JSON.stringify(defaultMatrix))
     for(let i = 0; i < defaultMatrix.length; i++){
@@ -190,7 +187,7 @@ export default function Home() {
 
   const changeTile = (newTile, x, y) =>{
     if(selectMultiple){
-      handleSelectBatchTile
+      handleSelectBatchTile()
     }
 
     let copy = JSON.parse(JSON.stringify(tiles))
@@ -653,7 +650,7 @@ export default function Home() {
               
               <div className="flex gap-2 items-center  rounded w-1/5">
 
-                <p className="bg-transparent  self-start flex items-center h-full">Paint</p>
+                <p className="bg-transparent  self-start flex items-center h-full">Boosters</p>
 
                 <ToggleGroup type='single' className='bg-transparent ' size='sm'>
 
@@ -742,8 +739,7 @@ export default function Home() {
                   key={indexRow}
                   className="h-full flex flex-row justify-between w-full items-center justify-items-center overflow-hidden ">
                     {row.map((col, indexCol) =>{
-                      console.log('select multiple')
-                      console.log(selectMultiple)
+                      
                       return (
                         <div 
                         key={indexCol}

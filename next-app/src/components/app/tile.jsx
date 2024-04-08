@@ -26,6 +26,7 @@ import {
 } from "../ui/hover-card"
 import TileText from './TileTextDisplay'
 import TileTextDisplay from './TileTextDisplay'
+import { FiTrash } from 'react-icons/fi'
 
 
 function Tile({tile, x, y, onChange, amps, maxValue, clickDisabled, paintTile, highlight, selectedBatch, isActiveSelectMultiple, onSelectMultiple}) {
@@ -111,6 +112,7 @@ function Tile({tile, x, y, onChange, amps, maxValue, clickDisabled, paintTile, h
   }
 
   const resetTile = () =>{
+    console.log('reset')
     onChange({value: 1, disabled: tile.disabled}, x, y)
   }
 
@@ -183,8 +185,12 @@ function Tile({tile, x, y, onChange, amps, maxValue, clickDisabled, paintTile, h
     <Dialog className='' open={openDialog} onOpenChange={() => handleTileClick()} >
       <DialogTrigger 
         
-        className={`w-full h-full bg-background rounded`}>
-        
+        className={`w-full h-full bg-background rounded relative`}>
+        {!tile.disabled && tile?.text && 
+        <div className='absolute right-1 bg-transparent z-20 top-1 hover:text-red-500' onClick={() => resetTile()}>
+
+          <FiTrash className='bg-transparent text-sm'/>
+        </div>}
         <div className={`bg-inherit w-full h-full flex items-center justify-center rounded
           border-2 border-background  overflow-hidden
           ${tile.disabled ? 'hover:scale-100 cursor-default' : 'hover:scale-110  cursor-pointer'}
@@ -194,7 +200,7 @@ function Tile({tile, x, y, onChange, amps, maxValue, clickDisabled, paintTile, h
         >
          
               { !tile.disabled &&
-              <div className='w-full h-full bg-inherit bg-opacity-40 overflow-hidden flex'
+              <div className='w-full h-full bg-inherit bg-opacity-40 overflow-hidden flex relative'
               style={rgb && {background: `rgba(${rgb.red},${rgb.green},${rgb.blue},0.2)`}}>
                 
                 {tile?.type &&
@@ -208,8 +214,8 @@ function Tile({tile, x, y, onChange, amps, maxValue, clickDisabled, paintTile, h
                     {(tile.type === 'normal' || tile.type === 'item') &&
 
                     <div className='w-full p-1 px-2 flex items-center jus bg-background brightness-200'>
-                      <p className='w-full flex self-start '>T{tile.tier}</p>
-                      <TileTag tile={tile}/>
+                      
+                      <TileTag tile={tile} className='flex w-full justify-start'/>
                     </div>
                     }
                     
@@ -218,6 +224,12 @@ function Tile({tile, x, y, onChange, amps, maxValue, clickDisabled, paintTile, h
                     {tile?.ampType === 'col' && <FaArrowRightArrowLeft className='rotate-90 bg-inherit h-full' size={'40%'}/>}
                     {tile?.ampType === 'row' && <FaArrowRightArrowLeft className='bg-inherit h-full' size={'40%'}/>}
                     {tile?.ampType === 'adj' && <FaArrowsUpDownLeftRight className='bg-inherit h-full' size={'40%'}/>}
+                    {tile?.ampType === 'adj' && tile.corpse === 'any' &&
+                      <div className='absolute bottom-1 bg-transparent text-xs'>
+                        warning
+                      </div>
+                    
+                    }
                     {(tile?.type === 'normal' || tile?.type === 'item') && 
                     
                     <div className='bg-indigo-900 h-full w-full flex items-center justify-center flex-col text-xs overflow-hidden text-wrap'>
@@ -229,12 +241,13 @@ function Tile({tile, x, y, onChange, amps, maxValue, clickDisabled, paintTile, h
                       </div>
                     }
                     
-
+                    
                     
                   </div>
                 }
+                   
 
-                    {(!tile.type && !tile.disabled) && 
+                    {(!tile.type && !tile.disabled) && calculateAmps() > 0 &&
                       <div className='w-full h-full flex items-center justify-center' style={rgb && {background: `rgba(${rgb.red},${rgb.green},${rgb.blue},0.2)`}}>
                         
                         +{calculateAmps()}%
