@@ -487,7 +487,7 @@ export default function Home() {
   const resetBoard = () =>{
     let newM = generateTileMatrix(defaultMatrix)
     setTiles(newM)
-    setHistoryMatrix(newM)
+    setHistoryMatrix([newM])
     setHistoryIndex(0)
   }
 
