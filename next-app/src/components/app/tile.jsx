@@ -188,7 +188,7 @@ function Tile({tile, x, y, onChange, amps, maxValue, clickDisabled, paintTile, h
                     {(tile.type === 'normal' || tile.type === 'item') &&
 
                     <div className='w-full p-1 px-2 flex items-center jus bg-background brightness-200'>
-                      <p className='w-full flex self-start'>T{tile.tier}</p>
+                      <p className='w-full flex self-start '>T{tile.tier}</p>
                       <TileTag tile={tile}/>
                     </div>
                     }
@@ -200,8 +200,8 @@ function Tile({tile, x, y, onChange, amps, maxValue, clickDisabled, paintTile, h
                     {tile?.ampType === 'adj' && <FaArrowsUpDownLeftRight className='bg-inherit h-full' size={'40%'}/>}
                     {(tile?.type === 'normal' || tile?.type === 'item') && 
                     
-                    <div className='bg-indigo-900 h-full w-full flex items-center justify-center flex-col text-xs overflow-hidden'>
-                      {tile.tag && <p className='bg-inherit'>{tile.tag}</p>}
+                    <div className='bg-indigo-900 h-full w-full flex items-center justify-center flex-col text-xs overflow-hidden text-wrap'>
+                      {tile.tag && <p className='bg-inherit flex flex-wrap'>{tile.tag}</p>}
                       {/* <TileText tile={tile} value={tile.value * (1 + calculateAmps()/100)}/> */}
                       {tile.value && 
                       <div className={`bg-inherit ${getTileTextColor()}`}>{(tile.value * (1 + calculateAmps()/100)).toFixed()}%</div>

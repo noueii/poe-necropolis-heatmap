@@ -4,7 +4,7 @@ import Image from "next/image";
 import db from '../../public/moddb.json'
 import { Button } from "@/components/ui/button";
 import Tile from "@/components/app/tile";
-import {useState} from 'react'
+import {useEffect, useState} from 'react'
 import TileTextDisplay from "@/components/app/TileTextDisplay";
 import { Dialog } from '../components/ui/dialog'
 import { DialogTrigger, DialogHeader, DialogTitle, DialogDescription, DialogContent } from '../components/ui/dialog'
@@ -16,11 +16,19 @@ import { GiCoffin } from "react-icons/gi";
 import { encodeBase64 } from "bcryptjs";
 import bcrypt from 'bcryptjs-react'
 import Shop from "@/components/app/Shop";
+import axios from "axios";
 
 
 import CryptoJS, { AES } from 'crypto-js';
+import { getTimeCookie, setTimeCookies } from "@/lib/cookie";
+import PriceDisplay from "@/components/app/PriceDisplay";
+import Link from "next/link";
 
 export default function Home() {
+  
+
+
+
   const defaultMatrix = [
     [1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,1,1],
     [1,1,1,1,1,0,0,0,0,0,1,1,1,1,1,1,1],
@@ -34,8 +42,13 @@ export default function Home() {
 
   const [highlight, setHighlight] = useState(undefined)
  
-
+  const [prices, setPrices] = useState()
+  const [lastPriceCheck, setLastPriceCheck] = useState(new Date())
   const [exported, setExported] = useState(false)
+  const [divchaos, setDivchaos] = useState(undefined)
+  const [ilvl, setIlvl] = useState(84)
+
+  const [priceError, setPriceError] = useState('')
 
   const buttonAmps = [
     {
@@ -85,6 +98,19 @@ export default function Home() {
       disabled: false
     }
   }
+  
+  useEffect(() =>{
+    
+    const getCookie = async () =>{
+      let cookie = await getTimeCookie()
+      console.log(cookie)
+      await fetchAllPrices()
+    }
+    
+    getCookie()
+    
+    
+  },[])
 
   const [paintTile, setPaintTile] = useState(undefined)
 
@@ -110,6 +136,8 @@ export default function Home() {
     }
     return copy
   }
+
+
 
   const changeTile = (newTile, x, y) =>{
     let copy = JSON.parse(JSON.stringify(tiles))
@@ -482,6 +510,21 @@ export default function Home() {
     return true
   }
 
+  const fetchAllPrices = async() =>{
+    
+    
+    
+    let x = await axios.get(`/api/getPrices`).catch((error) => {
+      setPriceError(error.response.data)
+      return
+    })
+
+    if(!x) return
+    setPrices(x.data.coffins)
+    setDivchaos(x.data.divchaos)
+    await setTimeCookies(new Date())
+  }
+
  
   
 
@@ -491,11 +534,12 @@ export default function Home() {
       <div className="w-full h-full  flex flex-col rounded gap-4 ">
         <div className="w-full  flex rounded gap-4 overflow-hidden h-full p-12 pb-0">
           <div className="flex flex-col  w-full h-full justify-between gap-4">
-            <div>
+            <div className="flex justify-between">
               <p className="text-2xl">PoE Graveyard Simulator</p>
+              <PriceDisplay divchaos={divchaos} tiles={getShop()} prices={prices} refreshPrice={fetchAllPrices}/>
             </div>
             <div className="w-full bg-zinc-900 rounded justify-end p-2 flex gap-2">
-              
+              {/* <Button onClick={() => fetchAllPrices()}>PRICE CHECK</Button> */}
               <Button onClick={() => changePaintTile(eraseTile)} 
                 className={`bg-inherit border-0 hover:bg-purple-600 text-purple-600 hover:text-background flex gap-2 items-center 
                 ${paintTile?.text === 'erase' && 'bg-purple-600 text-background'}`}
@@ -621,8 +665,18 @@ export default function Home() {
             <p className="opacity-40">Made by</p>
             <p className="text-orange-600 opacity-100 ">@noueii</p>
           </div>
-          <div className="text-sm opacity-40">
-            This product is not affiliated with or endorsed by Grinding Gear Games in any way.
+          <div className="text-sm  flex w-full justify-between">
+            <p className="opacity-40">This product is not affiliated with or endorsed by Grinding Gear Games in any way.</p>
+
+            <div className="flex gap-1">
+            <p className="text-foreground opacity-40">
+              Prices provided by 
+            </p>
+            <Link className="text-orange-500 opacity-100" href="https://poe.ninja/" rel="noopener noreferrer" target="_blank">poe.ninja</Link>
+            </div>
+            
+
+            
           </div>
         </div>
       </div>

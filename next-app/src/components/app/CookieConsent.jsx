@@ -16,7 +16,7 @@ function CookieConsent({store}) {
     {
       title: 'Necessary',
       description: 'These trackers are used for activities that are strictly necessary to operate or deliver the service you requested from us and, therefore, do not require you to consent.',
-      defaultOpen: false,
+      defaultOpen: true,
       key: 'nec'
 
     },
@@ -47,7 +47,7 @@ function CookieConsent({store}) {
   ]
 
   const [cookieSettings, setCookieSettings] = useState({
-    nec: false,
+    nec: true,
     func: false,
     exp: false,
     measure: true,
@@ -56,6 +56,7 @@ function CookieConsent({store}) {
 
   const handleCheckChange = (value, type) => {
     let newS = cookieSettings
+    if(type === 'nec') return
     newS[type] = value
     setCookieSettings(newS)
   }
@@ -112,9 +113,8 @@ function CookieConsent({store}) {
         </div>
 
           <div className='bg-transparent w-full justify-stretch flex gap-2'>
-            <Button className='w-full' onClick={() => handleAccept()}>Accept</Button>
-            <Button className='w-full' onClick={() => handleReject()}>Reject</Button>
-            <Button className='w-full' onClick={() => setIsOpen(!isOpen)}>Customize</Button>
+            <Button className='w-full border-2 border-green-800 bg-opacity-100 bg-black hover:bg-green-800 hover:text-background' onClick={() => handleAccept()}>Accept</Button>
+            <Button className='w-full border-2 border-yellow-800 bg-opacity-100 bg-black hover:bg-yellow-800 hover:text-background bg' onClick={() => setIsOpen(!isOpen)}>Customize</Button>
           </div>
         </>
         }
@@ -141,7 +141,7 @@ function CookieConsent({store}) {
                       <p className='text-xl '>{x.title}</p>
                       <div className='flex gap-2 items-center'>
                         <p>Enabled</p>
-                        <Checkbox className='border-2 ' defaultChecked={x.defaultOpen} onCheckedChange={(checked) => handleCheckChange(checked, x.key) }/>
+                        <Checkbox className='border-2 ' disabled={x.key === 'nec'} defaultChecked={x.defaultOpen} onCheckedChange={(checked) => handleCheckChange(checked, x.key) }/>
                       </div>
                      
                     </div>
@@ -156,8 +156,8 @@ function CookieConsent({store}) {
             </div>
 
             <div className='bg-transparent w-full justify-stretch flex gap-2'>
-              <Button className='w-full' onClick={() => confirmCookies()}>Confirm</Button>
-              <Button className='w-full' onClick={() => handleReject()}>Reject</Button>
+              <Button className='w-full border-2 border-green-800 bg-opacity-100 bg-black hover:bg-green-800 hover:text-background ' onClick={() => confirmCookies()}>Save changes</Button>
+              <Button className='w-full border-2 border-red-800 bg-opacity-100 bg-black hover:bg-red-800 hover:text-background ' onClick={() => handleReject()}>Only necessary</Button>
             </div>
           </>
           

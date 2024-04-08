@@ -4,6 +4,8 @@ import { cookies } from 'next/headers'
 import CookieConsent from "@/components/app/CookieConsent";
 const inter = Inter({ subsets: ["latin"] });
 import { Analytics } from "@vercel/analytics/react"
+import { setTimeCookies } from "@/lib/cookie";
+
 
 export const metadata = {
   title: "noueii's Graveyard Simulator",
@@ -13,8 +15,10 @@ export const metadata = {
 export default function RootLayout({ children }) {
   const cookieStore = cookies()
   let ccu = cookieStore.get('ccu')
+
   
   let parsedCCU = ccu?.value ? JSON.parse(ccu?.value) : undefined
+  
   console.log(parsedCCU)
   
   return (
