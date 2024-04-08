@@ -514,7 +514,7 @@ export default function Home() {
     
     
     
-    let x = await axios.get(`/api/getPrices`).catch((error) => {
+    let x = await axios.get(`https://poe-necropolis-graveyard.vercel.app/api/getPrices`).catch((error) => {
       setPriceError(error.response.data)
       return
     })
