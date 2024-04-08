@@ -54,6 +54,17 @@
     "text": "[value]% increased chance of [craft] Modifiers",
     "value": 500,
     "maxValue": 0,
+    "craft": "Life",
+    "type": "normal",
+    "required": 1,
+    "tag": "life mod",
+    "tagType": "increase",
+    "tier": 1
+  },
+  {
+    "text": "[value]% increased chance of [craft] Modifiers",
+    "value": 500,
+    "maxValue": 0,
     "craft": "Fire",
     "type": "normal",
     "required": 1,

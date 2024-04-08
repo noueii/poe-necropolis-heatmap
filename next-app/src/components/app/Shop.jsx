@@ -17,9 +17,14 @@ import * as ld from 'lodash'
 import { motion } from 'framer-motion';
 
 import { AnimatePresence } from 'framer-motion';
+import { Input } from '../ui/input';
+import { ToggleGroup, ToggleGroupItem } from '../ui/toggle-group';
+import { Slider } from '../ui/slider';
 function Shop({shop}) {
 
   const [customShop, setCustomShop] = useState(shop)
+  const [IGN, setIGN] = useState('')
+  const [selectedIlvl, setSelectedIlvl] = useState()
 
   useEffect(() =>{
     setCustomShop(shop)
@@ -130,9 +135,7 @@ function Shop({shop}) {
         </AnimatePresence>
         </div>
 
-        <div className='w-full'>
-          <Button disabled className='w-full'>Generate TFT string (WIP)</Button>
-        </div>
+        
 
         <div className='w-[200%] absolute left-[-50%] h-10 top-[-10%] rounded flex overflow-hidden '>
           {corpseTypes.map(type =>{
@@ -144,6 +147,38 @@ function Shop({shop}) {
             )
           })}
         </div>
+
+        {/* <div className='w-[80%] absolute left-[-90%] top-0 rounded flex overflow-hidden p-4 flex-col gap-4 '>
+          <p className='flex w-full justify-center'>Generate a string for TFT Bulk sell</p>
+          <div className='flex gap-3 '>
+            <p className='flex items-center'>IGN</p>
+            <Input className='border-2 border-cyan-500 border-opacity-50'/>
+          </div>
+          <div className='flex items-center justify-between'>
+            <p>Item level</p>
+            <ToggleGroup type='single' className='flex'>
+              <ToggleGroupItem>Highest(84)</ToggleGroupItem>
+              <ToggleGroupItem>80</ToggleGroupItem>
+              <ToggleGroupItem>70</ToggleGroupItem>
+            </ToggleGroup>
+          </div>
+
+          <div className='flex items-center flex-col justify-between gap-4'>
+            <p className='flex w-full justify-start'>POE Ninja Price</p>
+            <Slider defaultValue={[1]} max={2}  step={0.01} name='hey'/>
+          </div>
+
+          <Separator/>
+
+          <div>
+            <p>Total</p>
+          </div>
+
+          <div className='w-full'>
+            <Button disabled className='w-full'>Generate TFT string (WIP)</Button>
+          </div>
+        </div> */}
+
       </DialogContent>
     </Dialog>
       

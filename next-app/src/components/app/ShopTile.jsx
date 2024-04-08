@@ -12,7 +12,7 @@ import { motion } from 'framer-motion';
 
 
 function ShopTile({item, onClick}) {
-  const [isClicked, setIsClicked] = useState(false)
+  const [isClicked, setIsClicked] = useState(true)
 
   const getAMPicon = (type) =>{
     switch(type){

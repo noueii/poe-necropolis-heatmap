@@ -9,12 +9,14 @@ import TileTextDisplay from "@/components/app/TileTextDisplay";
 import { Dialog } from '../components/ui/dialog'
 import { DialogTrigger, DialogHeader, DialogTitle, DialogDescription, DialogContent } from '../components/ui/dialog'
 import { Textarea } from "@/components/ui/textarea";
-import { FaArrowRightArrowLeft, FaUpDownLeftRight } from "react-icons/fa6";
+import { FaArrowRightArrowLeft, FaEraser, FaUpDownLeftRight } from "react-icons/fa6";
 import { FaArrowsUpDownLeftRight } from "react-icons/fa6";
 import { BiSolidEraser } from "react-icons/bi";
+import { PiExport } from "react-icons/pi";
 import { GiCoffin } from "react-icons/gi";
 import { encodeBase64 } from "bcryptjs";
 import bcrypt from 'bcryptjs-react'
+import { FiTrash } from "react-icons/fi";
 import Shop from "@/components/app/Shop";
 import axios from "axios";
 
@@ -23,6 +25,8 @@ import CryptoJS, { AES } from 'crypto-js';
 import { getTimeCookie, setTimeCookies } from "@/lib/cookie";
 import PriceDisplay from "@/components/app/PriceDisplay";
 import Link from "next/link";
+import DialogSelectMultiple from "@/components/app/DialogSelectMultiple";
+import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
 
 export default function Home() {
   
@@ -47,7 +51,6 @@ export default function Home() {
   const [exported, setExported] = useState(false)
   const [divchaos, setDivchaos] = useState(undefined)
   const [ilvl, setIlvl] = useState(84)
-
   const [priceError, setPriceError] = useState('')
 
   const buttonAmps = [
@@ -88,9 +91,22 @@ export default function Home() {
         "corpse": "any"
       },
       
+      
     
     },
+    {
+      text: "ERASE",
+      value: {
+        value: 1,
+        disabled: false
+    }
+    }
   ]
+
+ 
+
+
+
   const eraseTile = {
     text: "erase",
     value: {
@@ -119,6 +135,14 @@ export default function Home() {
   let {valueHeatmap, maxValue} = generateHeatmap()
 
   const [tiles, setTiles] = useState(generateTileMatrix(defaultMatrix))
+  const [historyMatrix, setHistoryMatrix] = useState([generateTileMatrix(defaultMatrix)])
+  const [historyIndex, setHistoryIndex] = useState(0)
+  const [selectMultiple, setSelectMultiple] = useState(false)
+  const [selectedTilesForBatch, setSelectedTilesForBatch] = useState([])
+
+
+  console.log('INITIAL MATRIX')
+  console.log(historyMatrix)
 
   function generateTileMatrix(defaultMatrix){
     let copy = JSON.parse(JSON.stringify(defaultMatrix))
@@ -138,12 +162,42 @@ export default function Home() {
   }
 
 
+  function addHistory(matrix){
+    let copy = historyMatrix.slice(0,historyIndex + 1)
+    console.log(copy)
+    copy.push(matrix)
+    
+    setHistoryMatrix(copy)
+    setHistoryIndex(copy.length - 1)
+    console.log(copy.length - 1)
+  }
+
+  function undoHistory(){
+    if(historyIndex === 0) return
+    let newIndex = historyIndex - 1
+    setTiles(historyMatrix[newIndex])
+    setHistoryIndex(newIndex)
+  }
+
+  function redoHistory(){
+    if(historyIndex === historyMatrix.length - 1) return
+    let newIndex = historyIndex + 1
+    setTiles(historyMatrix[newIndex])
+    setHistoryIndex(newIndex)
+  }
+
+  
 
   const changeTile = (newTile, x, y) =>{
+    if(selectMultiple){
+      handleSelectBatchTile
+    }
+
     let copy = JSON.parse(JSON.stringify(tiles))
     // console.log(newTile)
     copy[x][y] = newTile
     setTiles(copy)
+    addHistory(copy)
   }
 
   function generateHeatmap(){
@@ -372,7 +426,9 @@ export default function Home() {
 
   const importMatrix = () =>{
     let key = 'nbTFpYn'
-    setTiles(decryptData(importText,key ))
+    let newMatrix = decryptData(importText,key )
+    setTiles(newMatrix)
+    addHistory(newMatrix)
   }
 
   const encryptData = (data, secretKey) => {
@@ -403,6 +459,8 @@ export default function Home() {
   
 
   const changePaintTile = (btn) =>{
+    
+
     if(paintTile?.text === btn.text) {
   
       setPaintTile(undefined)
@@ -419,6 +477,7 @@ export default function Home() {
     copy[x][y] = paintTile.value
 
     setTiles(copy)
+    addHistory(copy)
   }
 
   const resetExportImport = () =>{
@@ -514,7 +573,7 @@ export default function Home() {
     
     
     
-    let x = await axios.get(`https://poe-necropolis-graveyard.vercel.app/api/getPrices`).catch((error) => {
+    let x = await axios.get(`/api/getPrices`).catch((error) => {
       setPriceError(error.response.data)
       return
     })
@@ -525,6 +584,54 @@ export default function Home() {
     await setTimeCookies(new Date())
   }
 
+
+
+  const handleCancelSelectMultiple = ()=>{
+    setSelectedTilesForBatch([])
+    setSelectMultiple(false)
+  }
+  function handleSelectBatchTile(x, y){
+    console.log('enter')
+    let copy = JSON.parse(JSON.stringify(selectedTilesForBatch))
+    let found = copy.find((el) => el.x === x && el.y === y)
+    console.log(found)
+    if(found){
+      copy.filter((el) => el.x !== x && el.y !== y)
+      setSelectedTilesForBatch(copy)
+      return 
+    }
+    copy.push({x: x, y: y})
+    setSelectedTilesForBatch(copy)
+  }
+
+  const handleDeleteAllSelected = (tile) =>{
+    let copy = JSON.parse(JSON.stringify(tiles))
+    for(let i = 0; i < selectedTilesForBatch; i++){
+      copy[x][y] = eraseTile.value
+    }
+    setTiles(copy)
+    setSelectMultiple(false)
+    setSelectedTilesForBatch([])
+  }
+
+  const handlePaintSelectMultiple = (tile) =>{
+    let copy = JSON.parse(JSON.stringify(tiles))
+    for(let i = 0; i < selectedTilesForBatch.length; i++){
+      let {x,y} = selectedTilesForBatch[i]
+      let newTile = tile
+      newTile.disabled = tile.disabled
+      copy[x][y] = newTile
+    }
+
+    setTiles(copy)
+    setSelectMultiple(false)
+    setSelectedTilesForBatch([])
+  }
+
+  const handleCancelSelection = () =>{
+    setSelectedTilesForBatch([])
+    setSelectMultiple(false)
+  }
  
   
 
@@ -538,40 +645,78 @@ export default function Home() {
               <p className="text-2xl">PoE Graveyard Simulator</p>
               <PriceDisplay divchaos={divchaos} tiles={getShop()} prices={prices} refreshPrice={fetchAllPrices}/>
             </div>
-            <div className="w-full bg-zinc-900 rounded justify-end p-2 flex gap-2">
+            <div className="w-full  rounded  p-2 flex gap-2">
               {/* <Button onClick={() => fetchAllPrices()}>PRICE CHECK</Button> */}
-              <Button onClick={() => changePaintTile(eraseTile)} 
-                className={`bg-inherit border-0 hover:bg-purple-600 text-purple-600 hover:text-background flex gap-2 items-center 
-                ${paintTile?.text === 'erase' && 'bg-purple-600 text-background'}`}
-              >
-                <BiSolidEraser className="bg-transparent text-xl"/>  
-              </Button>
+              
+              
+              
+              
+              <div className="flex gap-2 items-center  rounded w-1/5">
 
-              {buttonAmps.map((b) =>{
-                let isSelected = paintTile?.text === b.text
-                let clicked = false
-                return (
+                <p className="bg-transparent  self-start flex items-center h-full">Paint</p>
 
-                  <Button variant='ghost' 
-                  className={`bg-inherit border-0 hover:bg-purple-600 text-purple-600 hover:text-background flex gap-2 items-center 
-                  ${isSelected && 'bg-purple-600 text-background'} `}
-                  onClick={() => changePaintTile(b)}
-                  key={b.text}
-                  >
-                    {b.text === 'ROW' && <FaArrowRightArrowLeft className="bg-inherit"/>}
-                    {b.text === 'COL' && <FaArrowRightArrowLeft className="rotate-90 bg-inherit"/>}
-                    {b.text === 'ADJ' && <FaUpDownLeftRight className="bg-inherit"/>}
-                    <p className="bg-inherit"> AMP {b.text}</p>
-                  </Button>
-                )
-              })}
+                <ToggleGroup type='single' className='bg-transparent ' size='sm'>
 
+                
+                {buttonAmps.map((b) =>{
+                  let isSelected = paintTile?.text === b.text
+                  let clicked = false
+                  return (
 
+                    <ToggleGroupItem variant='ghost' 
+                      size='sm'
+                      className={`bg-inherit border-0 hover:bg-purple-600 text-purple-600 hover:text-background flex gap-2 items-center
+                      ${isSelected && 'bg-purple-600 text-background'} 
+                      data-[state=on]:bg-inherit data-[state=on]:text-purple-600 data-[state=on]:border-2 data-[state=on]:border-purple-600 
+                      `}
+                      onClick={() => changePaintTile(b)}
+                      key={b.text}
+                      value={b.text}
+                    >
+                      {b.text === 'ERASE' && <BiSolidEraser className="bg-transparent text-xl"/>}
+                      {b.text === 'ROW' && <FaArrowRightArrowLeft className="bg-inherit"/>}
+                      {b.text === 'COL' && <FaArrowRightArrowLeft className="rotate-90 bg-inherit"/>}
+                      {b.text === 'ADJ' && <FaUpDownLeftRight className="bg-inherit"/>}
+                      
+                      {/* <p className="bg-transparent">{b.text}</p> */}
+                    </ToggleGroupItem>
+                  )
+                })}
+
+              </ToggleGroup>
+
+            </div>
+
+            <div className="flex gap-2 items-center w-3/5 justify-center">
+                <Button onClick={() => undoHistory()} disabled={historyIndex === 0} >Undo</Button>
+                <p>{historyIndex + 1} / {historyMatrix.length}</p>
+                <Button onClick={() => redoHistory()} disabled={historyIndex === historyMatrix.length - 1}>Redo</Button>
+            </div>
+
+            <div className="flex gap-2 w-1/5 justify-end">
+
+           
               {/* <Button onClick={() => log()}>Log</Button> */}
-              <Button className='bg-red-900' onClick={() => resetBoard()}>RESET BOARD</Button>
+              {!selectMultiple && <Button variant='ghost' onClick={() => setSelectMultiple(true)}>Select Multiple</Button>}
+              {(selectMultiple && selectedTilesForBatch.length > 0)&& 
+                <DialogSelectMultiple 
+                deleteAll={handleDeleteAllSelected} 
+                setSelectedTiles={handlePaintSelectMultiple} 
+                cancelSelection={handleCancelSelection}
+                length={selectedTilesForBatch.length}
+                />}
+              {selectMultiple && selectedTilesForBatch.length ===0 && 
+                <Button variant='ghost'  onClick={() => setSelectMultiple(false)}>Cancel</Button>
+              }
+              <Button className='hover:bg-transparent border-2 border-transparent hover:border-red-500' variant='ghost' onClick={() => resetBoard()}>
+                <FiTrash className="text-red-500 bg-transparent h-4 w-4"/>
+              </Button>
               <Dialog onOpenChange={() => resetExportImport()}>
                 <DialogTrigger>
-                  <Button className='bg-red-900'>IMPORT BOARD</Button>
+                  <Button className='' variant='ghost'>
+                    <PiExport className="w-5 h-5 bg-transparent"/>
+
+                  </Button>
                 </DialogTrigger>
                 <DialogContent className='border-0'>
                   <DialogTitle>Import/Export board</DialogTitle>
@@ -588,7 +733,7 @@ export default function Home() {
                 </DialogContent>
 
               </Dialog>
-              
+            </div>
             </div>
             <div className="w-full h-full flex flex-col">
               {tiles.map((row, indexRow) =>{
@@ -597,8 +742,8 @@ export default function Home() {
                   key={indexRow}
                   className="h-full flex flex-row justify-between w-full items-center justify-items-center overflow-hidden ">
                     {row.map((col, indexCol) =>{
-                      
-
+                      console.log('select multiple')
+                      console.log(selectMultiple)
                       return (
                         <div 
                         key={indexCol}
@@ -616,6 +761,11 @@ export default function Home() {
                             clickDisabled={paintTile !== undefined}
                             paintTile={paintSelectedTile}
                             highlight={highlight}
+                            selectedBatch={selectedTilesForBatch}
+                            isActiveSelectMultiple={selectMultiple}
+                            onSelectMultiple={handleSelectBatchTile}
+                            
+
                             
                           />
                         </div>

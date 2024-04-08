@@ -57,13 +57,11 @@ function PriceDisplay({divchaos, tiles, prices, ilvl, refreshPrice}) {
     
   
   async function isRefreshDisabled (){
-    console.log('enter disabled')
     let current = await getServerTime()
     let last = await getTimeCookie()
     let lastTime = last.value.replaceAll('"','')
     lastTime = new Date(lastTime)
 
-    console.log(current.getTime() - lastTime.getTime() < 30000)
     if(current.getTime() - lastTime.getTime() < 30000) return true
     return false
   }
@@ -82,7 +80,6 @@ function PriceDisplay({divchaos, tiles, prices, ilvl, refreshPrice}) {
    
     let matches = prices.find((el) => {
       let parsedText = (el.text.replaceAll('\n',' ')).toLowerCase()
-      console.log(parsedText)
       return parsedText === tileText
     })
 

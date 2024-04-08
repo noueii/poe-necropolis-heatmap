@@ -28,7 +28,7 @@ import TileText from './TileTextDisplay'
 import TileTextDisplay from './TileTextDisplay'
 
 
-function Tile({tile, x, y, onChange, amps, maxValue, clickDisabled, paintTile, highlight}) {
+function Tile({tile, x, y, onChange, amps, maxValue, clickDisabled, paintTile, highlight, selectedBatch, isActiveSelectMultiple, onSelectMultiple}) {
 
   
   let rgb = convertScoreToRGB(calculateAmps(), maxValue)
@@ -41,6 +41,10 @@ function Tile({tile, x, y, onChange, amps, maxValue, clickDisabled, paintTile, h
   const corpseTypes = [
     'beast','undead','humanoid','construct','demon'
   ]
+
+  const isSelectedBatch =()=>{
+    return selectedBatch.find(el => el.x == x && el.y ==y)
+  }
 
   const isSameTileType = (a,b) =>{
     if(!a || !b) return false
@@ -124,6 +128,16 @@ function Tile({tile, x, y, onChange, amps, maxValue, clickDisabled, paintTile, h
   const handleTileClick = () =>{
     // console.log('HANDLE TILE CLICK')
     setSearch('')
+    if(isActiveSelectMultiple){
+      
+      console.log('ENTER SELECTION')
+      setOpenDialog(false)
+      if(tile.disabled) return
+      onSelectMultiple(x,y)
+      
+      return
+    }
+
     if(clickDisabled) {
       // console.log('click disabled')
       setOpenDialog(false)
@@ -158,11 +172,17 @@ function Tile({tile, x, y, onChange, amps, maxValue, clickDisabled, paintTile, h
   }
 
 
+
   return (
-    <div className={`w-full h-full flex overflow-hidden  ${isSameTileType(highlight, tile) && 'border-2 border-cyan-500 rounded'}` }>
+    <div 
+      className={`w-full h-full flex overflow-hidden rounded
+      ${isSameTileType(highlight, tile) && 'border-2 border-cyan-500 rounded'} 
+      ${isSelectedBatch() && 'border-2  border-opacity-60 border-spacing-4'}
+      
+      ` }>
     <Dialog className='' open={openDialog} onOpenChange={() => handleTileClick()} >
       <DialogTrigger 
-
+        
         className={`w-full h-full bg-background rounded`}>
         
         <div className={`bg-inherit w-full h-full flex items-center justify-center rounded
@@ -232,7 +252,7 @@ function Tile({tile, x, y, onChange, amps, maxValue, clickDisabled, paintTile, h
       </div>
       
       </DialogTrigger>
-      {(!tile.disabled && !clickDisabled)&&
+      {(!tile.disabled && !clickDisabled && !isActiveSelectMultiple)&&
       <DialogContent className='text-white text-opacity-70 border-0 max-w-screen w-screen lg:w-1/2 lg:max-w-1/2 flex min-h-3/4 h-3/4'>
         
         {tile.type !== 'amp' &&
