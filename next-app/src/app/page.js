@@ -485,7 +485,10 @@ export default function Home() {
   }
 
   const resetBoard = () =>{
-    setTiles(generateTileMatrix(defaultMatrix))
+    let newM = generateTileMatrix(defaultMatrix)
+    setTiles(newM)
+    setHistoryMatrix(newM)
+    setHistoryIndex(0)
   }
 
   const getShop = () =>{
