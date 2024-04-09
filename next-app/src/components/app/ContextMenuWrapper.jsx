@@ -309,9 +309,9 @@ function ContextMenuWrapper({paintTile, changePaintTile, setCTRL}) {
             <div className='bg-inherit flex flex-col gap-1 max-h-48 overflow-scroll p-1'>
             {!history || history.length === 0 && <p className='bg-transparent text-sm px-2 opacity-40'>No history to display</p>}
               {history && 
-                history?.map((el) =>{
+                history?.map((el, index) =>{
                   return (
-                    <div className='bg-zinc-800 rounded flex'>
+                    <div className='bg-zinc-800 rounded flex' key={index}>
                         <Button
                           className='w-full bg-transparent flex gap-1 hover:bg-accent hover:brightness-125 text-sm rounded-r-none justify-start'
                           onClick={() => {handleChangePaintTile(el)}}
@@ -351,7 +351,7 @@ function ContextMenuWrapper({paintTile, changePaintTile, setCTRL}) {
                           if((el?.type === 'normal' || el?.type === 'item')&& isSearch(el) )
                           return (
 
-                            <div className='bg-zinc-800 rounded  flex   w-full'>
+                            <div className='bg-zinc-800 rounded  flex   w-full' key={index}>
                               <Button 
                                 onClick={() => {handleChangePaintTile(el)}}
                                 key={index}
