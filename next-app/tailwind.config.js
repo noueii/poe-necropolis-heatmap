@@ -58,7 +58,7 @@ module.exports = {
         chaos: "#d8a7d3",
         life: "#c96e6e",
         mana: "#a2cffb",
-        attack: "#a2cffb",
+        attack: "#da814d",
         caster: "#b3f8fe",
         elemental: "#c8676e",
         defence: "#a88f67",

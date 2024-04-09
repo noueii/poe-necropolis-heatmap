@@ -9,7 +9,7 @@ import { Separator } from '../ui/separator'
 import { Input } from '../ui/input'
 import { IoSearch } from "react-icons/io5";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '../ui/tabs'
-import { FaArrowRightArrowLeft } from "react-icons/fa6";
+import { FaArrowRightArrowLeft, FaUpDownLeftRight } from "react-icons/fa6";
 import { FaArrowsUpDownLeftRight } from "react-icons/fa6";
 import TileTag from './TileTag'
 import { IoPaw } from "react-icons/io5";
@@ -17,6 +17,8 @@ import { IoSkullOutline } from "react-icons/io5";
 import { GiHornedSkull } from "react-icons/gi";
 import { GiStoneBust } from "react-icons/gi";
 import { PiPersonLight } from "react-icons/pi";
+
+
 
 
 import {
@@ -42,6 +44,33 @@ function Tile({tile, x, y, onChange, amps, maxValue, clickDisabled, paintTile, h
 
   const corpseTypes = [
     'beast','undead','humanoid','construct','demon'
+  ]
+
+  const buttonAmps = [
+    {
+        "text": "[value]% increased Effect of Corpses in this Grave Row",
+        "value": 25,
+        "maxValue": 0,
+        "type": "amp",
+        "ampType": "row",
+    },
+    {
+        "text": "[value]% increased Effect of Corpses in this Grave Column",
+        "value": 25,
+        "maxValue": 0,
+        "type": "amp",
+        "ampType": "col",
+        "required": 1
+    },
+    {
+        "text": "[value]% increased Effect of Corpses adjacent to this Corpse",
+        "value": 40,
+        "maxValue": 0,
+        "type": "amp",
+        "ampType": "adj",
+        "required": 1,
+        "corpse": "any"
+    },
   ]
 
   const isSelectedBatch =()=>{
@@ -159,6 +188,14 @@ function Tile({tile, x, y, onChange, amps, maxValue, clickDisabled, paintTile, h
     }
     if(tile.type === 'amp' && tile.ampType ==='adj') setOpenDialog(!openDialog)
    
+  }
+
+  function getAMPiconDEFAULT(type){
+    switch(type){
+      case 'row': return <FaArrowRightArrowLeft className='bg-transparent'/>
+      case 'col': return <FaArrowRightArrowLeft className='rotate-90 bg-transparent'/>
+      case 'adj': return <FaUpDownLeftRight className='bg-transparent'/>
+    }
   }
 
   const getAMPicon = (type) =>{
@@ -280,7 +317,7 @@ function Tile({tile, x, y, onChange, amps, maxValue, clickDisabled, paintTile, h
       </div>
       
       </DialogTrigger>
-      {(!tile.disabled && !clickDisabled && !isActiveSelectMultiple || !otherDisables)&&
+      {(!tile.disabled && !clickDisabled && !isActiveSelectMultiple && !otherDisables)&&
       <DialogContent className='text-white text-opacity-70 border-0 max-w-screen w-screen lg:w-1/2 lg:max-w-1/2 flex min-h-3/4 h-3/4'>
         
         {tile.type !== 'amp' &&
@@ -296,11 +333,22 @@ function Tile({tile, x, y, onChange, amps, maxValue, clickDisabled, paintTile, h
               </DialogHeader>
 
               <div className='w-full h-full mt-4 overflow-scroll'>
-                {amps.map((amp, index) =>{
-                  return (
-                    <div className='border-2 border-zinc-500 border-opacity-40 rounded p-1 ' key={'amp-' + index}>{getAmpText(amp)}</div>
-                  )
-                })}
+              <div className=' h-full flex flex-col gap-2 w-full'>
+                  {buttonAmps.map((el,index) =>{
+                    if(el?.type === 'amp') 
+                    return (
+                        <Button 
+                          onClick={() => setTile(el)}
+                          key={index}
+                          className='text-wrap pt-2 hover:bg-accent hover:brightness-125 text-xs h-full flex gap-4 '>
+                            <div className='text-cyan-500 text-8xl bg-transparent'>{getAMPiconDEFAULT(el.ampType)}</div>
+                            <TileTextDisplay tile={el} value={el.value} className={'text-xl w-full '}/>
+                          </Button>
+
+                      
+                    )
+                  })}
+          </div>
               </div>
             </div>
           </div>

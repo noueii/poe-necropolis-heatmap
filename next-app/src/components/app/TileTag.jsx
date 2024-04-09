@@ -27,8 +27,8 @@ if(tile.type === 'amp') return
     if(type === 'haunted') return <GiHaunting/>
 
     if(type === 'save') return <TbPigMoney/>
-    if(type === 'add') return <FaPlus className='text-green-500'/>
-    if(type === 'minus') return <FaMinus className='text-red-500'/>
+    if(type === '+1') return <FaPlus className='text-green-500'/>
+    if(type === '-1') return <FaMinus className='text-red-500'/>
     if(type === 'haunt') return <RiGhostLine/>
     return ''
   }

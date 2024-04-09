@@ -9,7 +9,7 @@ import TileTextDisplay from './TileTextDisplay'
 
 import { FaArrowRightArrowLeft, FaUpDownLeftRight } from "react-icons/fa6";
 
-function DialogSelectMultiple({deleteAll,setSelectedTiles, length}) {
+function DialogSelectMultiple({deleteAll,setSelectedTiles, length, cancelSelection}) {
   const [search, setSearch] = useState('')
 
   const isSearch = (el) =>{
@@ -30,6 +30,43 @@ function DialogSelectMultiple({deleteAll,setSelectedTiles, length}) {
     }
   }
 
+  const buttonAmps = [
+    {
+
+
+        "text": "[value]% increased Effect of Corpses in this Grave Row",
+        "value": 25,
+        "maxValue": 0,
+        "type": "amp",
+        "ampType": "row",
+
+    
+    },
+    {
+
+
+        "text": "[value]% increased Effect of Corpses in this Grave Column",
+        "value": 25,
+        "maxValue": 0,
+        "type": "amp",
+        "ampType": "col",
+        "required": 1
+
+    
+    },
+
+    {
+
+        "text": "[value]% increased Effect of Corpses adjacent to this Corpse",
+        "value": 40,
+        "maxValue": 0,
+        "type": "amp",
+        "ampType": "adj",
+        "required": 1,
+        "corpse": "any"
+      
+    },
+  ]
 
 
   return (
@@ -68,7 +105,9 @@ function DialogSelectMultiple({deleteAll,setSelectedTiles, length}) {
               </DialogClose>
             
             <DialogClose className='w-full'>
-              <Button variant='outline' className='opacity-50 border-2 w-full border-yellow-500 hover:bg-yellow-500 hover:text-background text-yellow-500' >
+              <Button variant='outline' className='opacity-50 border-2 w-full border-yellow-500 hover:bg-yellow-500 hover:text-background text-yellow-500' 
+                onClick={() => cancelSelection()}
+              >
                 CANCEL SELECTION
               </Button>
             </DialogClose>
@@ -80,7 +119,7 @@ function DialogSelectMultiple({deleteAll,setSelectedTiles, length}) {
 
           
           <div className=' h-full flex flex-col gap-2 w-full'>
-                  {db.map((el,index) =>{
+                  {buttonAmps.map((el,index) =>{
                     if(el?.type === 'amp') 
                     return (
                         <Button 

@@ -15,12 +15,14 @@ import { BiSolidEraser } from "react-icons/bi";
 import { PiExport } from "react-icons/pi";
 import { GiCoffin } from "react-icons/gi";
 import { encodeBase64 } from "bcryptjs";
+import { GoDotFill } from "react-icons/go";
 import bcrypt from 'bcryptjs-react'
 import { FiTrash } from "react-icons/fi";
 import Shop from "@/components/app/Shop";
 import axios from "axios";
 import * as ld from 'lodash'
 
+import { BiRedo, BiUndo } from "react-icons/bi";
 
 import CryptoJS, { AES } from 'crypto-js';
 import { getTimeCookie, setTimeCookies } from "@/lib/cookie";
@@ -28,6 +30,12 @@ import PriceDisplay from "@/components/app/PriceDisplay";
 import Link from "next/link";
 import DialogSelectMultiple from "@/components/app/DialogSelectMultiple";
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
+import StickyDisplay from "@/components/app/StickyDisplay";
+import ContextMenuWrapper from "@/components/app/ContextMenuWrapper";
+import { useLocalStorage } from "@/lib/useLocalStorage";
+import { MdKeyboardControlKey } from "react-icons/md";
+import { BsDot } from "react-icons/bs";
+import Kbd from "@/components/ui/kbd";
 
 export default function Home() {
   
@@ -45,6 +53,8 @@ export default function Home() {
     [1,1,1,1,1,1,1,1,0,0,1,1,1,1,1,1,1]
   ]
 
+  const [ctrlToggle, setCtrlToggle] = useState(false)
+  const [ctrlRelease, setCtrlRelease] = useState(true)
   const [highlight, setHighlight] = useState(undefined)
  
   const [prices, setPrices] = useState()
@@ -53,6 +63,8 @@ export default function Home() {
   const [divchaos, setDivchaos] = useState(undefined)
   const [ilvl, setIlvl] = useState(84)
   const [priceError, setPriceError] = useState('')
+  
+
 
   const buttonAmps = [
     {
@@ -117,17 +129,34 @@ export default function Home() {
   }
   
   useEffect(() =>{
-    
+  
+
     const getCookie = async () =>{
       let cookie = await getTimeCookie()
       console.log(cookie)
       await fetchAllPrices()
     }
-    
     getCookie()
-    
-    
+
+
+    window.addEventListener("keydown", (event) => {
+      if(event.repeat || !event.ctrlKey) return
+      let btn = document.getElementById('ctrlbutton')
+        setCtrlToggle(prev => !prev)
+
+    });
+
+    document.addEventListener("keyup", (event) => {
+      
+      if(event.ctrlKey){
+       
+        
+      }
+    });
+  
   },[])
+
+ 
 
   const [paintTile, setPaintTile] = useState(undefined)
 
@@ -197,6 +226,8 @@ export default function Home() {
     setTiles(copy)
     addHistory(copy)
   }
+
+  
 
   function generateHeatmap(){
     let valueMatrix = JSON.parse(JSON.stringify(defaultMatrix))
@@ -351,6 +382,8 @@ export default function Home() {
     return result
   }
 
+
+
   const getAppliedMods = () =>{
     let result = []
 
@@ -458,14 +491,6 @@ export default function Home() {
   
 
   const changePaintTile = (btn) =>{
-    
-
-    if(paintTile?.text === btn.text) {
-  
-      setPaintTile(undefined)
-      return
-    }
-
     setPaintTile(btn)
   }
 
@@ -477,6 +502,21 @@ export default function Home() {
 
     setTiles(copy)
     addHistory(copy)
+    addPaintHistory(paintTile.value)
+  }
+
+  function addPaintHistory(mod){
+    if(mod.ampType || !mod.text) return 
+    
+    const {setItem, getItem} = useLocalStorage('history')
+    let x = getItem()
+    x = x ? x : []
+    x = x.filter(el => !isSameTileType(el, mod))
+    let history = [mod].concat(x)
+    
+    history = history.slice(0, 10)
+    console.log(history)
+    setItem(history)
   }
 
   const resetExportImport = () =>{
@@ -592,13 +632,14 @@ export default function Home() {
     setSelectedTilesForBatch([])
     setSelectMultiple(false)
   }
+
   function handleSelectBatchTile(x, y){
     console.log('enter')
     let copy = JSON.parse(JSON.stringify(selectedTilesForBatch))
     let found = copy.find((el) => el.x === x && el.y === y)
     console.log(found)
     if(found){
-      copy.filter((el) => el.x !== x && el.y !== y)
+      copy = copy.filter((el) => el.x !== x && el.y !== y)
       setSelectedTilesForBatch(copy)
       return 
     }
@@ -642,57 +683,49 @@ export default function Home() {
     <main className="flex h-[100dvh]  bg-background w-full p-2 ">
       <div className="w-full h-full  flex flex-col rounded gap-4 ">
         <div className="w-full  flex rounded gap-4 overflow-hidden h-full p-12 pb-0">
-          <div className="flex flex-col  w-full h-full justify-between gap-4">
+          <div className="flex flex-col  w-full h-full justify-between gap-4 px-2">
             <div className="flex justify-between">
               <p className="text-2xl">PoE Graveyard Simulator</p>
               <PriceDisplay divchaos={divchaos} tiles={getShop()} prices={prices} refreshPrice={fetchAllPrices}/>
             </div>
-            <div className="w-full  rounded  p-2 flex gap-2">
+            <div className="w-full  rounded  flex gap-2">
               {/* <Button onClick={() => fetchAllPrices()}>PRICE CHECK</Button> */}
               
               
               
               
               <div className="flex gap-2 items-center  rounded w-1/5">
-
-                <p className="bg-transparent  self-start flex items-center h-full">Boosters</p>
-
-                <ToggleGroup type='single' className='bg-transparent ' size='sm'>
-
+              
                 
-                {buttonAmps.map((b) =>{
-                  let isSelected = paintTile?.text === b.text
-                  let clicked = false
-                  return (
+                  
+                  <p className="bg-transparent  self-start flex items-center h-full ">Paint tool</p>
+                
+                 <Kbd className='w-10 h-5 bg-orange-800 border-orange-800 text-background top-[-4px] relative' id='ctrlbutton' isActive={ctrlToggle}/>
+                  <GoDotFill className={`${ctrlToggle ? 'text-green-500' : 'text-red-500'} `} />
+                  
+                
+               
 
-                    <ToggleGroupItem variant='ghost' 
-                      size='sm'
-                      className={`bg-inherit border-0 hover:bg-purple-600 text-purple-600 hover:text-background flex gap-2 items-center
-                      ${isSelected && 'bg-purple-600 text-background'} 
-                      data-[state=on]:bg-inherit data-[state=on]:text-purple-600 data-[state=on]:border-2 data-[state=on]:border-purple-600 
-                      `}
-                      onClick={() => changePaintTile(b)}
-                      key={b.text}
-                      value={b.text}
-                    >
-                      {b.text === 'ERASE' && <BiSolidEraser className="bg-transparent text-xl"/>}
-                      {b.text === 'ROW' && <FaArrowRightArrowLeft className="bg-inherit"/>}
-                      {b.text === 'COL' && <FaArrowRightArrowLeft className="rotate-90 bg-inherit"/>}
-                      {b.text === 'ADJ' && <FaUpDownLeftRight className="bg-inherit"/>}
-                      
-                      {/* <p className="bg-transparent">{b.text}</p> */}
-                    </ToggleGroupItem>
-                  )
-                })}
-
-              </ToggleGroup>
+               
 
             </div>
 
             <div className="flex gap-2 items-center w-3/5 justify-center">
-                <Button onClick={() => undoHistory()} disabled={historyIndex === 0} >Undo</Button>
+                <Button 
+                onClick={() => undoHistory()} 
+                disabled={historyIndex === 0} 
+                variant='ghost'
+                className='cursor-pointer'
+                size='sm'
+                ><BiUndo className="bg-transparent text-xl"/></Button>
                 <p>{historyIndex + 1} / {historyMatrix.length}</p>
-                <Button onClick={() => redoHistory()} disabled={historyIndex === historyMatrix.length - 1}>Redo</Button>
+                <Button 
+                onClick={() => redoHistory()} 
+                disabled={historyIndex === historyMatrix.length - 1}
+                variant='ghost'
+                className='cursor-pointer'
+                size='sm'
+                ><BiRedo className="bg-transparent text-xl"/></Button>
             </div>
 
             <div className="flex gap-2 w-1/5 justify-end">
@@ -759,7 +792,7 @@ export default function Home() {
                             amps={getTileAmps(indexRow, indexCol)}
                             maxValue={calculateMaxAmps()}
                             key={'tile-' + indexRow + '-' + indexCol}
-                            clickDisabled={paintTile !== undefined}
+                            clickDisabled={paintTile !== undefined && ctrlToggle}
                             paintTile={paintSelectedTile}
                             highlight={highlight}
                             selectedBatch={selectedTilesForBatch}
@@ -830,6 +863,8 @@ export default function Home() {
             
           </div>
         </div>
+        <StickyDisplay isActive={ctrlToggle} paintTile={paintTile}/>
+        <ContextMenuWrapper paintTile={paintTile} changePaintTile={changePaintTile} setCTRL={setCtrlToggle}/>
       </div>
     </main>
   );
