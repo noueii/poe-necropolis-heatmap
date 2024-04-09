@@ -97,7 +97,7 @@ function ContextMenuWrapper({paintTile, changePaintTile, setCTRL}) {
 
   useEffect(() =>{
     document.addEventListener("contextmenu", (event) =>{
-      console.log(event)
+
       setShowMenu({x: event?.clientX, y: event?.clientY})
       setHistory(getHistory())
       
@@ -107,7 +107,7 @@ function ContextMenuWrapper({paintTile, changePaintTile, setCTRL}) {
 
     document.addEventListener("click", (event) =>{
       let context = document.getElementById('customcontext')
-      console.log(event)
+
       if(!context) return
       if(!context.contains(event.target)){
         setSearch('')
@@ -195,7 +195,7 @@ function ContextMenuWrapper({paintTile, changePaintTile, setCTRL}) {
   function getHistory(){
     const {getItem} = useLocalStorage('history')
     let resp = getItem()
-    console.log(resp)
+
     return resp ? resp : []
   }
 
@@ -212,7 +212,7 @@ function ContextMenuWrapper({paintTile, changePaintTile, setCTRL}) {
 
   }
 
-  console.log(showMenu)
+
 
   if(showMenu)
   return (
@@ -272,9 +272,9 @@ function ContextMenuWrapper({paintTile, changePaintTile, setCTRL}) {
             <div className='bg-transparent p-1 flex flex-col gap-1 max-h-48 overflow-scroll '>
                 {!favorites && <p className='bg-transparent text-sm px-2 opacity-40'>Could not find favorites</p>}
                 {favorites && 
-                  favorites.map((el) =>{
+                  favorites.map((el,index) =>{
                     return (
-                      <div className='bg-zinc-800 rounded flex'>
+                      <div className='bg-zinc-800 rounded flex' key={index}>
                         <Button
                           className='w-full bg-transparent flex gap-1 hover:bg-accent hover:brightness-125 text-sm rounded-r-none justify-start'
                           onClick={() => {handleChangePaintTile(el)}}
