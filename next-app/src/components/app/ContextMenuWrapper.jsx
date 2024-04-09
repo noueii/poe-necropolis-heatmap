@@ -169,7 +169,8 @@ function ContextMenuWrapper({paintTile, changePaintTile, setCTRL}) {
 
   function getFavorites(){
     const {getItem} = useLocalStorage('favorites')
-    return getItem()
+    let x = getItem()
+    return x ? x : []
   }
 
 

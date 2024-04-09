@@ -133,7 +133,6 @@ export default function Home() {
 
     const getCookie = async () =>{
       let cookie = await getTimeCookie()
-      console.log(cookie)
       await fetchAllPrices()
     }
     getCookie()
@@ -515,7 +514,6 @@ export default function Home() {
     let history = [mod].concat(x)
     
     history = history.slice(0, 10)
-    console.log(history)
     setItem(history)
   }
 
@@ -634,10 +632,8 @@ export default function Home() {
   }
 
   function handleSelectBatchTile(x, y){
-    console.log('enter')
     let copy = JSON.parse(JSON.stringify(selectedTilesForBatch))
     let found = copy.find((el) => el.x === x && el.y === y)
-    console.log(found)
     if(found){
       copy = copy.filter((el) => el.x !== x && el.y !== y)
       setSelectedTilesForBatch(copy)

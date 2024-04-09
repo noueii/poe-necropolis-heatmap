@@ -5,7 +5,7 @@ function Kbd({className, id,isActive}) {
 
 
   return (
-    <motion.div class={`button w-full   cursor-pointer select-none
+    <motion.div class={`button   cursor-pointer select-none
     
     rounded-full  
     
