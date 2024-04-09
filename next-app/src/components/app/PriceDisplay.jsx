@@ -61,13 +61,12 @@ function PriceDisplay({divchaos, tiles, prices, ilvl, refreshPrice}) {
     let last = await getTimeCookie()
     let lastTime = last.value.replaceAll('"','')
     lastTime = new Date(lastTime)
-
     if(current.getTime() - lastTime.getTime() < 30000) return true
     return false
   }
 
 
-  function getMatchPrice(tile){
+  function getMatchPrice(tile, ilvl){
 
     let tileText = tile.text.replace('[value]',tile.value)
     if(tile?.craft) tileText = tileText.replace('[craft]',tile?.craft)
@@ -80,6 +79,7 @@ function PriceDisplay({divchaos, tiles, prices, ilvl, refreshPrice}) {
    
     let matches = prices.find((el) => {
       let parsedText = (el.text.replaceAll('\n',' ')).toLowerCase()
+      if(el.ilvl !== 80) return false
       return parsedText === tileText
     })
 
