@@ -685,7 +685,12 @@ export default function Home() {
         <div className="w-full  flex rounded gap-4 overflow-hidden h-full p-12 pb-0">
           <div className="flex flex-col  w-full h-full justify-between gap-4 px-2">
             <div className="flex justify-between">
+              <div>
               <p className="text-2xl">PoE Graveyard Simulator</p>
+              <p className="opacity-30">We need a guide, I know</p>
+              </div>
+              
+              
               <PriceDisplay divchaos={divchaos} tiles={getShop()} prices={prices} refreshPrice={fetchAllPrices}/>
             </div>
             <div className="w-full  rounded  flex gap-2">
